@@ -6,31 +6,81 @@
 To design and implement a well structured database, embedded in a fully functional full stack web app.
 
 ### User stories
-As a visitor, I want to browse all games and search or filter by title and category so that I can find games quickly.
+User Story 1:
+As a visitor, I want to be able to register for an account and log in and out so that my library and content are personal to me.
 
-As a visitor, I want to view a game's full details, stats and reviews so that I can learn more about it.
+Acceptance Criteria:
 
-As a visitor, I want to register, log in and log out so that my collection and data are kept private and secure.
+User Story 2:
+As a visitor, I want to browse all games and search or filter by title and category so that I can find what I am looking for quickly.
 
-As a logged-in user, I want to add games to my library with an Owned or Wishlist status, view my full library, and remove games from it so that I can track my collection.
+Acceptance Criteria:
 
-As a logged-in user, I want to write, edit and delete a review with a star rating for any game so that I can share my opinion, and see the average rating displayed on each game.
 
-As a logged-in user, I want to add new games to the catalogue and edit or delete ones I have added so that the catalogue stays accurate.
+User Story 3:
+As a visitor, I want to view the full details of a game including its stats, reviews and comments so that I can learn as much as possible about it before adding it to my library.
 
-As a logged-in user, I want to filter my library by Owned or Wishlist so that I can view each separately.
+Acceptance Criteria:
 
-As a logged-in user, I want to log a play session for a game in my library recording date, players, duration and winner, view my session history, and delete sessions I have logged.
 
-As a user, I want to see confirmation messages after every action and be confident that only I can edit or delete my own content.
+User Story 4:
+As a logged-in user, I want to be able to add new games to the catalogue and manage ones I have added so that the catalogue stays accurate and up to date.
 
-As a user, I want a helpful branded error page when I navigate to a URL that does not exist.
+Acceptance Criteria:
 
-As a developer, I want the app deployed to a cloud platform so that it is accessible to real users.
 
-As a registered user, I want to follow other users and view their public profiles so that I can see their libraries, reviews and activity and discover games through people with similar tastes.
+User Story 5:
+As a logged-in user, I want to add games to my personal library with a status of Owned or Wishlist, view my collection and remove games I no longer want tracked.
 
-As a logged-in user, I want to receive personalised game recommendations based on my library so that the app feels richer and more intelligent.
+Acceptance Criteria:
+
+
+User Story 6:
+As a logged-in user, I want to write a star rating and review for games I have played so that I can share my opinion with other users.
+
+Acceptance Criteria:
+
+
+User Story 7:
+As a logged-in user, I want to leave a comment on a game's detail page or on a specific review so that I can share quick thoughts, ask questions or respond directly to what another user has said.
+
+Acceptance Criteria:
+
+
+User Story 8:
+As a user, I want to receive clear feedback after every action I take and feel confident that my content is protected from other users.
+
+Acceptance Criteria:
+
+
+User Story 9:
+As a logged-in user, I want to filter my library by Owned or Wishlist so that I can focus on one part of my collection at a time.
+
+Acceptance Criteria:
+
+
+User Story 10:
+As a user, I want to see a helpful branded page if I navigate somewhere that does not exist rather than a confusing generic error.
+
+Acceptance Criteria:
+
+
+User Story 11:
+As a registered user, I want to follow other users and view public profiles so that I can discover games through people with similar tastes.
+
+Acceptance Criteria:
+
+
+User Story 12:
+As a logged-in user, I want to receive game recommendations based on my library so that the experience feels richer and more personalised.
+
+Acceptance Criteria:
+
+User Story 13:
+As a developer, I want the finished application deployed to a cloud platform so that it is accessible to anyone with the link.
+
+Acceptance Criteria:
+
 
 ### Features
 
