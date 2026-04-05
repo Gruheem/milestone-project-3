@@ -202,6 +202,8 @@ Deployment
 - User display name and bio editing
 - Personalised game recommendations based on library contents
 
-
-
 ### Database Schema
+
+![Database Schema](/README_images/db_schema.jpg)
+
+By making the Comment column review_id nullable, we can use the null value to apply the comment on a game in general rather than a specific review.
