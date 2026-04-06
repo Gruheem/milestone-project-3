@@ -209,3 +209,11 @@ Deployment
 By making the Comment column review_id nullable, we can use the null value to apply the comment on a game in general rather than a specific review.
 
 I have created 5 database tables for the features that I want to implement. I am using one of Django's built in 'User' table.
+
+### wireframes
+
+
+
+### surface
+
+For the project I want a clean design, dark greys with brighter accent colours(gold/amber) and warm rich colours(green/red) for tags and feedback messages. Final colours to be picked later on.
