@@ -207,3 +207,5 @@ Deployment
 ![Database Schema](/README_images/db_schema.jpg)
 
 By making the Comment column review_id nullable, we can use the null value to apply the comment on a game in general rather than a specific review.
+
+I have created 5 database tables for the features that I want to implement. I am using one of Django's built in 'User' table.
