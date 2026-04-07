@@ -217,3 +217,10 @@ I have created 5 database tables for the features that I want to implement. I am
 ### surface
 
 For the project I want a clean design, dark greys with brighter accent colours(gold/amber) and warm rich colours(green/red) for tags and feedback messages. Final colours to be picked later on.
+
+
+### Dependencies
+default Dango dependencies:
+asgiref==3.11.1
+Django==6.0.3
+sqlparse==0.5.5
