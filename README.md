@@ -1,6 +1,8 @@
 # milestone-project-3: Board Silly
 
 ## UX
+The Site will be a place where board game enthusiasts and casual board game players can discover new board games, keep a library of games, review and comment on games. With future scope to link social features, more personalisation in the form of recommendations and log play sessions user's have played with their friends. 
+
 
 ### Project goals
 To design and implement a well structured database, embedded in a fully functional full stack web app.
