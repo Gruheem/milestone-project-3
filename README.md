@@ -228,3 +228,13 @@ sqlparse==0.5.5
 For deploying on heroku:
 gunicorn==25.3.0
 packaging==26.0
+
+Allows us to interact with the DB in Python:
+psycopg==3.3.3
+
+Allows Django to connect to our DB using a URL:
+dj-database-url==3.1.2
+
+
+### Deployment
+I took steps to deploy at the earliest opportunity by just outputting a simple message as a string as our first basic html response.
