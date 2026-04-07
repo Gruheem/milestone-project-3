@@ -224,3 +224,7 @@ default Dango dependencies:
 asgiref==3.11.1
 Django==6.0.3
 sqlparse==0.5.5
+
+For deploying on heroku:
+gunicorn==25.3.0
+packaging==26.0
