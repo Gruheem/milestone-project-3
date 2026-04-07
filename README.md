@@ -237,6 +237,12 @@ psycopg==3.3.3
 Allows Django to connect to our DB using a URL:
 dj-database-url==3.1.2
 
+Summernote Admin panels:
+django-summernote==0.8.20.0
+bleach==6.3.0
+webencodings==0.5.1
+
+
 
 ### Deployment
 I took steps to deploy at the earliest opportunity by just outputting a simple message as a string as our first basic html response.
