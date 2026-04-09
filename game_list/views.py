@@ -4,5 +4,5 @@ from .models import BoardGame
 
 # Create your views here.
 class GameList(generic.ListView):
-    queryset = BoardGame.objects.all()
+    queryset = BoardGame.objects.filter(status=1)
     template_name = 'boardgame_list.html'
