@@ -16,10 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from game_list.views import game_list
 
 urlpatterns = [
-    path('', game_list, name='game_list'),
+    path('', include("game_list.urls"), name="game_list_urls"),
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
 
