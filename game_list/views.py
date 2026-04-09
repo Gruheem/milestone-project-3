@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views import generic
+from .models import BoardGame
 
 # Create your views here.
-def game_list(request):
-    return HttpResponse("Game List Pizage.")
+class GameList(generic.ListView):
+    queryset = BoardGame.objects.all()
+    template_name = 'boardgame_list.html'

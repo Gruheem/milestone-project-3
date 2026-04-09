@@ -8,8 +8,8 @@ STATUS = ((0, "Draft"), (1, "Published"))
 class Genre(models.Model):
     name = models.CharField(max_length=100)
 
-    class Meta:
-        ordering = ['title']
+    # class Meta:
+    #     ordering = ['title']
 
     def __str__(self):
         return f'{self.name}'
