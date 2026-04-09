@@ -9,6 +9,28 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Metamorphous', serif;
 }
 
+a {
+  text-decoration: none;
+  color: #E0E0E0;
+}
+
+nav a:hover {
+    color: #D4AF37;
+}
+
+.navbar a.active {
+  color: #E0E0E0;
+  border-bottom: 2px solid #D4AF37;
+}
+
+#title-span {
+    font-family: 'Metamorphous', serif;
+}
+
+.nav-span {
+    font-family: 'Inter', sans-serif;
+}
+
 .card-body {
     background-color: transparent;
     /* border: none; */
