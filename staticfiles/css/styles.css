@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Metamorphous&display=swap');
+body {
+    background-color: #121212;
+    color: #E0E0E0;
+    font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Metamorphous', serif;
+}
+
+a {
+  text-decoration: none;
+  color: #E0E0E0;
+}
+
+nav a:hover {
+    color: #D4AF37;
+}
+
+.navbar a.active {
+  color: #E0E0E0;
+  border-bottom: 2px solid #D4AF37;
+}
+
+#title-span {
+    font-family: 'Metamorphous', serif;
+}
+
+.nav-span {
+    font-family: 'Inter', sans-serif;
+}
+
+.card-body {
+    background-color: transparent;
+    /* border: none; */
+}
+
+.card {
+    background-color: #1E1E1E;
+    border: 1px solid #B8962E;
+}
+
+.card:hover {
+  border: 1px solid #D4AF37;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+}
+
+.muted {
+    color: #A0A0A0;
+}
+
+.genre-tag {
+  background-color: rgba(212, 175, 55, 0.1);
+  color: #D4AF37;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+}
+
+.btn-gold {
+  background-color: #D4AF37;
+  border: none;
+  color: #121212;
+}
+
+.btn-gold:hover {
+  background-color: #F2C94C;
+}
