@@ -1,15 +1,15 @@
-{% extends "base.html" %}
-{% load static %}
-
-{% block content %}
+{% extends "base.html" %} {% load static %} {% block content %}
 <div class="container mt-4">
   <div class="row">
+    <!-- Left Hand Game Stats-->
     <div class="col-md-3">
       <div class="card mb-3">
         <div class="card-body">
           <h5>Game Stats</h5>
           <ul class="list-unstyled">
-            <li><strong>Players:</strong> {{ boardgame.min_players }}–{{ boardgame.max_players }}</li>
+            <li>
+              <strong>Players:</strong> {{ boardgame.min_players }}–{{boardgame.max_players }}
+            </li>
             <li><strong>Play Time:</strong> {{ boardgame.play_time }}</li>
             <li><strong>Complexity:</strong> {{ boardgame.complexity }}/10</li>
             <li><strong>Rating:</strong> ⭐ {{ boardgame.rating }}</li>
@@ -17,6 +17,7 @@
         </div>
       </div>
     </div>
+    <!-- Right Hand Game Details -->
     <div class="col-md-9">
       <h2>{{ boardgame.title }}</h2>
       <p>{{ boardgame.description|safe }}</p>
@@ -26,8 +27,19 @@
         <span class="genre-tag">{{ genre.name }}</span>
         {% endfor %}
       </ul>
+      <!-- Right Hand Reviews -->
+      <h2>Reviews</h2>
+      {% for review in reviews %}
+      <div class="review">
+        <strong>{{ review.author }}</strong>
+        <p>{{ review.content }}</p>
+        <small>{{ review.created_at }}</small>
+      </div>
+      {% empty %}
+      <p>No reviews yet.</p>
+      {% endfor %}
     </div>
-
   </div>
 </div>
+
 {% endblock %}
