@@ -242,6 +242,9 @@ django-summernote==0.8.20.0
 bleach==6.3.0
 webencodings==0.5.1
 
+User Authentication and Registration:
+django-allauth==65.15.1
+
 
 
 ### Deployment
