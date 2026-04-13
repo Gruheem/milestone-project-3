@@ -20,7 +20,7 @@ def game_detail(request, title):
     **Template:**
 
     :template:`game_list/game_detail.html`
-    """
+    """ 
     
     queryset = BoardGame.objects.filter(status=1)
     boardgame = get_object_or_404(queryset, title=title)
@@ -30,7 +30,7 @@ def game_detail(request, title):
         request,
         "game_list/game_detail.html",
         {
-            "boardgame": boardgame, 
+            "boardgame": boardgame,
             "reviews": reviews,
         }
     )

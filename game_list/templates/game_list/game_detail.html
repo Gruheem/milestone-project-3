@@ -31,12 +31,12 @@
       <h2>Reviews</h2>
       {% for review in reviews %}
       <div class="review">
-        <strong>{{ review.author }}</strong>
+        <h3>{{ review.title }}</h3>
         <p>{{ review.content }}</p>
-        <small>{{ review.created_at }}</small>
+        <small>{{ review.created_at }} by {{ review.author }}</small>
       </div>
       {% empty %}
-      <p>No reviews yet.</p>
+      <p>Be the first to leave a review! ADD LOG IN BUTTON</p>
       {% endfor %}
     </div>
   </div>
