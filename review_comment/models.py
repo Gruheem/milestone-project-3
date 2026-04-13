@@ -11,6 +11,16 @@ class Review(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    
+
     def __str__(self):
-        return self.title
+        return f'Review by {self.author} on {self.boardgame}'
+
+class Comment(models.Model):
+    review = models.ForeignKey(Review, on_delete=models.CASCADE, related_name='comments')
+    content = models.TextField()
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f'Comment by {self.author} on {self.review}'

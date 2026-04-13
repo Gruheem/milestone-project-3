@@ -246,3 +246,8 @@ webencodings==0.5.1
 
 ### Deployment
 I took steps to deploy at the earliest opportunity by just outputting a simple message as a string as our first basic html response.
+
+### Design changes
+slight changes made during developement:
+- changed genre relatioinship from 1:N to N:N to allow games to have multiple genres
+- made comment only on reviews not reviews and games. Felt more natural flow.
