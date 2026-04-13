@@ -132,7 +132,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_SIGNUP_FIELDS = ['username*', 'password1*', 'password2*']
+ACCOUNT_LOGIN_METHODS = {'username'}
+ACCOUNT_EMAIL_VERIFICATION = "none"
 
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
