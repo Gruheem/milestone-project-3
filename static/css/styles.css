@@ -9,11 +9,19 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Metamorphous', serif;
 }
 
-a {
+#game-cards a {
+  color: inherit;
   text-decoration: none;
-  color: #E0E0E0;
 }
 
+#game-cards a:hover {
+  color: inherit;
+}
+
+nav a {
+    color: #E0E0E0;
+    transition: color 0.3s ease;
+}
 nav a:hover {
     color: #D4AF37;
 }

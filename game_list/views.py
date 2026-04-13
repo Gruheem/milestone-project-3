@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.views import generic
 from .models import BoardGame
 
@@ -7,3 +7,26 @@ class GameList(generic.ListView):
     queryset = BoardGame.objects.filter(status=1)
     template_name = "index.html"
     paginate_by = 6
+
+def game_detail(request, title):
+    """
+    Display an individual :model:`game_list.BoardGame`.
+
+    **Context**
+
+    ``boardgame``
+        An instance of :model:`game_list.BoardGame`.
+
+    **Template:**
+
+    :template:`game_list/game_detail.html`
+    """
+    
+    queryset = BoardGame.objects.filter(status=1)
+    boardgame = get_object_or_404(queryset, title=title)
+
+    return render(
+        request,
+        "game_list/game_detail.html",
+        {"boardgame": boardgame},
+    )

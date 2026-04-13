@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5>Game Stats</h5>
+          <ul class="list-unstyled">
+            <li><strong>Players:</strong> {{ boardgame.min_players }}–{{ boardgame.max_players }}</li>
+            <li><strong>Play Time:</strong> {{ boardgame.play_time }}</li>
+            <li><strong>Complexity:</strong> {{ boardgame.complexity }}/10</li>
+            <li><strong>Rating:</strong> ⭐ {{ boardgame.rating }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <h2>{{ boardgame.title }}</h2>
+      <p>{{ boardgame.description|safe }}</p>
+      <h4>Genres</h4>
+      <ul class="list-inline">
+        {% for genre in boardgame.genre_id.all %}
+        <span class="genre-tag">{{ genre.name }}</span>
+        {% endfor %}
+      </ul>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
