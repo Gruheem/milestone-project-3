@@ -249,6 +249,10 @@ webencodings==0.5.1
 User Authentication and Registration:
 django-allauth==65.15.1
 
+Forms:
+crispy-bootstrap5==2026.3
+django-crispy-forms==2.6
+
 
 
 ### Deployment

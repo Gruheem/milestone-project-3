@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, render
 from django.views import generic
 from .models import BoardGame
+from review_comment.forms import ReviewForm
 
 # Create your views here.
 class GameList(generic.ListView):
@@ -32,6 +33,8 @@ def game_detail(request, title):
         pending_reviews = boardgame.reviews.none()
     reviews = (approved_reviews | pending_reviews).distinct().order_by('-created_at')
 
+    review_form = ReviewForm()
+
     # for review in reviews:
     #     review.approved_comments = review.comments.filter(approved=True)
 
@@ -41,5 +44,6 @@ def game_detail(request, title):
         {
             "boardgame": boardgame,
             "reviews": reviews,
+            "review_form": review_form,
         }
     )
