@@ -25,7 +25,6 @@ def game_detail(request, title):
     queryset = BoardGame.objects.filter(status=1)
     boardgame = get_object_or_404(queryset, title=title)
     reviews = boardgame.reviews.all().order_by('-created_at')
-    comments = boardgame.reviews.comments.all().order_by('-created_at')
 
     return render(
         request,
@@ -33,6 +32,5 @@ def game_detail(request, title):
         {
             "boardgame": boardgame,
             "reviews": reviews,
-            "comments": comments,
         }
     )

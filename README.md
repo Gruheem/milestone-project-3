@@ -251,3 +251,6 @@ I took steps to deploy at the earliest opportunity by just outputting a simple m
 slight changes made during developement:
 - changed genre relatioinship from 1:N to N:N to allow games to have multiple genres
 - made comment only on reviews not reviews and games. Felt more natural flow.
+
+### (FOR ME) DONT MISS
+- Adding buttons to the 'Be the first to comment/review'

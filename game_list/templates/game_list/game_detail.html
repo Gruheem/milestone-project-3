@@ -8,7 +8,7 @@
           <h5>Game Stats</h5>
           <ul class="list-unstyled">
             <li>
-              <strong>Players:</strong> {{ boardgame.min_players }}–{{boardgame.max_players }}
+              <strong>Players:</strong> {{ boardgame.min_players}}–{{boardgame.max_players }}
             </li>
             <li><strong>Play Time:</strong> {{ boardgame.play_time }}</li>
             <li><strong>Complexity:</strong> {{ boardgame.complexity }}/10</li>
@@ -34,6 +34,19 @@
         <h3>{{ review.title }}</h3>
         <p>{{ review.content }}</p>
         <small>{{ review.created_at }} by {{ review.author }}</small>
+      </div>
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-10">
+          {% for comment in review.comments.all %}
+          <div class="comment">
+            <p>{{ comment.content|safe }}</p>
+            <small>{{ comment.created_at }} by {{ comment.author }}</small>
+          </div>
+          {% empty %}
+          <p>Be the first to leave a comment!</p>
+          {% endfor %}
+        </div>
       </div>
       {% empty %}
       <p>Be the first to leave a review! ADD LOG IN BUTTON</p>
