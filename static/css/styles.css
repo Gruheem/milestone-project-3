@@ -75,3 +75,7 @@ nav a:hover {
 .btn-gold:hover {
   background-color: #F2C94C;
 }
+
+.faded {
+    opacity: 0.5;
+}

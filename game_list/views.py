@@ -24,7 +24,16 @@ def game_detail(request, title):
     
     queryset = BoardGame.objects.filter(status=1)
     boardgame = get_object_or_404(queryset, title=title)
-    reviews = boardgame.reviews.all().order_by('-created_at')
+
+    approved_reviews = boardgame.reviews.filter(approved=True).order_by('-created_at')
+    if request.user.is_authenticated:
+        pending_reviews = boardgame.reviews.filter(approved=False,author=request.user)
+    else:
+        pending_reviews = boardgame.reviews.none()
+    reviews = (approved_reviews | pending_reviews).distinct().order_by('-created_at')
+
+    # for review in reviews:
+    #     review.approved_comments = review.comments.filter(approved=True)
 
     return render(
         request,

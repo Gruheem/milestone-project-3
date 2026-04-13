@@ -30,19 +30,29 @@
       <!-- Right Hand Reviews -->
       <h2>Reviews</h2>
       {% for review in reviews %}
-      <div class="review">
+      <div class="{% if not review.approved and review.author == user %}faded{% elif not review.approved %}d-none{% endif %}">
         <h3>{{ review.title }}</h3>
-        <p>{{ review.content }}</p>
+        <p>{{ review.content|safe }}</p>
         <small>{{ review.created_at }} by {{ review.author }}</small>
       </div>
+      {% if not review.approved and review.author == user %}
+          <p class="approval mt-1">
+            This review is awaiting approval
+          </p>
+      {% endif %}
       <div class="row">
         <div class="col-2"></div>
         <div class="col-10">
           {% for comment in review.comments.all %}
-          <div class="comment">
+          <div class="p-2 {% if not comment.approved and comment.author == user %}faded{% elif not comment.approved %}d-none{% endif %}">
             <p>{{ comment.content|safe }}</p>
             <small>{{ comment.created_at }} by {{ comment.author }}</small>
           </div>
+          {% if not comment.approved and comment.author == user %}
+          <p class="p-2">
+            This comment is awaiting approval
+          </p>
+          {% endif %}
           {% empty %}
           <p>Be the first to leave a comment!</p>
           {% endfor %}
