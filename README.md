@@ -1,5 +1,9 @@
 # milestone-project-3: Board Silly
 
+# [Deployed Site](https://board-silly-87262ba320b5.herokuapp.com/)
+
+# [Current Palette](https://coolors.co/121212-1e1e1e-a0a0a0-e0e0e0-b8962e-d4af37-f2c94c-c5a75a)
+
 ## UX
 The Site will be a place where board game enthusiasts and casual board game players can discover new board games, keep a library of games, review and comment on games. With future scope to link social features, more personalisation in the form of recommendations and log play sessions user's have played with their friends. 
 
