@@ -32,6 +32,28 @@
         <p>{{ boardgame.description|safe }}</p>
       </div>
 
+      {% if user.is_authenticated %}
+      <button class="btn btn-primary mb-3" onclick="toggleReviewForm()">
+        Leave a Review
+      </button>
+      {% else %}
+      <a href="{% url 'account_login' %}" class="btn btn-primary mb-3">
+        Leave a Review
+      </a>
+      {% endif %}
+
+      <div id="reviewFormContainer" style="display: none">
+        <h5>Leave a Review:</h5>
+        <p>Posting as: {{ user.username }}</p>
+
+        <form method="post">
+          {% csrf_token %} {{ review_form|crispy }}
+          <button type="submit" name="review_submit" class="btn btn-success">
+            Submit
+          </button>
+        </form>
+      </div>
+
       <h2>Reviews</h2>
 
       {% for review in reviews %}
@@ -44,13 +66,41 @@
           <h3>{{ review.title }}</h3>
           <p>{{ review.content|safe }}</p>
           <small>{{ review.created_at }} by {{ review.author }}</small>
-        
-      {% if not review.approved and review.author == user %}
-      <p class="approval">This review is awaiting approval</p>
-      {% endif %}
-      </div>
-      </div>
 
+          {% if not review.approved and review.author == user %}
+          <p class="approval">This review is awaiting approval</p>
+          {% endif %} {% if user.is_authenticated %}
+          <button
+            class="btn btn-sm btn-outline-primary mt-2"
+            onclick="toggleCommentForm({{ review.id }})"
+          >
+            Leave a Comment
+          </button>
+          {% else %}
+          <a
+            href="{% url 'account_login' %}"
+            class="btn btn-sm btn-outline-primary mt-2"
+          >
+            Leave a Comment
+          </a>
+          {% endif %}
+        </div>
+      </div>
+      <div id="commentForm-{{ review.id }}" style="display: none" class="mt-2">
+        <form method="post">
+          {% csrf_token %} {{ comment_form|crispy }}
+
+          <input type="hidden" name="review_id" value="{{ review.id }}" />
+
+          <button
+            type="submit"
+            name="comment_submit"
+            class="btn btn-sm btn-success"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
       <!-- Comments -->
       <div class="row mb-4">
         <div class="col-2"></div>
@@ -80,7 +130,6 @@
       {% empty %}
       <p>Be the first to leave a review!</p>
       {% endfor %}
-      
     </div>
   </div>
 </div>
