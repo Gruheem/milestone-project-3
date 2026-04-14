@@ -1,85 +1,91 @@
-{% extends "base.html" %} {% load static %} {% load crispy_forms_tags %} {% block content %} 
+{% extends "base.html" %} {% load static %} {% load crispy_forms_tags %} 
+{% block content %}
 <div class="container mt-4">
   <div class="row">
-    <!-- Left Hand Game Stats-->
+    <!-- LEFT: Sticky Stats -->
     <div class="col-md-3">
-      <div class="card mb-3">
-        <div class="card-body">
-          <h5>Game Stats</h5>
-          <ul class="list-unstyled">
-            <li>
-              <strong>Players:</strong> {{ boardgame.min_players}}–{{boardgame.max_players }}
-            </li>
-            <li><strong>Play Time:</strong> {{ boardgame.play_time }}</li>
-            <li><strong>Complexity:</strong> {{ boardgame.complexity }}/10</li>
-            <li><strong>Rating:</strong> ⭐ {{ boardgame.rating }}</li>
-          </ul>
+      <div class="position-sticky">
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5>Game Stats</h5>
+            <ul class="list-unstyled">
+              <li>
+                <strong>Players:</strong>
+                {{boardgame.min_players}}–{{boardgame.max_players}}
+              </li>
+              <li><strong>Play Time:</strong> {{ boardgame.play_time }}</li>
+              <li>
+                <strong>Complexity:</strong> {{ boardgame.complexity }}/10
+              </li>
+              <li><strong>Rating:</strong> ⭐ {{ boardgame.rating }}</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-    <!-- Right Hand Game Details -->
+
+    <!-- RIGHT: Main content -->
     <div class="col-md-9">
-      <h2>{{ boardgame.title }}</h2>
-      <p>{{ boardgame.description|safe }}</p>
-      <h4>Genres</h4>
-      <ul class="list-inline">
-        {% for genre in boardgame.genre_id.all %}
-        <span class="genre-tag">{{ genre.name }}</span>
-        {% endfor %}
-      </ul>
-      <!-- Right Hand Reviews -->
-      <h2>Reviews</h2>
-      {% for review in reviews %}
-      <div class="card {% if not review.approved and review.author == user %}faded{% elif not review.approved %}d-none{% endif %}">
-        <h3>{{ review.title }}</h3>
-        <p>{{ review.content|safe }}</p>
-        <small>{{ review.created_at }} by {{ review.author }}</small>
+      <!-- Description -->
+      <div class="mb-4">
+        <h2>{{ boardgame.title }}</h2>
+        <p>{{ boardgame.description|safe }}</p>
       </div>
+
+      <h2>Reviews</h2>
+
+      {% for review in reviews %}
+
+      <!-- Review -->
+      <div
+        class="card mb-2 {% if not review.approved and review.author == user %}faded{% elif not review.approved %}d-none{% endif %}"
+      >
+        <div class="card-body">
+          <h3>{{ review.title }}</h3>
+          <p>{{ review.content|safe }}</p>
+          <small>{{ review.created_at }} by {{ review.author }}</small>
+        
       {% if not review.approved and review.author == user %}
-          <p class="approval mt-1">
-            This review is awaiting approval
-          </p>
+      <p class="approval">This review is awaiting approval</p>
       {% endif %}
-      
-       <!-- Comments -->
-      <div class="row">
+      </div>
+      </div>
+
+      <!-- Comments -->
+      <div class="row mb-4">
         <div class="col-2"></div>
+
         <div class="col-10">
           {% for comment in review.comments.all %}
-          <div class="p-2 {% if not comment.approved and comment.author == user %}faded{% elif not comment.approved %}d-none{% endif %}">
-            <p>{{ comment.content|safe }}</p>
-            <small>{{ comment.created_at }} by {{ comment.author }}</small>
+
+          <div
+            class="card mb-2 {% if not comment.approved and comment.author == user %}faded{% elif not comment.approved %}d-none{% endif %}"
+          >
+            <div class="card-body pt-1">
+              <p>{{ comment.content|safe }}</p>
+              <small>{{ comment.created_at }} by {{ comment.author }}</small>
+
+              {% if not comment.approved and comment.author == user %}
+              <p class="mt-2">This comment is awaiting approval</p>
+              {% endif %}
+            </div>
           </div>
-          {% if not comment.approved and comment.author == user %}
-          <p class="p-2">
-            This comment is awaiting approval
-          </p>
-          {% endif %}
+
           {% empty %}
           <p>Be the first to leave a comment!</p>
           {% endfor %}
         </div>
       </div>
+
       {% empty %}
-      <p>Be the first to leave a review! ADD LOG IN BUTTON</p>
+      <p>Be the first to leave a review!</p>
       {% endfor %}
 
-      <!-- Review Form-->
-       <div>
-       {% if user.is_authenticated %}
-        <h5>Leave a comment:</h5>
-        <p>Posting as: {{ user.username }}</p>
-        <form id="commentForm" method="post"
-          style="margin-top: 1.3em;">
-          {{ comment_form | crispy }}
-          {% csrf_token %}
-          <button id="submitButton" type="submit"
-            class="btn btn-signup btn-lg">Submit</button>
-        </form>
-        {% else %}
-        <p>Log in to leave a comment</p>
-        {% endif %}
+      <div class="row">
+        <div class="col-12">
+          
         </div>
+      </div>
     </div>
   </div>
 </div>
