@@ -3,5 +3,9 @@ from django.urls import path
 
 urlpatterns = [
     path('', views.GameList.as_view(), name='home'),
+    path("comments/<int:pk>/edit/", views.edit_comment, name="edit_comment"),
+    path("comments/<int:pk>/delete/", views.delete_comment, name="delete_comment"),
+    path('reviews/<int:review_id>/edit/', views.edit_review, name='edit_review'),
+    path('reviews/<int:review_id>/delete/', views.delete_review, name='delete_review'),
     path('<str:title>/', views.game_detail, name='game_detail'),
 ]
