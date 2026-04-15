@@ -18,3 +18,14 @@ class LibraryEntry(models.Model):
     class Meta:
         # Ensure a user can only have one entry per board game (Safety at DB Level)
         unique_together = ('user', 'boardgame')
+
+class PlaySession(models.Model):
+    boardgame = models.ForeignKey(BoardGame, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    session_date = models.DateField()
+    duration = models.DurationField()
+    player_list = models.JSONField(default=list)
+    notes = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
