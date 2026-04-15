@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-4">
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>My Library</h2>
+    <a href="{% url 'home' %}" class="btn btn-outline-primary">Browse Games</a>
+  </div>
+
+  {% if entries %}
+  <div class="row">
+    {% for entry in entries %}
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+
+          <!-- Status Badge -->
+          <span class="badge mb-2 {% if entry.status == 'owned' %}bg-success{% else %}bg-warning text-dark{% endif %}">
+            {{ entry.get_status_display }}
+          </span>
+
+          <!-- Title -->
+          <h5 class="card-title">
+            <a href="{% url 'game_detail' entry.boardgame.title %}">
+              {{ entry.boardgame.title }}
+            </a>
+          </h5>
+
+          <!-- Quick Info -->
+          <p class="card-text mb-1">
+            <strong>Players:</strong> {{ entry.boardgame.min_players }}–{{ entry.boardgame.max_players }}
+          </p>
+          <p class="card-text mb-1">
+            <strong>Play Time:</strong> {{ entry.boardgame.play_time }} mins
+          </p>
+          <p class="card-text mb-2">
+            <strong>Complexity:</strong> {{ entry.boardgame.complexity }}/10
+          </p>
+
+          <!-- Genres -->
+          <p class="small text-muted">
+            {% for genre in entry.boardgame.genre_id.all %}
+            <span class="genre-tag">{{ genre.name }}</span>
+            {% endfor %}
+          </p>
+
+          <!-- Added date -->
+          <small class="text-muted">Added: {{ entry.added_at|date:"d M Y" }}</small>
+
+        </div>
+
+        <!-- Remove button placeholder - wired up in next step -->
+        <div class="card-footer">
+          <button 
+            class="btn btn-sm btn-outline-danger"
+            onclick="openDeleteLibraryModal({{ entry.id }}, '{{ entry.boardgame.title }}')"
+          >
+            Remove
+          </button>
+        </div>
+
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% else %}
+  <!-- Empty state -->
+  <div class="text-center mt-5">
+    <p class="lead">Your library is empty!</p>
+    <a href="{% url 'home' %}" class="btn btn-primary">Browse Games</a>
+  </div>
+  {% endif %}
+
+</div>
+
+{% endblock %}

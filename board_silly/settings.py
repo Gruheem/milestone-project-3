@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'django_summernote',
     'game_list',
     'review_comment',
+    'library_sessions',
 ]
 
 SITE_ID = 1
