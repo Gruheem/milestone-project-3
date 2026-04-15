@@ -51,11 +51,12 @@
 
         </div>
 
-        <!-- Remove button placeholder - wired up in next step -->
+        <!-- Remove button -->
         <div class="card-footer">
           <button 
+            type="button"
             class="btn btn-sm btn-outline-danger"
-            onclick="openDeleteLibraryModal({{ entry.id }}, '{{ entry.boardgame.title }}')"
+            onclick="openDeleteLibraryModal({{ entry.id }}, '{{ entry.boardgame.title|escapejs }}')"
           >
             Remove
           </button>
@@ -74,6 +75,29 @@
   </div>
   {% endif %}
 
+</div>
+
+<!-- Remove from Library confirmation modal -->
+<div class="modal fade" id="deleteLibraryModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Remove from Library</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to remove <strong id="deleteLibraryTitle"></strong> from your library?</p>
+        <p class="text-muted">This cannot be undone.</p>
+      </div>
+      <div class="modal-footer">
+        <form id="deleteLibraryForm" method="post">
+          {% csrf_token %}
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-danger">Yes, Remove</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
 
 {% endblock %}

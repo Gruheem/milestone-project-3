@@ -1,3 +1,5 @@
+console.log("JS file loaded");
+
 // Form Toggles
 
 // Review Form Toggle
@@ -60,5 +62,13 @@ function openDeleteModal(reviewId, reviewTitle) {
   const modal = new bootstrap.Modal(
     document.getElementById("deleteReviewModal"),
   );
+  modal.show();
+}
+
+// Delete Library Entry Modal
+function openDeleteLibraryModal(entryId, gameTitle) {
+  document.getElementById('deleteLibraryTitle').textContent = gameTitle;
+  document.getElementById('deleteLibraryForm').action = `/library/remove/${entryId}/`;
+  const modal = new bootstrap.Modal(document.getElementById('deleteLibraryModal'));
   modal.show();
 }
