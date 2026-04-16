@@ -1,0 +1,48 @@
+{% extends "base.html" %} {% load static %} {% load crispy_forms_tags %} 
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <!-- LEFT: Sticky Stats -->
+    <div class="col-md-3">
+      <div class="position-sticky">
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5>Game Stats</h5>
+            <ul class="list-unstyled">
+              <li>
+                <strong>Players:</strong>
+                {{boardgame.min_players}}–{{boardgame.max_players }}
+              </li>
+              <li><strong>Play Time:</strong> {{ boardgame.play_time }}</li>
+              <li>
+                <strong>Complexity:</strong> {{ boardgame.complexity }}/10
+              </li>
+              <li><strong>Rating:</strong> ⭐ {{ boardgame.rating }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Game Info -->
+     <div class="col-9">
+    <div class="card">
+        <div class="card-body">
+          <div class="mb-4">
+            <h2>{{ boardgame.title }}</h2>
+            <p>{{ boardgame.description|safe }}</p>
+          </div>
+
+          {% if user.is_authenticated %}
+          <button class="btn btn-gold mb-3" onclick="toggleSessionForm()">
+            Log a Play Session
+          </button>
+          {% endif %}
+        </div>
+      </div>
+  </div>
+  </div>
+</div>
+
+{% endblock %}

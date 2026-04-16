@@ -265,3 +265,7 @@ slight changes made during developement:
 
 ### (FOR ME) DONT MISS
 - Adding buttons to the 'Be the first to comment/review'
+
+
+### Cool Bits
+- library_session,views.py 'filter(models.Q(host=request.user) | models.Q(players=request.user))' Q query allows me to do this 'or' operator statement

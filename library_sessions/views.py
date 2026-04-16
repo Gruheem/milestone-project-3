@@ -1,9 +1,10 @@
-from django.shortcuts import render
-from game_list.models import BoardGame
-from .models import LibraryEntry
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404, redirect
 from django.contrib import messages
+from django.db import models
+from game_list.models import BoardGame
+from .models import LibraryEntry, PlaySession
+from .forms import PlaySessionForm
 
 # Create your views here.
 def library_page(request):
@@ -52,5 +53,36 @@ def add_to_library(request, boardgame_id):
             messages.info(request, f'{game.title} is already in your library')
     return redirect('game_detail', title=game.title)
 
+
+# Play Session Views
 @login_required
-def add_play_session(request, boardgame_id):
+def play_session_page(request, entry_id):
+    entry = get_object_or_404(LibraryEntry, id=entry_id, user=request.user)
+    boardgame = entry.boardgame
+
+    # Get sessions where the user is host or tagged as a player
+    sessions = PlaySession.objects.filter(boardgame=boardgame).filter(models.Q(host=request.user) | models.Q(players=request.user)).distinct().order_by('-date_played')
+
+    if request.method == "POST":
+        form = PlaySessionForm(request.POST)
+        if form.is_valid():
+            session = form.save(commit=False)
+            session.host = request.user
+            session.boardgame = boardgame
+            session.save()
+            form.save_m2m()
+            messages.success(request, f'Play session logged for {boardgame.title}')
+            return redirect('play_session_page', entry_id=entry_id)
+
+    form = PlaySessionForm()
+
+    return render(
+        request,
+        'library_sessions/play_session.html',
+        {
+            'entry': entry,
+            'boardgame': boardgame,
+            'sessions': sessions,
+            'form': form,
+        }
+    )
