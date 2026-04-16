@@ -89,6 +89,26 @@ def play_session_page(request, entry_id):
     )
 
 @login_required
+def edit_session(request, entry_id, pk):
+    entry = get_object_or_404(LibraryEntry, id=entry_id, user=request.user)
+    session = get_object_or_404(PlaySession, id=pk, boardgame=entry.boardgame)
+
+    if request.method == "POST":
+        form = PlaySessionForm(request.POST, instance=session)
+
+        if form.is_valid():
+            edited_session = form.save(commit=False)
+            edited_session.approved = False
+            edited_session.save()
+            form.save_m2m()
+
+            messages.success(request, "Session updated and awaiting approval.")
+        else:
+            messages.error(request, "Could not update session.")
+
+    return redirect('play_session_page', entry_id=entry_id)
+
+@login_required
 def delete_session(request, entry_id, pk):
     session = get_object_or_404(PlaySession, id=pk, host=request.user)
 

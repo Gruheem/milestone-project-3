@@ -85,3 +85,27 @@ function openDeleteSessionModal(entryId, sessionId) {
   const modal = new bootstrap.Modal(document.getElementById("deleteSessionModal"));
   modal.show();
 }
+
+// Edit Session Form Toggle
+function toggleEditSessionForm(sessionId) {
+  const form = document.getElementById(`editSessionForm-${sessionId}`);
+
+  if (form.style.display === "none" || form.style.display === "") {
+
+    // get card data
+    const card = document.querySelector(`[data-session-id="${sessionId}"]`);
+
+    // IMPORTANT: crispy uses id_... not name selectors reliably
+    form.querySelector('[name="notes"]').value = card.dataset.sessionNotes || "";
+    form.querySelector('[name="date_played"]').value = card.dataset.sessionDate || "";
+    form.querySelector('[name="duration"]').value = card.dataset.sessionDuration || "";
+    form.querySelector('[name="first_place"]').value = card.dataset.sessionFirstPlace || "";
+    form.querySelector('[name="second_place"]').value = card.dataset.sessionSecondPlace || "";
+    form.querySelector('[name="third_place"]').value = card.dataset.sessionThirdPlace || "";
+
+    form.style.display = "block";
+
+  } else {
+    form.style.display = "none";
+  }
+}
