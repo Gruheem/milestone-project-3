@@ -3,21 +3,17 @@
 
 <div class="container">
   <div class="row">
+
     <!-- LEFT: Sticky Stats -->
     <div class="col-md-3">
-      <div class="position-sticky">
+      <div class="position-sticky" style="top: 20px;">
         <div class="card mb-3">
           <div class="card-body">
             <h5>Game Stats</h5>
             <ul class="list-unstyled">
-              <li>
-                <strong>Players:</strong>
-                {{boardgame.min_players}}–{{boardgame.max_players }}
-              </li>
+              <li><strong>Players:</strong> {{boardgame.min_players}}–{{boardgame.max_players }}</li>
               <li><strong>Play Time:</strong> {{ boardgame.play_time }}</li>
-              <li>
-                <strong>Complexity:</strong> {{ boardgame.complexity }}/10
-              </li>
+              <li><strong>Complexity:</strong> {{ boardgame.complexity }}/10</li>
               <li><strong>Rating:</strong> ⭐ {{ boardgame.rating }}</li>
             </ul>
           </div>
@@ -25,9 +21,11 @@
       </div>
     </div>
 
-    <!-- Game Info -->
-     <div class="col-9">
-    <div class="card">
+    <!-- RIGHT: ALL CONTENT -->
+    <div class="col-md-9">
+
+      <!-- Game Info -->
+      <div class="card mb-3">
         <div class="card-body">
           <div class="mb-4">
             <h2>{{ boardgame.title }}</h2>
@@ -41,7 +39,24 @@
           {% endif %}
         </div>
       </div>
-  </div>
+
+      <!-- Session Form -->
+      <div id="sessionFormContainer" style="display: none">
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5>Log a Play Session</h5>
+            <p>Logged by: {{ user.username }}</p>
+            <form method="post">
+              {% csrf_token %} {{ form|crispy }}
+              <button type="submit" class="btn btn-success">Save Session</button>
+              <button type="button" class="btn btn-secondary" onclick="toggleSessionForm()">Cancel</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 </div>
 

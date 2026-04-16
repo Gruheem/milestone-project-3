@@ -4,7 +4,7 @@ from .models import PlaySession
 class PlaySessionForm(forms.ModelForm):
     class Meta:
         model = PlaySession
-        fields = ['boardgame', 'date_played', 'duration', 'notes', 'players']
+        fields = ['date_played', 'duration', 'first_place', 'second_place', 'third_place', 'notes', 'players']
         # Styling for the form fields
         widgets = {
             'date_played': forms.DateInput(attrs={'type': 'date'}),

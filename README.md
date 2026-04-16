@@ -133,7 +133,18 @@ Acceptance Criteria:
 - The deployed app works identically to the development version
 - DEBUG is set to False in production
 - No secret keys or passwords appear anywhere in the codebase or version history
-- The live URL loads correctly with no broken links or missing static files
+- The live URL loads correctly with no broken links or missing static files  
+
+User Story 14:
+Log a Play Session:
+As a logged-in user, I want to log a play session for a board game so that I can keep track of how often I play and who I played with.  
+
+Acceptance Criteria:
+- A logged-in user can log a play session from the game detail page
+- The user can record the date played, number of players, duration in minutes, and an optional note
+- Logged sessions appear on the user's library page under the relevant game
+- A session can be deleted by the user who created it with a confirmation step
+- If a game has no sessions logged a message is shown  
 
 ### Features
 User Authentication

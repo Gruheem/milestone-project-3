@@ -67,6 +67,7 @@ def play_session_page(request, entry_id):
         form = PlaySessionForm(request.POST)
         if form.is_valid():
             session = form.save(commit=False)
+            session.approved = False
             session.host = request.user
             session.boardgame = boardgame
             session.save()

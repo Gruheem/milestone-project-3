@@ -72,3 +72,9 @@ function openDeleteLibraryModal(entryId, gameTitle) {
   const modal = new bootstrap.Modal(document.getElementById('deleteLibraryModal'));
   modal.show();
 }
+
+// Log Session Form Toggle
+function toggleSessionForm() {
+  const form = document.getElementById("sessionFormContainer");
+  form.style.display = form.style.display === "none" ? "block" : "none";
+}
