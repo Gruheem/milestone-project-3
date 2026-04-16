@@ -19,13 +19,19 @@ class LibraryEntry(models.Model):
         # Ensure a user can only have one entry per board game (Safety at DB Level)
         unique_together = ('user', 'boardgame')
 
+    def __str__(self):
+        return f'{self.user.username} - {self.boardgame.title} ({self.status})'
+
 class PlaySession(models.Model):
-    boardgame = models.ForeignKey(BoardGame, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    session_date = models.DateField()
-    duration = models.DurationField()
-    player_list = models.JSONField(default=list)
-    notes = models.TextField(blank=True, null=True)
+    host = models.ForeignKey(User, on_delete=models.CASCADE, related_name='hosted_sessions')
+    boardgame = models.ForeignKey(BoardGame, on_delete=models.CASCADE, related_name='play_sessions')
+    date_played = models.DateField()
+    duration = models.IntegerField(help_text="Duration in minutes")
+    notes = models.TextField(blank=True)
+    players = models.ManyToManyField(User, related_name='play_sessions', blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return f'{self.boardgame.title} logged by {self.host.username} on {self.date_played}'
+    
 

@@ -51,3 +51,6 @@ def add_to_library(request, boardgame_id):
         else:
             messages.info(request, f'{game.title} is already in your library')
     return redirect('game_detail', title=game.title)
+
+@login_required
+def add_play_session(request, boardgame_id):
