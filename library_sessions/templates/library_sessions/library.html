@@ -6,7 +6,7 @@
 
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h2>My Library</h2>
-    <a href="{% url 'home' %}" class="btn btn-outline-primary">Browse Games</a>
+    <a href="{% url 'home' %}" class="btn btn-outline-gold">Browse Games</a>
   </div>
 
   {% if entries %}
@@ -49,10 +49,10 @@
           <!-- Added date -->
           <small class="text-muted">Added: {{ entry.added_at|date:"d M Y" }}</small>
 
-        </div>
+        
 
         <!-- Remove button -->
-        <div class="card-footer">
+        <div class="">
           <button 
             type="button"
             class="btn btn-sm btn-outline-danger"
@@ -61,7 +61,7 @@
             Remove
           </button>
         </div>
-
+</div>
       </div>
     </div>
     {% endfor %}

@@ -1,12 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Metamorphous&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Metamorphous&display=swap");
 body {
-    background-color: #121212;
-    color: #E0E0E0;
-    font-family: 'Inter', sans-serif;
+  background-color: #121212;
+  color: #e0e0e0;
+  font-family: "Inter", sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Metamorphous', serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Metamorphous", serif;
 }
 
 #game-cards a {
@@ -18,64 +23,79 @@ h1, h2, h3, h4, h5, h6 {
   color: inherit;
 }
 
-nav a {
-    color: #E0E0E0;
-    transition: color 0.3s ease;
+nav a,
+.card a {
+  color: #e0e0e0;
+  transition: color 0.3s ease;
+  text-decoration: none;
 }
-nav a:hover {
-    color: #D4AF37;
+
+nav a:hover,
+.card a:hover {
+  color: #d4af37;
 }
 
 .navbar a.active {
-  color: #E0E0E0;
-  border-bottom: 2px solid #D4AF37;
+  color: #e0e0e0;
 }
 
 #title-span {
-    font-family: 'Metamorphous', serif;
+  font-family: "Metamorphous", serif;
 }
 
 .nav-span {
-    font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
+  margin: auto 0.5rem;
 }
 
 .card-body {
-    background-color: transparent;
-    /* border: none; */
+  background-color: transparent;
+  /* border: none; */
 }
 
 .card {
-    background-color: #1E1E1E;
-    border: 1px solid #B8962E;
+  background-color: #1e1e1e;
+  border: 1px solid #b8962e;
 }
 
 .card:hover {
-  border: 1px solid #D4AF37;
+  border: 1px solid #d4af37;
   box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
 }
 
 .muted {
-    color: #A0A0A0;
+  color: #a0a0a0;
 }
 
 .genre-tag {
   background-color: rgba(212, 175, 55, 0.1);
-  color: #D4AF37;
+  color: #d4af37;
   padding: 2px 8px;
   border-radius: 9999px;
   font-size: 0.8rem;
 }
 
 .btn-gold {
-  background-color: #D4AF37;
+  background-color: #d4af37;
   border: none;
   color: #121212;
 }
 
 .btn-gold:hover {
-  background-color: #F2C94C;
+  background-color: #f2c94c;
+}
+
+.btn-outline-gold {
+  background-color: transparent;
+  border: 1px solid #d4af37;
+  color: #d4af37;
+}
+
+.btn-outline-gold:hover {
+  background-color: #d4af37;
+  color: #121212;
 }
 
 .faded {
-    opacity: 0.5;
+  opacity: 0.5;
 }
