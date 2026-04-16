@@ -78,3 +78,10 @@ function toggleSessionForm() {
   const form = document.getElementById("sessionFormContainer");
   form.style.display = form.style.display === "none" ? "block" : "none";
 }
+
+// Delete Session Modal
+function openDeleteSessionModal(entryId, sessionId) {
+  document.getElementById("deleteSessionForm").action = `/library/${entryId}/sessions/delete/${sessionId}/`;
+  const modal = new bootstrap.Modal(document.getElementById("deleteSessionModal"));
+  modal.show();
+}

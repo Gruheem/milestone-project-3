@@ -87,3 +87,13 @@ def play_session_page(request, entry_id):
             'form': form,
         }
     )
+
+@login_required
+def delete_session(request, entry_id, pk):
+    session = get_object_or_404(PlaySession, id=pk, host=request.user)
+
+    if request.method == "POST":
+        session.delete()
+        messages.success(request, "Play session deleted successfully.")
+
+    return redirect('play_session_page', entry_id=entry_id)
