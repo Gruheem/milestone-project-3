@@ -68,7 +68,16 @@
       <h2>Sessions:</h2>
 
       {% if sessions %} {% for session in sessions %}
-      <div class="card mb-3" data-session-id="{{ session.id }}">
+      <div
+        class="card mb-3"
+        data-session-id="{{ session.id }}"
+        data-session-notes="{{ session.notes|escape }}"
+        data-session-date="{{ session.date_played|date:'Y-m-d' }}"
+        data-session-duration="{{ session.duration }}"
+        data-session-first-place="{{ session.first_place.id|default:'' }}"
+        data-session-second-place="{{ session.second_place.id|default:'' }}"
+        data-session-third-place="{{ session.third_place.id|default:'' }}"
+      >
         <div class="card-body">
           <div class="d-flex justify-content-between align-items-start">
             <div>
@@ -83,7 +92,7 @@
               </p>
               <p class="mb-1">
                 <strong>Second Place:</strong>
-                {% if session.second_place %}{{ session.second_place.username}}{% else %}N/A{% endif %}
+                {% if session.second_place %}{{session.second_place.username}}{% else %}N/A{% endif %}
               </p>
               <p class="mb-1">
                 <strong>Third Place:</strong>
@@ -120,21 +129,13 @@
         </div>
       </div>
 
-
       <!-- Edit Session Form  -->
       {% if user == session.host %}
       <div
         id="editSessionForm-{{ session.id }}"
         style="display: none"
         class="card mb-3"
-        data-session-id="{{ session.id }}"
-        data-session-notes="{{ session.notes|escape }}"
-        data-session-date="{{ session.date_played|date:'Y-m-d' }}"
-        data-session-duration="{{ session.duration }}"
-        data-session-first-place="{{ session.first_place.id|default:'' }}"
-        data-session-second-place="{{ session.second_place.id|default:'' }}"
-        data-session-third-place="{{ session.third_place.id|default:'' }}"
-        >
+      >
         <div class="card-body">
           <form
             method="post"
