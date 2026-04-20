@@ -27,7 +27,7 @@ class GameList(generic.ListView):
             if query:
                 queryset = queryset.filter(title__icontains=query)
             if genre:
-                queryset = queryset.filter(genres__name=genre)
+                queryset = queryset.filter(genre_id=genre)
 
         return queryset
     
