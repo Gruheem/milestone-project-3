@@ -16,7 +16,13 @@ class GameList(generic.ListView):
 
     # Creates list of games and Handles the search filters.
     def get_queryset(self):
-        queryset = BoardGame.objects.filter(status=1)
+        approved = BoardGame.objects.filter(approved=True)
+        if self.request.user.is_authenticated:
+            pending = BoardGame.objects.filter(approved=False, added_by=self.request.user)
+        else:
+            pending = BoardGame.objects.none()
+
+        queryset = (approved | pending).distinct().order_by('-created_at')
 
         self.form = GameFilterForm(self.request.GET)
 
@@ -75,7 +81,7 @@ def game_detail(request, title):
     :template:`game_list/game_detail.html`
     """ 
     
-    queryset = BoardGame.objects.filter(status=1)
+    queryset = BoardGame.objects.filter(approved=True)
     boardgame = get_object_or_404(queryset, title=title)
 
     # Get approved reviews and pending reviews for the current user, then combine them and order by creation date.

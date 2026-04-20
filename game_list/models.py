@@ -27,6 +27,7 @@ class BoardGame(models.Model):
     genre_id = models.ManyToManyField(Genre, related_name='games')
     added_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='added_games')
     created_at = models.DateTimeField(auto_now_add=True)
+    approved = models.BooleanField(default=False)
     status = models.IntegerField(choices=STATUS, default=0)
 
     class Meta:
