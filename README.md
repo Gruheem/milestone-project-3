@@ -150,7 +150,7 @@ Acceptance Criteria:
 User Authentication
 - User registration with username and password
 - Login and logout functionality
-- Navigation updates dynamically based on     authentication state
+- Navigation updates dynamically based on authentication state
 - All protected pages redirect unauthenticated users to login
 
 Game Catalogue
