@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% load static %} {% load crispy_forms_tags %} {% block content %}
 
 <!-- index.html content starts here -->
-<div class="container-fluid">
+<div class="container">
 
   <!-- Search Filters -->
   <div class="row">
@@ -50,7 +50,7 @@
         </div>
         {% if forloop.counter|divisibleby:3 %}
       </div>
-      {% endif %} {% endfor %} {% else %}
+      <div class="row">{% endif %} {% endfor %}</div> {% else %}
       <div class="col-12 text-center">
         <p>There are no games matching your search</p>
       </div>

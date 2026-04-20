@@ -279,7 +279,8 @@ slight changes made during developement:
 
 
 ### Cool Bits
-- library_session,views.py 'filter(models.Q(host=request.user) | models.Q(players=request.user))' Q query allows me to do this 'or' operator statement
+- library_session,views.py 'filter(models.Q(host=request.user) | models.Q(players=request.user))' Q query allows me to do this 'or' operator statement.
+- Differentiating between a True empty state and Filtered empty state on the users game library in the view and using tmeplate logic.
 
 ### Future Features
 - Live Search (AJAX)

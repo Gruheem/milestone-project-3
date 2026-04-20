@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db import models
+from game_list.forms import GameFilterForm
 from game_list.models import BoardGame
 from .models import LibraryEntry, PlaySession
 from .forms import PlaySessionForm
@@ -21,10 +22,31 @@ def library_page(request):
     :template:`library_sessions/library.html`
     """ 
     entries = LibraryEntry.objects.filter(user=request.user).order_by('-added_at')
+
+    form = GameFilterForm(request.GET)
+
+    searched = False
+
+    if form.is_valid():
+        query = form.cleaned_data['query']
+        genre = form.cleaned_data['genre']
+
+        if query or genre:
+            searched = True
+
+        if query:
+            entries = entries.filter(boardgame__title__icontains=query)
+        if genre:
+            entries = entries.filter(boardgame__genre_id=genre)
+
     return render(
         request, 
         'library_sessions/library.html', 
-        {'entries': entries}
+        {
+            'entries': entries, 
+            'form': form,
+            'searched': searched,
+        }
     )
 
 @login_required
