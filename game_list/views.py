@@ -3,7 +3,7 @@ from django.views import generic
 from django.contrib.auth.decorators import login_required
 from .forms import GameFilterForm
 from review_comment.models import Comment, Review
-from .models import BoardGame, Genre
+from .models import BoardGame
 from review_comment.forms import ReviewForm, CommentForm
 from django.shortcuts import redirect
 from django.contrib import messages
@@ -11,7 +11,7 @@ from django.contrib import messages
 
 # Create your views here.
 class GameList(generic.ListView):
-    template_name = "index.html"
+    template_name = "game_list/index.html"
     paginate_by = 6
 
     # Creates list of games and Handles the search filters.
