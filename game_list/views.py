@@ -2,16 +2,34 @@ from django.shortcuts import get_object_or_404, render
 from django.views import generic
 from django.contrib.auth.decorators import login_required
 from review_comment.models import Comment, Review
-from .models import BoardGame
+from .models import BoardGame, Genre
 from review_comment.forms import ReviewForm, CommentForm
 from django.shortcuts import redirect
 from django.contrib import messages
 
 # Create your views here.
 class GameList(generic.ListView):
-    queryset = BoardGame.objects.filter(status=1)
     template_name = "index.html"
     paginate_by = 6
+
+    def get_queryset(self):
+        queryset = BoardGame.objects.filter(status=1)
+
+        search_query = self.request.GET.get('q')
+        genre = self.request.GET.get('genre')
+        if search_query:
+            queryset = queryset.filter(title__icontains=search_query)
+        if genre:
+            queryset = queryset.filter(genres__name=genre)
+
+        return queryset
+    
+    # Gets and Extends the context data of our Generic ListView to include all genres for the filter dropdown in the template.
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['genres'] = Genre.objects.all()
+
+        return context
 
 def game_detail(request, title):
     """
