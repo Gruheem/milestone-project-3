@@ -17,6 +17,7 @@
   <div class="row">
     <div id="game-cards" class="col-12 mt-3 left">
       <div class="row">
+        {% if boardgame_list %}
         {% for boardgame in boardgame_list %}
         <div class="col-md-4">
           <a href="{% url 'game_detail' boardgame.title %}">
@@ -49,7 +50,11 @@
         </div>
         {% if forloop.counter|divisibleby:3 %}
       </div>
-      <div class="row">{% endif %} {% endfor %}</div>
+      {% endif %} {% endfor %} {% else %}
+      <div class="col-12 text-center">
+        <p>There are no games matching your search</p>
+      </div>
+      {% endif %}
     </div>
   </div>
   {% if is_paginated %}
