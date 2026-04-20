@@ -3,8 +3,16 @@
 <!-- index.html content starts here -->
 <div class="container-fluid">
   <div class="row">
-    <!-- Blog Entries Column -->
-    <div id="game-cards"class="col-12 mt-3 left">
+    <div class="col-12">
+      <form method="get">
+        {% csrf_token %} {{ form|crispy }}
+        <button type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+  <!-- Blog Entries Column -->
+  <div class="row">
+    <div id="game-cards" class="col-12 mt-3 left">
       <div class="row">
         {% for boardgame in boardgame_list %}
         <div class="col-md-4">
@@ -16,7 +24,7 @@
 
                 <!-- Quick info -->
                 <p class="card-text mb-1">
-                  <strong>Players:</strong> {{ boardgame.min_players }}–{{boardgame.max_players }}
+                  <strong>Players:</strong> {{boardgame.min_players}}–{{boardgame.max_players }}
                 </p>
                 <p class="card-text mb-1">
                   <strong>Avg Playtime:</strong> {{ boardgame.play_time }} mins
