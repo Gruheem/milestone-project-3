@@ -1,7 +1,6 @@
 from django import forms
-from .models import Genre
-# from crispy_forms.helper import FormHelper
-# from crispy_forms.layout import Submit, Layout, Field
+from .models import Genre, BoardGame
+
 
 class GameFilterForm(forms.Form):
     query = forms.CharField(required=False, label='Search')
@@ -12,15 +11,24 @@ class GameFilterForm(forms.Form):
         empty_label='All Genres'
     )
 
-    # # Adjust Layout fo the form using Crispy Forms
-    # def __init__(self, *args, **kwargs):
-    #     super().__init__(*args, **kwargs)
-        
-    #     self.helper = FormHelper()
-    #     self.helper.form_method = 'get'
 
-    #     self.helper.layout = Layout(
-    #         Field('query', css_class='form-control mx-4', placeholder='Search by title...'),
-    #         Field('genre', css_class='form-select mx-4'),
-    #         Submit('submit', 'Search', css_class='btn btn-gold')
-    #     )
+class BoardGameForm(forms.ModelForm):
+    class Meta:
+        model = BoardGame
+        fields = ['title', 'description', 'min_players', 'max_players', 'play_time', 'complexity', 'genre_id', 'publisher', 'year_published']
+        labels = {
+            'title': 'Game Title',
+            'description': 'Description',
+            'min_players': 'Minimum Players',
+            'max_players': 'Maximum Players',
+            'play_time': 'Play Time (minutes)',
+            'complexity': 'Complexity (1-5)',
+            'genre_id': 'Genre',
+            'publisher': 'Publisher',
+            'year_published': 'Year Published',
+        }
+        widgets = {
+            'description': forms.Textarea(attrs={'rows': 4}),
+            'complexity': forms.NumberInput(attrs={'min': 1, 'max': 10}),
+            'year_published': forms.NumberInput(attrs={'min': 1900, 'max': 2100}),
+        }

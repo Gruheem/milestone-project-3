@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render
 from django.views import generic
 from django.contrib.auth.decorators import login_required
-from .forms import GameFilterForm
+from .forms import BoardGameForm, GameFilterForm
 from review_comment.models import Comment, Review
 from .models import BoardGame
 from review_comment.forms import ReviewForm, CommentForm
@@ -38,7 +38,29 @@ class GameList(generic.ListView):
 
         return context
 
+@login_required
+def add_game(request):
+    if request.method == 'POST':
+        form = BoardGameForm(request.POST)
+        if form.is_valid():
+            game = form.save(commit=False)
+            game.status = 0
+            game.save()
+            form.save_m2m()
+            messages.success(request, 'Game added and awaiting approval')
+            return redirect('home')
+    
+    else:
+        form = BoardGameForm()
 
+    return render(
+        request, 
+        'game_list/add_game.html', 
+        {'form': form},
+        )
+
+
+# Game Detail Page
 def game_detail(request, title):
     """
     Display an individual :model:`game_list.BoardGame`.
