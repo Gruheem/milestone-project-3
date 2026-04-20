@@ -51,6 +51,7 @@ def add_game(request):
         if form.is_valid():
             game = form.save(commit=False)
             game.status = 0
+            game.added_by = request.user
             game.save()
             form.save_m2m()
             messages.success(request, 'Game added and awaiting approval')
