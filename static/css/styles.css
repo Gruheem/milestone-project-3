@@ -114,4 +114,31 @@ nav a:hover,
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0.5rem;
+} 
+
+/* Star Bar */
+.star-bar {
+    position: relative;
+    display: inline-block;
+    font-size: 1.2rem;
+    color: #ddd;
+    letter-spacing: 2px;
+}
+
+.star-bar::before {
+    content: '★★★★★';
+    color: #ddd;  /* empty stars */
+}
+
+.star-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #f5a623;  /* filled colour — swap for your amber */
+}
+
+.star-fill::before {
+    content: '★★★★★';
 }

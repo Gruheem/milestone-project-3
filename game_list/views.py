@@ -1,6 +1,8 @@
 from django.shortcuts import get_object_or_404, render
 from django.views import generic
 from django.contrib.auth.decorators import login_required
+from django.db.models import Avg
+from review_comment import models
 from .forms import BoardGameForm, GameFilterForm
 from review_comment.models import Comment, Review
 from .models import BoardGame
@@ -35,7 +37,8 @@ class GameList(generic.ListView):
             if genre:
                 queryset = queryset.filter(genre_id=genre)
 
-        return queryset
+        # returns set of BoardGame objects with extra 'field' avg_rating.
+        return queryset.annotate(avg_rating=Avg('reviews__rating'))
     
     # Gets and Extends the context data of our Generic ListView to include the form in the template.
     def get_context_data(self, **kwargs):
@@ -112,6 +115,8 @@ def game_detail(request, title):
     queryset = BoardGame.objects.filter(approved=True)
     boardgame = get_object_or_404(queryset, title=title)
 
+    avg_rating = boardgame.reviews.filter(approved=True).aggregate(Avg('rating'))['rating__avg']
+
     # Get approved reviews and pending reviews for the current user, then combine them and order by creation date.
     approved_reviews = boardgame.reviews.filter(approved=True).order_by('-created_at')
     if request.user.is_authenticated:
@@ -161,6 +166,7 @@ def game_detail(request, title):
             "reviews": reviews,
             "review_form": review_form,
             "comment_form": comment_form,
+            "avg_rating": avg_rating,
         }
     )
 

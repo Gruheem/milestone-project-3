@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% load static %} {% load crispy_forms_tags %} {% block content %}
+{% extends "base.html" %} {% load static %} {% load crispy_forms_tags %} {% load game_extras %} {% block content %}
 
 <!-- index.html content starts here -->
 <div class="container">
@@ -40,7 +40,16 @@
                 <p class="card-text mb-2">
                   <strong>Complexity:</strong> {{ boardgame.complexity }}/10
                 </p>
-
+                <!-- Rating -->
+<strong>Rating:</strong>
+{% if boardgame.avg_rating %}
+  <div class="star-bar" title="{{ boardgame.avg_rating|floatformat:1 }}/5">
+    <div class="star-fill" style="width: {{ boardgame.avg_rating|rating_percent }}%"></div>
+  </div>
+{% else %}
+  <p class="small muted">No ratings yet</p>
+{% endif %}
+                
                 <!-- Genres -->
                 <p class="small muted">
                   {% for genre in boardgame.genre_id.all %}

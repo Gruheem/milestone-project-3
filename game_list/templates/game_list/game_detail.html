@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% load static %} {% load crispy_forms_tags %} {% block content %}
+{% extends "base.html" %} {% load static %} {% load crispy_forms_tags %} {% load game_extras %} {% block content %}
 <div class="container mt-4">
   <div class="row">
     <!-- LEFT: Sticky Stats -->
@@ -10,13 +10,22 @@
             <ul class="list-unstyled">
               <li>
                 <strong>Players:</strong>
-                {{boardgame.min_players}}–{{boardgame.max_players }}
+                {{ boardgame.min_players }}–{{ boardgame.max_players }}
               </li>
               <li><strong>Play Time:</strong> {{ boardgame.play_time }}</li>
               <li>
                 <strong>Complexity:</strong> {{ boardgame.complexity }}/10
               </li>
-              <li><strong>Rating:</strong> ⭐ {{ boardgame.rating }}</li>
+              <li>
+                <strong>Rating:</strong> {% if avg_rating %}
+                <div class="star-bar" title="{{ avg_rating|floatformat:1 }}/5">
+                  <div
+                    class="star-fill"
+                    style="width: {{ avg_rating|rating_percent }}%"
+                  ></div>
+                </div>
+                {% else %} No ratings yet {% endif %}
+              </li>
             </ul>
           </div>
         </div>
@@ -109,13 +118,14 @@
         data-review-rating="{{ review.rating }}"
       >
         <div class="card-body">
+
+          {% if not review.approved and review.author == user %}
+          <p class="approval">Review Awaiting Approval</p>
+          {% endif %}
+
           <h3>{{ review.title }}</h3>
           <p>{{ review.content|safe }}</p>
           <small>{{ review.created_at }} by {{ review.author }}</small>
-
-          {% if not review.approved and review.author == user %}
-          <p class="approval">This review is awaiting approval</p>
-          {% endif %}
 
           <div class="mt-2 d-flex gap-2">
             {% if user.is_authenticated %}
@@ -203,12 +213,13 @@
             data-comment-content="{{ comment.content|escapejs }}"
           >
             <div class="card-body">
-              <p class="mb-2">{{ comment.content|safe }}</p>
-              <small>{{ comment.created_at }} by {{ comment.author }}</small>
 
               {% if not comment.approved and comment.author == user %}
-              <p class="my-2">This comment is awaiting approval</p>
+                <p class="my-2">Comment Awaiting Approval</p>
               {% endif %}
+
+              <p class="mb-2">{{ comment.content|safe }}</p>
+              <small>{{ comment.created_at }} by {{ comment.author }}</small>
 
               <div class="mt-2 d-flex gap-2">
                 {% if user.is_authenticated and user.id == comment.author.id %}
