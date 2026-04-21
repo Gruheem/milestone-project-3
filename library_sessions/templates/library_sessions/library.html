@@ -8,10 +8,19 @@
 
   <!-- Search Filters -->
   <div class="row">
-    <div class="col-12">
+    <div class="col-8">
       <form method="get" class="search-form">
-        {% csrf_token %} {{ form|crispy }}
+        {% csrf_token %} {{ search_form|crispy }}
         <button type="submit" class="btn btn-gold mb-3">Search</button>
+      </form>
+      
+    </div>
+    <div class="col-4 ms-auto">
+      <form method="get" class="search-form">
+        {% csrf_token %}
+        {{ filter_form|crispy }}
+        <button type="submit" class="btn btn-outline-primary mb-3">Filter</button>
+        <a href="{% url 'library_page' %}" class="btn btn-outline-secondary mb-3">Clear</a>
       </form>
     </div>
   </div>
@@ -77,7 +86,12 @@
 
   <!-- Empty States True and Filtered -->
   {% else %}
-    {% if searched %}
+    {% if filtered %}
+      <div class="text-center mt-5">
+        <p class="lead">No games found matching your filter.</p>
+        <a href="{% url 'library_page' %}" class="btn btn-gold">Clear Filter</a>
+      </div>
+    {% elif searched %}
       <div class="text-center mt-5">
         <p class="lead">No games found matching your search.</p>
         <a href="{% url 'home' %}" class="btn btn-gold">Browse Games</a>

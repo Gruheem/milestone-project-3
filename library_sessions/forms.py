@@ -17,3 +17,11 @@ class PlaySessionForm(forms.ModelForm):
             'notes': 'Notes (optional)',
             'players': 'Tag Players',
         }
+
+class LibraryFilterForm(forms.Form):
+    STATUS_CHOICES = [
+        ('', 'All'),
+        ('owned', 'Owned'),
+        ('wishlist', 'Wishlist'),
+    ]
+    status = forms.ChoiceField(choices=STATUS_CHOICES, required=False, label='Filter by Status:')

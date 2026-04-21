@@ -5,7 +5,7 @@ from django.db import models
 from game_list.forms import GameFilterForm
 from game_list.models import BoardGame
 from .models import LibraryEntry, PlaySession
-from .forms import PlaySessionForm
+from .forms import PlaySessionForm, LibraryFilterForm
 
 # Create your views here.
 def library_page(request):
@@ -23,13 +23,15 @@ def library_page(request):
     """ 
     entries = LibraryEntry.objects.filter(user=request.user).order_by('-added_at')
 
-    form = GameFilterForm(request.GET)
+    search_form = GameFilterForm(request.GET)
+    filter_form = LibraryFilterForm(request.GET)
 
     searched = False
+    filtered = False
 
-    if form.is_valid():
-        query = form.cleaned_data['query']
-        genre = form.cleaned_data['genre']
+    if search_form.is_valid():
+        query = search_form.cleaned_data['query']
+        genre = search_form.cleaned_data['genre']
 
         if query or genre:
             searched = True
@@ -39,15 +41,26 @@ def library_page(request):
         if genre:
             entries = entries.filter(boardgame__genre_id=genre)
 
+    if filter_form.is_valid():
+        status = filter_form.cleaned_data.get('status')
+        if status:
+            filtered = True
+            entries = entries.filter(status=status)
+
     return render(
         request, 
         'library_sessions/library.html', 
         {
             'entries': entries, 
-            'form': form,
+            'search_form': search_form,
+            'filter_form': filter_form,
             'searched': searched,
+            'filtered': filtered,
         }
     )
+
+@login_required
+
 
 @login_required
 def remove_from_library(request, entry_id):

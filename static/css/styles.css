@@ -20,6 +20,10 @@ h6 {
   align-items: end;
 }
 
+#div_id_status {
+  margin-bottom: 0rem;
+}
+
 #game-cards a {
   color: inherit;
   text-decoration: none;
@@ -104,4 +108,10 @@ nav a:hover,
 
 .faded {
   opacity: 0.5;
+}
+
+#div_id_genre_id > fieldset > div {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
 }
