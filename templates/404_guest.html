@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1 class="display-4">404 - Page Not Found</h1>
+            <p class="lead">Sorry, the page you're looking for doesn't exist.</p>
+            <a href="{% url 'home' %}" class="btn btn-gold">Return to Home</a>
+            <p> -OR- </p>
+            <a href="{% url 'account_login' %}" class="btn btn-outline-gold">Log in</a>
+            <a href="{% url 'account_signup' %}" class="btn btn-outline-primary">Sign Up</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

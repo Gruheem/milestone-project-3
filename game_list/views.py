@@ -229,3 +229,10 @@ def delete_comment(request, pk):
         return redirect('game_detail', title=game_title)
 
     return redirect('game_detail', title=comment.review.boardgame.title)
+
+# Custom 404 Pages
+def custom_404(request, exception):
+    if request.user.is_authenticated:
+        return render(request, '404_user.html', status=404)
+    else:
+        return render(request, '404_guest.html', status=404)
