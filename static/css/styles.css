@@ -14,6 +14,7 @@ h6 {
   font-family: "Metamorphous", serif;
 }
 
+/* Search */
 .search-form {
   display: flex;
   gap:1.5rem;
@@ -24,14 +25,91 @@ h6 {
   margin-bottom: 0rem;
 }
 
-#game-cards a {
+/* Game Catalogue Cards */
+#game-catalogue .card {
+  display: flex;
+  background: #2a2a2a;
+  border: 0.5px solid #3d3d3d;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.15s;
+  border: 1px solid #b8962e;
+  padding: 0.3rem;
+}
+
+#game-catalogue .card-img-left {
+  width: 100%;
+  min-width: 95px;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+}
+
+#game-catalogue .img-container {
+  width: 130px;
+  min-width: 95px;
+  height: 100%;
+  min-height: 271px;
+  background: #1e1e1e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#game-catalogue a {
   color: inherit;
   text-decoration: none;
 }
 
-#game-cards a:hover {
+#game-catalogue a:hover {
   color: inherit;
 }
+
+.genre-tag {
+  background-color: rgba(212, 175, 55, 0.1);
+  color: #d4af37;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+}
+
+/* Star Bar */
+.star-bar {
+    position: relative;
+    display: inline-block;
+    font-size: 1.2rem;
+    color: #ddd;
+    letter-spacing: 2px;
+}
+
+.star-bar::before {
+    content: '★★★★★';
+    color: #ddd;  /* empty stars */
+}
+
+.star-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #f5a623;  /* filled colour — swap for your amber */
+}
+
+.star-fill::before {
+    content: '★★★★★';
+}
+
+.approval { 
+  font-size: 10px; 
+  color: #c9a84c; 
+  font-style: italic; 
+}
+
 
 nav a,
 .card a {
@@ -77,14 +155,6 @@ nav a:hover,
   color: #a0a0a0;
 }
 
-.genre-tag {
-  background-color: rgba(212, 175, 55, 0.1);
-  color: #d4af37;
-  padding: 2px 8px;
-  border-radius: 9999px;
-  font-size: 0.8rem;
-}
-
 .btn-gold {
   background-color: #d4af37;
   border: none;
@@ -116,29 +186,3 @@ nav a:hover,
     gap: 0.5rem;
 } 
 
-/* Star Bar */
-.star-bar {
-    position: relative;
-    display: inline-block;
-    font-size: 1.2rem;
-    color: #ddd;
-    letter-spacing: 2px;
-}
-
-.star-bar::before {
-    content: '★★★★★';
-    color: #ddd;  /* empty stars */
-}
-
-.star-fill {
-    position: absolute;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    white-space: nowrap;
-    color: #f5a623;  /* filled colour — swap for your amber */
-}
-
-.star-fill::before {
-    content: '★★★★★';
-}

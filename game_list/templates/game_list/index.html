@@ -13,27 +13,41 @@
   </div>
 
   <!-- Game Catalogue Cards -->
-  <div class="row">
+  <div id="game-catalogue" class="row">
     <div id="game-cards" class="col-12 mt-3 left">
-      <div class="row">
+      <div class="row d-flex">
         {% if boardgame_list %} {% for boardgame in boardgame_list %}
-        <div class="col-md-4">
-          <a href="{% url 'game_detail' boardgame.title %}">
-            <div
-              class="card mb-4 {% if not boardgame.approved and boardgame.added_by == user %}faded{% elif not boardgame.approved %}d-none{% endif %}"
-            >
-              <div class="card-body">
+        <div class="col-md-4 d-flex">
+          <a href="{% url 'game_detail' boardgame.title %}" class="w-100">
+            <div class="card mb-3 w-100 {% if not boardgame.approved and boardgame.added_by == user %}faded{% elif not boardgame.approved %}d-none{% endif %}">
+              <div class="row g-0">
+                <!-- LEFT: IMAGE -->
+                <div class="col-md-4">
+                  <div class="img-container">
+                  {% if boardgame.image and boardgame.image.public_id %}
+                  <img
+                    class="card-img-left"
+                    src="{{ boardgame.image.url }}"
+                    alt="{{ boardgame.title }}"
+                  />
+                  {% else %}
+                  <img
+                    class="card-img-left"
+                    src="{% static 'images/default.jpg' %}"
+                    alt="placeholder image"
+                  />
+                  {% endif %}
+                </div>
+                </div>
+
+                <!-- RIGHT: CONTENT -->
+                <div class="col-md-8">
+                  <div class="card-body">
                 <!-- Title -->
                 {% if not boardgame.approved and boardgame.added_by == user %}
                 <p class="approval"><small>Awaiting approval</small></p>
                 {% endif %}
-                <div class="img-container">
-                  {% if "placeholder" in boardgame.image.url %}
-                    <img class="card-img-top" src="{% static 'images/default.jpg' %}" alt="placeholder image">
-                  {% else %}
-                    <img class="card-img-top" src=" {{ boardgame.image.url }}" alt="{{ boardgame.title }}">
-                  {% endif %}
-                </div>
+
                 <h5 class="card-title">{{ boardgame.title }}</h5>
 
                 <!-- Quick info -->
@@ -44,19 +58,27 @@
                 <p class="card-text mb-1">
                   <strong>Avg Playtime:</strong> {{ boardgame.play_time }} mins
                 </p>
-                <p class="card-text mb-2">
+                <p class="card-text mb-0">
                   <strong>Complexity:</strong> {{ boardgame.complexity }}/10
                 </p>
                 <!-- Rating -->
-<strong>Rating:</strong>
-{% if boardgame.avg_rating %}
-  <div class="star-bar" title="{{ boardgame.avg_rating|floatformat:1 }}/5">
-    <div class="star-fill" style="width: {{ boardgame.avg_rating|rating_percent }}%"></div>
-  </div>
-{% else %}
-  <p class="small muted">No ratings yet</p>
-{% endif %}
-                
+                <div class="mb-2">
+                <p class="d-inline"><strong>Avg Rating:</strong></p>
+                {% if boardgame.avg_rating %}
+                <div
+                  class="star-bar"
+                  title="{{ boardgame.avg_rating|floatformat:1 }}/5"
+                >
+                  <div
+                    class="star-fill"
+                    style="width: {{ boardgame.avg_rating|rating_percent }}%"
+                  >
+                  </div>
+                </div>
+                {% else %}
+                <p class="d-inline small muted">No ratings yet</p>
+                {% endif %}
+                </div>
                 <!-- Genres -->
                 <p class="small muted">
                   {% for genre in boardgame.genre_id.all %}
@@ -65,7 +87,10 @@
                   {% endfor %}
                 </p>
               </div>
+                </div>
+              </div>
             </div>
+            
           </a>
         </div>
         {% if forloop.counter|divisibleby:3 %}

@@ -24,7 +24,7 @@ class BoardGameForm(forms.ModelForm):
 
     class Meta:
         model = BoardGame
-        fields = ['title', 'description', 'min_players', 'max_players', 'min_age', 'play_time', 'complexity', 'genre_id', 'publisher', 'year_published']
+        fields = ['title', 'description', 'min_players', 'max_players', 'min_age', 'play_time', 'complexity', 'genre_id', 'publisher', 'year_published', 'image']
         labels = {
             'title': 'Game Title',
             'description': 'Description',
@@ -35,6 +35,7 @@ class BoardGameForm(forms.ModelForm):
             'complexity': 'Complexity (1-5)',
             'publisher': 'Publisher',
             'year_published': 'Year Published',
+            'image': 'Game Image (optional)',
         }
         widgets = {
             'description': forms.Textarea(attrs={'rows': 4}),
