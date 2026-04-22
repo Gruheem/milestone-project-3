@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -25,6 +26,7 @@ class BoardGame(models.Model):
     complexity = models.IntegerField()
     description = models.TextField()
     genre_id = models.ManyToManyField(Genre, related_name='games')
+    image = CloudinaryField('image', default='placeholder')
     added_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='added_games')
     created_at = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)

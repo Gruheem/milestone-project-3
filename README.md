@@ -284,3 +284,9 @@ slight changes made during developement:
 
 ### Future Features
 - Live Search (AJAX)
+
+## To Do:
+### readme
+- Add User Story for ability to upload images.
+### styling
+- style buttons
