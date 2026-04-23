@@ -1,7 +1,32 @@
 {% extends "base.html" %} {% load static %} {% load crispy_forms_tags %} {% load game_extras %} {% block content %}
 
 <!-- index.html content starts here -->
+<!-- Hero -->
 <div class="container">
+  <div>
+    <div id="hero">
+      <img
+        src="{% static 'images/hero-image.jpg' %}"
+        alt="Board games on a table"
+        class=""
+        id="hero-image"
+      />
+      <div class="hero-image-overlay"></div>
+      <div class="hero-contents">
+        <h1 id="hero-title">Board Silly</h1>
+        <p class="hero-strapline">
+          Track, Review and Log Game Sessions to keep track of all your fun and
+          see who the real winner is!
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- Title -->
+  <div class="row">
+    <div class="col-12">
+      <h1 class="mt-5 mb-3 ml-1">Game Catalogue</h1>
+    </div>
+  </div>
   <!-- Search Filters -->
   <div class="row">
     <div class="col-12">
@@ -16,70 +41,64 @@
   <div id="game-catalogue" class="row">
     <div id="game-cards" class="col-12 mt-3 left">
       <div class="row shelf">
-        {% if boardgame_list %} 
-        {% for boardgame in boardgame_list %}
-        
+        {% if boardgame_list %} {% for boardgame in boardgame_list %}
+
         <div
           class="card {% if not boardgame.approved and boardgame.added_by == request.user %}faded{% elif not boardgame.approved %}d-none{% endif %}"
         >
           {% if boardgame.approved or boardgame.added_by == request.user %}
-            <a href="{% url 'game_detail' boardgame.slug %}">
-          {% endif %}
-          {% if boardgame.image %}
-          <img
-            class="card-img"
-            src="{{ boardgame.image.url }}"
-            alt="{{ boardgame.title }} box art"
-          />
-          {% else %}
-          <img
-            class="card-img"
-            src="{% static 'images/default.jpg' %}"
-            alt="Default image"
-          />
-          {% endif %}
+          <a href="{% url 'game_detail' boardgame.slug %}">
+            {% endif %} {% if boardgame.image %}
+            <img
+              class="card-img"
+              src="{{ boardgame.image.url }}"
+              alt="{{ boardgame.title }} box art"
+            />
+            {% else %}
+            <img
+              class="card-img"
+              src="{% static 'images/default.jpg' %}"
+              alt="Default image"
+            />
+            {% endif %}
 
-          <div class="card-body">
-            
-              <p class="card-title">{{ boardgame.title }}</p>
-            
+            <div class="card-body">
+              <p class="card-title m-0">{{ boardgame.title }}</p>
 
-            <div class="stats-grid">
-              <div class="stat">
-                <span class="stat-label">Players</span>
-                <span class="stat-value"
-                  >{{ boardgame.min_players }} – {{ boardgame.max_players}}</span
-                >
+              <div class="stats-grid">
+                <div class="stat">
+                  <span class="stat-label">Players</span>
+                  <span class="stat-value"
+                    >{{ boardgame.min_players }} – {{boardgame.max_players}}</span
+                  >
+                </div>
+                <div class="stat">
+                  <span class="stat-label">Playtime</span>
+                  <span class="stat-value">{{ boardgame.play_time }} min</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-label">Min Age</span>
+                  <span class="stat-value">{{ boardgame.min_age }}+</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-label">Weight</span>
+                  <span class="stat-value">{{ boardgame.complexity }} / 5</span>
+                </div>
               </div>
-              <div class="stat">
-                <span class="stat-label">Playtime</span>
-                <span class="stat-value">{{ boardgame.play_time }} min</span>
-              </div>
-              <div class="stat">
-                <span class="stat-label">Min Age</span>
-                <span class="stat-value">{{ boardgame.min_age }}+</span>
-              </div>
-              <div class="stat">
-                <span class="stat-label">Weight</span>
-                <span class="stat-value">{{ boardgame.complexity }} / 5</span>
+
+              <div class="tags">
+                <span class="small muted">
+                  {% for genre in boardgame.genre_id.all %}
+                  <span class="genre-tag d-inline-block">{{ genre.name }}</span>
+                  {% endfor %}
+                </span>
               </div>
             </div>
-
-            <div class="tags">
-              <span class="small muted">
-                {% for genre in boardgame.genre_id.all %}
-                <span class="genre-tag">{{ genre.name }}</span>
-                {% endfor %}
-              </span>
-            </div>
-          </div>
-          {% if boardgame.approved or boardgame.added_by == request.user %}
-            </a>
+            {% if boardgame.approved or boardgame.added_by == request.user %}
+          </a>
           {% endif %}
         </div>
-        {% endfor %}
-        
-        {% else %}
+        {% endfor %} {% else %}
       </div>
       <div class="col-12 text-center">
         <p>There are no games matching your search</p>

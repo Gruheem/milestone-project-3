@@ -1,7 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Metamorphous&display=swap");
+
+:root {
+  --text-colour-primary: #e0e0e0;
+  --font-secondary: Metamorphous, serif;
+}
+
 body {
   background-color: #121212;
-  color: #e0e0e0;
+  color: var(--text-colour-primary);
   font-family: "Inter", sans-serif;
 }
 
@@ -14,60 +20,57 @@ h6 {
   font-family: "Metamorphous", serif;
 }
 
+/* Hero Section */
+#hero {
+  position: relative;
+}
+
+#hero-image {
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  max-height: 25rem;
+  z-index: 0;
+}
+
+.hero-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10, 6, 2, 0.92) 0%,
+    rgba(10, 6, 2, 0.55) 45%,
+    rgba(10, 6, 2, 0.15) 100%
+  );
+  z-index: 1;
+}
+
+.hero-contents {
+  z-index: 2;
+  position: absolute;
+  bottom: 2.5rem;
+  left: 2rem;
+  text-shadow: #1e1e1e 4px 4px 8px, #1e1e1e 0px 0px 2px;
+  
+}
+
+#hero-title {
+  font-size: 4.25rem;
+  margin-bottom: 1rem;
+  font-weight: 800;
+  color: #e2e2e2;
+}
+
 /* Search */
 .search-form {
   display: flex;
-  gap:1.5rem;
+  gap: 1.5rem;
   align-items: end;
 }
 
 #div_id_status {
   margin-bottom: 0rem;
 }
-
-/* Game Catalogue Cards */
-/* #game-catalogue .card {
-  display: flex;
-  background: #2a2a2a;
-  border: 0.5px solid #3d3d3d;
-  border-radius: 10px;
-  overflow: hidden;
-  transition: border-color 0.2s, transform 0.15s;
-  border: 1px solid #b8962e;
-  padding: 0.3rem;
-}
-
-#game-catalogue .card-img-left {
-  width: 100%;
-  min-width: 95px;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  border-top-left-radius: 7px;
-  border-bottom-left-radius: 7px;
-}
-
-#game-catalogue .img-container {
-  width: 130px;
-  min-width: 95px;
-  height: 100%;
-  min-height: 271px;
-  background: #1e1e1e;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-#game-catalogue a {
-  color: inherit;
-  text-decoration: none;
-}
-
-#game-catalogue a:hover {
-  color: inherit;
-} */
 
 /* ── Grid ─────────────────────────────────────────── */
 .shelf {
@@ -77,7 +80,7 @@ h6 {
   padding: 1rem 0;
 }
 
-/* ── Card shell ───────────────────────────────────── */
+/* ── Card ───────────────────────────────────── */
 .card {
   background: var(--card-bg, #fff);
   border: 1px solid var(--card-border, #e8e2d9);
@@ -85,7 +88,9 @@ h6 {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: border-color 0.15s, transform 0.15s;
+  transition:
+    border-color 0.15s,
+    transform 0.15s;
 }
 
 .card:hover {
@@ -93,7 +98,7 @@ h6 {
   transform: translateY(-2px);
 }
 
-/* ── Cover image ──────────────────────────────────── */
+/* ── Card Image ──────────────────────────────────── */
 .card-img {
   width: 100%;
   aspect-ratio: 3 / 4;
@@ -112,32 +117,17 @@ h6 {
   font-size: 13px;
 }
 
-/* ── Card body ────────────────────────────────────── */
+/* ── Card Body ────────────────────────────────────── */
 .card-body {
-  padding: 12px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   flex: 1;
 }
 
-/* ── Title ────────────────────────────────────────── */
+/* ── Card Title ────────────────────────────────────────── */
 .card-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--text-primary, #2c2416);
-  margin: 0;
-  line-height: 1.3;
-}
-
-.card-title a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.card-title a:hover {
-  text-decoration: underline;
+  font-family: var(--font-secondary);
 }
 
 /* ── Stats grid ───────────────────────────────────── */
@@ -178,37 +168,36 @@ h6 {
 
 /* Star Bar */
 .star-bar {
-    position: relative;
-    display: inline-block;
-    font-size: 1.2rem;
-    color: #ddd;
-    letter-spacing: 2px;
+  position: relative;
+  display: inline-block;
+  font-size: 1.2rem;
+  color: #ddd;
+  letter-spacing: 2px;
 }
 
 .star-bar::before {
-    content: '★★★★★';
-    color: #ddd;  /* empty stars */
+  content: "★★★★★";
+  color: #ddd; /* empty stars */
 }
 
 .star-fill {
-    position: absolute;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    white-space: nowrap;
-    color: #f5a623;  /* filled colour — swap for your amber */
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #f5a623; /* filled colour — swap for your amber */
 }
 
 .star-fill::before {
-    content: '★★★★★';
+  content: "★★★★★";
 }
 
-.approval { 
-  font-size: 10px; 
-  color: #c9a84c; 
-  font-style: italic; 
+.approval {
+  font-size: 10px;
+  color: #c9a84c;
+  font-style: italic;
 }
-
 
 nav a,
 .card a {
@@ -279,9 +268,10 @@ nav a:hover,
   opacity: 0.5;
 }
 
-#div_id_genre_id > fieldset > div {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.5rem;
-} 
+/* Forms Styling */
 
+#div_id_genre_id > fieldset > div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
