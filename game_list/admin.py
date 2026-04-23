@@ -7,10 +7,10 @@ from django_summernote.admin import SummernoteModelAdmin
 @admin.register(BoardGame)
 class PostAdmin(SummernoteModelAdmin):
 
-    list_display = ('title', 'approved', 'status', 'created_at')
+    list_display = ('title', 'slug', 'approved', 'created_at')
     search_fields = ['title', 'description']
-    list_filter = ('approved', 'status', 'created_at',)
-    prepopulated_fields = {}
+    list_filter = ('approved', 'created_at',)
+    prepopulated_fields = {'slug': ('title',)}
     summernote_fields = ('description',)
     actions = ['approve_games']
 

@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render
 from django.views import generic
 from django.contrib.auth.decorators import login_required
-from django.db.models import Avg
+from django.db.models import Avg, Q
 from review_comment import models
 from .forms import BoardGameForm, GameFilterForm
 from review_comment.models import Comment, Review
@@ -98,7 +98,7 @@ def edit_game(request, game_id):
 
 
 # Game Detail Page
-def game_detail(request, title):
+def game_detail(request, slug):
     """
     Display an individual :model:`game_list.BoardGame`.
 
@@ -112,8 +112,8 @@ def game_detail(request, title):
     :template:`game_list/game_detail.html`
     """ 
     
-    queryset = BoardGame.objects.filter(approved=True)
-    boardgame = get_object_or_404(queryset, title=title)
+    queryset = BoardGame.objects.filter(Q(approved=True) | Q(added_by=request.user), slug=slug)
+    boardgame = get_object_or_404(queryset)
 
     avg_rating = boardgame.reviews.filter(approved=True).aggregate(Avg('rating'))['rating__avg']
 
@@ -139,7 +139,7 @@ def game_detail(request, title):
                     request, messages.SUCCESS,
                     'Review submitted and awaiting approval'
                 )
-                return redirect('game_detail', title=title)
+                return redirect('game_detail', slug=boardgame.slug)
         # Create Comment
         elif "comment_submit" in request.POST:
             comment_form = CommentForm(request.POST)
@@ -152,7 +152,7 @@ def game_detail(request, title):
                     request, messages.SUCCESS,
                     'Comment submitted and awaiting approval'
                 )
-                return redirect('game_detail', title=title)
+                return redirect('game_detail', slug=boardgame.slug)
 
     review_form = ReviewForm()
     comment_form = CommentForm()
@@ -185,7 +185,7 @@ def edit_review(request, review_id):
     else:
         messages.error(request, 'Invalid request')
 
-    return redirect('game_detail', title=review.boardgame.title)
+    return redirect('game_detail', slug=review.boardgame.slug)
 
 # Delete Review
 @login_required
@@ -193,12 +193,12 @@ def delete_review(request, review_id):
     review = get_object_or_404(Review, id=review_id, author=request.user)
 
     if request.method == "POST":
-        game_title = review.boardgame.title
+        game_slug = review.boardgame.slug
         review.delete()
         messages.success(request, 'Review deleted')
-        return redirect('game_detail', title=game_title)
+        return redirect('game_detail', slug=game_slug)
 
-    return redirect('game_detail', title=review.boardgame.title)
+    return redirect('game_detail', slug=review.boardgame.slug)
 
 # Edit Comment
 @login_required
@@ -215,7 +215,7 @@ def edit_comment(request, pk):
     else:
         messages.error(request, 'Invalid request')
 
-    return redirect('game_detail', title=comment.review.boardgame.title)
+    return redirect('game_detail', slug=comment.review.boardgame.slug)
 
 # Delete Comment
 @login_required
@@ -223,12 +223,12 @@ def delete_comment(request, pk):
     comment = get_object_or_404(Comment, id=pk, author=request.user)
 
     if request.method == "POST":
-        game_title = comment.review.boardgame.title
+        game_slug = comment.review.boardgame.slug
         comment.delete()
         messages.success(request, 'Comment deleted')
-        return redirect('game_detail', title=game_title)
+        return redirect('game_detail', slug=game_slug)
 
-    return redirect('game_detail', title=comment.review.boardgame.title)
+    return redirect('game_detail', slug=comment.review.boardgame.slug)
 
 # Custom 404 Pages
 def custom_404(request, exception):
