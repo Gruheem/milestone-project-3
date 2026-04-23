@@ -26,7 +26,7 @@ h6 {
 }
 
 /* Game Catalogue Cards */
-#game-catalogue .card {
+/* #game-catalogue .card {
   display: flex;
   background: #2a2a2a;
   border: 0.5px solid #3d3d3d;
@@ -67,6 +67,105 @@ h6 {
 
 #game-catalogue a:hover {
   color: inherit;
+} */
+
+/* ── Grid ─────────────────────────────────────────── */
+.shelf {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  padding: 1rem 0;
+}
+
+/* ── Card shell ───────────────────────────────────── */
+.card {
+  background: var(--card-bg, #fff);
+  border: 1px solid var(--card-border, #e8e2d9);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+.card:hover {
+  border-color: var(--card-border-hover, #c8b89a);
+  transform: translateY(-2px);
+}
+
+/* ── Cover image ──────────────────────────────────── */
+.card-img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+}
+
+.card-img-placeholder {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: var(--placeholder-bg, #f5f0e8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--placeholder-text, #a89880);
+  font-size: 13px;
+}
+
+/* ── Card body ────────────────────────────────────── */
+.card-body {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+/* ── Title ────────────────────────────────────────── */
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary, #2c2416);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.card-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.card-title a:hover {
+  text-decoration: underline;
+}
+
+/* ── Stats grid ───────────────────────────────────── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.stat {
+  background: var(--stat-bg, #f5f0e8);
+  border-radius: 8px;
+  padding: 7px 8px;
+}
+
+.stat-label {
+  font-size: 10px;
+  color: var(--text-muted, #8a7560);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.stat-value {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary, #2c2416);
 }
 
 .genre-tag {
