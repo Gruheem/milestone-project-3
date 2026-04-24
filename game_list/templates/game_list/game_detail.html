@@ -70,16 +70,16 @@
     <div class="col-md-9">
       <div class="card">
         <div class="card-body">
-          <div class="mb-4">
-            <h2 class="game-title">{{ boardgame.title }}</h2>
+          <div class="">
+            <h2 class="game-title secondary-font my-2">{{ boardgame.title }}</h2>
             {% if avg_rating %}
-            <div class="stat d-inline">
+            <div class="stat d-inline-block mb-2">
             <div class="star-bar" title="{{ avg_rating|floatformat:1 }}/5">
               <div class="star-fill" style="--fill-width: {{ avg_rating|rating_percent }}%"></div>
             </div>
             </div>
             {% else %}
-            <div class="text-center stat">
+            <div class="text-center stat mb-3">
               <span class="stat-label">No ratings yet</span>
             </div>
             {% endif %}
@@ -120,7 +120,7 @@
       <div id="reviewFormContainer" style="display: none">
         <div class="card">
           <div class="card-body">
-            <h5>Leave a Review:</h5>
+            <h5 class="">Leave a Review:</h5>
             <p>Posting as: {{ user.username }}</p>
             <form method="post">
               {% csrf_token %} {{ review_form|crispy }}
@@ -136,7 +136,7 @@
         </div>
       </div>
 
-      <h2>Reviews</h2>
+      <h2 class="reviews-title">Reviews</h2>
 
       {% for review in reviews %}
 
@@ -148,7 +148,7 @@
         data-review-content="{{ review.content }}"
         data-review-rating="{{ review.rating }}"
       >
-        <div class="card-body m-3">
+        <div class="card-body">
           {% if not review.approved and review.author == user %}
           <p class="approval">Review Awaiting Approval</p>
           {% endif %}

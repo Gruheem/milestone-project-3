@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from django_summernote.fields import SummernoteTextField
 from django.utils.text import slugify
 
 
@@ -26,7 +27,7 @@ class BoardGame(models.Model):
     min_age = models.IntegerField()
     play_time = models.IntegerField()
     complexity = models.IntegerField()
-    description = models.TextField()
+    description = SummernoteTextField()
     genre_id = models.ManyToManyField(Genre, related_name='games')
     image = CloudinaryField('image', blank=True, null=True)
     added_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='added_games')
