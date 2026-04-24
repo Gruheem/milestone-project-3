@@ -1,14 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Metamorphous&display=swap");
 
 :root {
-  --text-colour-primary: #e0e0e0;
+  --text-colour-primary: #C7C7C7;
+  --text-colour-secondary: #A8A8A8;
+  --font-primary: Inter, sans-serif;
   --font-secondary: Metamorphous, serif;
+  --bg-main: #111111;
+  --bg-card: #1E1E1E;
+  --bg-stat: #2C2C2C;
 }
 
 body {
-  background-color: #121212;
+  background-color: var(--bg-main);
   color: var(--text-colour-primary);
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-primary);
 }
 
 h1,
@@ -17,7 +22,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Metamorphous", serif;
+  font-family: var(--font-secondary);
 }
 
 /* Hero Section */
@@ -51,14 +56,13 @@ h6 {
   bottom: 2.5rem;
   left: 2rem;
   text-shadow: #1e1e1e 4px 4px 8px, #1e1e1e 0px 0px 2px;
-  
+  color: var(--text-colour-primary);
 }
 
 #hero-title {
   font-size: 4.25rem;
   margin-bottom: 1rem;
   font-weight: 800;
-  color: #e2e2e2;
 }
 
 /* Search */
@@ -82,19 +86,16 @@ h6 {
 
 /* ── Card ───────────────────────────────────── */
 .card {
-  background: var(--card-bg, #fff);
-  border: 1px solid var(--card-border, #e8e2d9);
+  background: var(--bg-card);
   border-radius: 12px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   transition:
-    border-color 0.15s,
     transform 0.15s;
 }
 
 .card:hover {
-  border-color: var(--card-border-hover, #c8b89a);
   transform: translateY(-2px);
 }
 
@@ -103,18 +104,7 @@ h6 {
   width: 100%;
   aspect-ratio: 3 / 4;
   object-fit: cover;
-  display: block;
-}
-
-.card-img-placeholder {
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  background: var(--placeholder-bg, #f5f0e8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--placeholder-text, #a89880);
-  font-size: 13px;
+  /* margin-top: 0.8rem; */
 }
 
 /* ── Card Body ────────────────────────────────────── */
@@ -127,6 +117,7 @@ h6 {
 
 /* ── Card Title ────────────────────────────────────────── */
 .card-title {
+  color: var(--text-colour-primary);
   font-family: var(--font-secondary);
 }
 
@@ -134,11 +125,11 @@ h6 {
 .stats-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 6px;
+  gap: 0.35rem;
 }
 
 .stat {
-  background: var(--stat-bg, #f5f0e8);
+  background: var(--bg-stat);
   border-radius: 8px;
   padding: 7px 8px;
 }
@@ -155,9 +146,11 @@ h6 {
 .stat-value {
   font-size: 13px;
   font-weight: 500;
-  color: var(--text-primary, #2c2416);
+  color: var(--text-colour-secondary);
 }
 
+
+/* Genre Pill Tag */
 .genre-tag {
   background-color: rgba(212, 175, 55, 0.1);
   color: #d4af37;
@@ -184,13 +177,44 @@ h6 {
   position: absolute;
   top: 0;
   left: 0;
+  height: 100%;
   overflow: hidden;
   white-space: nowrap;
-  color: #f5a623; /* filled colour — swap for your amber */
+  color: #f5a623;
 }
 
 .star-fill::before {
   content: "★★★★★";
+  display: block;
+  width: var(--fill-width);
+  overflow: hidden;
+}
+
+/* Button Styling  */
+.btn-gold {
+  background-color: #d4af37;
+  border: none;
+  color: #121212;
+}
+
+.btn-gold:hover {
+  background-color: #f2c94c;
+}
+
+.btn-outline-gold {
+  background-color: transparent;
+  border: 1px solid #d4af37;
+  color: #d4af37;
+}
+
+.btn-outline-gold:hover {
+  background-color: #d4af37;
+  color: #121212;
+}
+
+/* Game Detail Page Styling  */
+.game-title {
+  font-size: 2.5rem;
 }
 
 .approval {
@@ -222,21 +246,6 @@ nav a:hover,
 .nav-span {
   font-family: "Inter", sans-serif;
   margin: auto 0.5rem;
-}
-
-.card-body {
-  background-color: transparent;
-  /* border: none; */
-}
-
-.card {
-  background-color: #1e1e1e;
-  border: 1px solid #b8962e;
-}
-
-.card:hover {
-  border: 1px solid #d4af37;
-  box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
 }
 
 .muted {

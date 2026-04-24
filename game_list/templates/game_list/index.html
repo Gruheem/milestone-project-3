@@ -40,7 +40,7 @@
   <!-- Game Catalogue Cards -->
   <div id="game-catalogue" class="row">
     <div id="game-cards" class="col-12 mt-3 left">
-      <div class="row shelf">
+      <div class="shelf">
         {% if boardgame_list %} {% for boardgame in boardgame_list %}
 
         <div
@@ -48,7 +48,9 @@
         >
           {% if boardgame.approved or boardgame.added_by == request.user %}
           <a href="{% url 'game_detail' boardgame.slug %}">
-            {% endif %} {% if boardgame.image %}
+            {% endif %} 
+            <div class="card-body">
+              {% if boardgame.image %}
             <img
               class="card-img"
               src="{{ boardgame.image.url }}"
@@ -61,10 +63,7 @@
               alt="Default image"
             />
             {% endif %}
-
-            <div class="card-body">
               <p class="card-title m-0">{{ boardgame.title }}</p>
-
               <div class="stats-grid">
                 <div class="stat">
                   <span class="stat-label">Players</span>

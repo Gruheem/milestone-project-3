@@ -73,26 +73,26 @@ def add_game(request):
 # Edit a Game Page
 @login_required
 def edit_game(request, game_id):
-    game = get_object_or_404(BoardGame, id=game_id, added_by=request.user)
+    boardgame = get_object_or_404(BoardGame, id=game_id, added_by=request.user)
 
     if request.method == "POST":
-        form = BoardGameForm(request.POST, instance=game)
+        form = BoardGameForm(request.POST, instance=boardgame)
         if form.is_valid():
             edited_game = form.save(commit=False)
             edited_game.approved = False
             edited_game.save()
             form.save_m2m()
-            messages.success(request, f'{game.title} updated and awaiting re-approval')
+            messages.success(request, f'{boardgame.title} updated and awaiting re-approval')
             return redirect('home')
     else:
-        form = BoardGameForm(instance=game)
+        form = BoardGameForm(instance=boardgame)
 
     return render(
         request, 
         'game_list/edit_game.html', 
         {
             'form': form, 
-            'game': game
+            'boardgame': boardgame
             }
     )
 
