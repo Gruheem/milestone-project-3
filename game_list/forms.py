@@ -38,7 +38,6 @@ class BoardGameForm(forms.ModelForm):
             'image': 'Game Image (optional)',
         }
         widgets = {
-            'description': forms.Textarea(attrs={'rows': 4}),
             'min_age': forms.NumberInput(attrs={'min': 0}),
             'complexity': forms.NumberInput(attrs={'min': 1, 'max': 10}),
             'year_published': forms.NumberInput(attrs={'min': 1900, 'max': 2100}),
