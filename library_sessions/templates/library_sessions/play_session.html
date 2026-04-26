@@ -1,37 +1,101 @@
-{% extends "base.html" %} {% load static %} {% load crispy_forms_tags %} {% block content %}
+{% extends "base.html" %} {% load static %} {% load game_extras %} {% load crispy_forms_tags %} {% block content %}
 
-<div class="container">
-  <div class="row">
+<div class="container mt-4">
+  <div class="row {% if not boardgame.approved %}faded{% endif %}">
     <!-- LEFT: Sticky Stats -->
     <div class="col-md-3">
       <div class="position-sticky" style="top: 20px">
         <div class="card mb-3">
           <div class="card-body">
-            <h5>Game Stats</h5>
-            <ul class="list-unstyled">
-              <li>
-                <strong>Players:</strong>
-                {{boardgame.min_players}}–{{boardgame.max_players }}
-              </li>
-              <li><strong>Play Time:</strong> {{ boardgame.play_time }}</li>
-              <li>
-                <strong>Complexity:</strong> {{ boardgame.complexity }}/10
-              </li>
-              <li><strong>Rating:</strong> ⭐ {{ boardgame.rating }}</li>
-            </ul>
+            {% if boardgame.image %}
+            <img
+              class="card-img"
+              src="{{ boardgame.image.url }}"
+              alt="{{ boardgame.title }} box art"
+            />
+            {% else %}
+            <img
+              class="card-img"
+              src="{% static 'images/default.jpg' %}"
+              alt="Default image"
+            />
+            {% endif %}
+            <div class="stats-grid">
+              <div class="stat">
+                <span class="stat-label">Players</span>
+                <span class="stat-value"
+                  >{{ boardgame.min_players }} – {{boardgame.max_players}}</span
+                >
+              </div>
+              <div class="stat">
+                <span class="stat-label">Playtime</span>
+                <span class="stat-value">{{ boardgame.play_time }} min</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Min Age</span>
+                <span class="stat-value">{{ boardgame.min_age }}+</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Weight</span>
+                <span class="stat-value">{{ boardgame.complexity }} / 10</span>
+              </div>
+            </div>
+            {% if avg_rating %}
+            <div class="text-center stat">
+              <div class="star-bar" title="{{ avg_rating|floatformat:1 }}/5">
+                <div
+                  class="star-fill"
+                  style="--fill-width: {{ avg_rating|rating_percent }}%"
+                ></div>
+              </div>
+            </div>
+            {% else %}
+            <div class="text-center stat">
+              <span class="stat-label">No ratings yet</span>
+            </div>
+            {% endif %}
           </div>
         </div>
+        {% if user == boardgame.added_by %}
+        <div class="text-center">
+          <a
+            href="{% url 'edit_game' boardgame.id %}"
+            class="btn btn-sm btn-outline-gold mb-3"
+          >
+            Edit Details
+          </a>
+        </div>
+        {% endif %}
       </div>
     </div>
 
-    <!-- RIGHT: ALL CONTENT -->
+    <!-- RIGHT: Main content -->
+    <!-- Game Details-->
     <div class="col-md-9">
-      <!-- Game Info -->
-      <div class="card mb-3">
+      <div class="card">
         <div class="card-body">
-          <div class="mb-4">
-            <h2>{{ boardgame.title }}</h2>
-            <p>{{ boardgame.description|safe }}</p>
+          <div class="">
+            {% if not boardgame.approved and boardgame.added_by == user %}
+            <p class="approval mb-2">Game Awaiting Approval</p>
+            {% endif %}
+            <h2 class="game-title secondary-font my-2">
+              {{ boardgame.title }}
+            </h2>
+            {% if avg_rating %}
+            <div class="stat d-inline-block mb-2">
+              <div class="star-bar" title="{{ avg_rating|floatformat:1 }}/5">
+                <div
+                  class="star-fill"
+                  style="--fill-width: {{ avg_rating|rating_percent }}%"
+                ></div>
+              </div>
+            </div>
+            {% else %}
+            <div class="text-center d-inline-block stat mb-3">
+              <span class="stat-label">No ratings yet</span>
+            </div>
+            {% endif %}
+            <p class="">{{ boardgame.description|safe }}</p>
           </div>
 
           {% if user.is_authenticated %}
@@ -65,7 +129,7 @@
         </div>
       </div>
 
-      <h2>Sessions:</h2>
+      <h2 class="sessions-title">Sessions:</h2>
 
       {% if sessions %} {% for session in sessions %}
       <div
@@ -78,42 +142,54 @@
         data-session-second-place="{{ session.second_place.id|default:'' }}"
         data-session-third-place="{{ session.third_place.id|default:'' }}"
       >
+        
         <div class="card-body">
-          <div class="d-flex justify-content-between align-items-start">
-            <div>
-              <h5 class="card-title">{{ session.date_played|date:"d M Y" }}</h5>
-              <p class="mb-1">
-                <strong>Duration:</strong> {{ session.duration }} mins
-              </p>
-              <p class="mb-1">
-                <strong>Winner:</strong>
-                {% if session.first_place %}{{ session.first_place.username }}
-                {% else %}N/A{% endif %}
-              </p>
-              <p class="mb-1">
-                <strong>Second Place:</strong>
-                {% if session.second_place %}{{session.second_place.username}}{% else %}N/A{% endif %}
-              </p>
-              <p class="mb-1">
-                <strong>Third Place:</strong>
-                {% if session.third_place %}{{ session.third_place.username }}{% else %}N/A{% endif %}
-              </p>
-              <p class="mb-1">
-                <strong>Players:</strong> {{ session.host.username }} (host) {% for player in session.players.all %}, {{ player.username }}{% endfor %}
-              </p>
-              {% if session.notes %}
-              <p class="mb-1"><strong>Notes:</strong> {{ session.notes }}</p>
-              {% endif %}
+          <div class="d-flex justify-content-between align-items-center mb-1">
+            <span class="session-date"
+            >{{ session.date_played|date:"d M Y" }}</span
+          >
+          <span class="session-duration ms-auto">{{ session.duration }} mins</span>
+          </div>
+          <div class="stats-grid" style="grid-template-columns: 1fr 1fr 1fr">
+            <div class="stat" style="border-top: 2px solid #d4af37">
+              <span class="stat-label">🥇 1st</span>
+              <span class="stat-value"
+                >{% if session.first_place %}{{ session.first_place.username }}{% else %}N/A{% endif %}</span
+              >
             </div>
-            <small class="text-muted"
-              >Logged by {{ session.host.username }}</small
+            <div class="stat" style="border-top: 2px solid #a8a8a8">
+              <span class="stat-label">🥈 2nd</span>
+              <span class="stat-value"
+                >{% if session.second_place %}{{ session.second_place.username }}{% else %}N/A{% endif %}</span
+              >
+            </div>
+            <div class="stat" style="border-top: 2px solid #cd7f32">
+              <span class="stat-label">🥉 3rd</span>
+              <span class="stat-value"
+                >{% if session.third_place %}{{ session.third_place.username}}{% else %}N/A{% endif %}</span
+              >
+            </div>
+          </div>
+
+          <div class="stat">
+            <span class="stat-label">Players</span>
+            <span class="stat-value"
+              >{{ session.host.username }} (host){% for player in session.players.all %}, {{ player.username }}{% endfor %}</span
             >
           </div>
 
+          {% if session.notes %}
+          <div class="stat">
+            <span class="stat-label">Notes</span>
+            <span class="stat-value">{{ session.notes }}</span>
+          </div>
+          {% endif %}
+        
+          <small class="muted">Logged by {{ session.host.username }}</small>
           {% if user == session.host %}
-          <div class="mt-2">
+          <div class="d-flex gap-2">
             <button
-              class="btn btn-sm btn-outline-primary"
+              class="btn btn-sm btn-outline-gold"
               onclick="toggleEditSessionForm({{ session.id }})"
             >
               Edit

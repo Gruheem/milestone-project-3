@@ -290,3 +290,6 @@ slight changes made during developement:
 - Add User Story for ability to upload images.
 ### styling
 - style buttons
+
+### bugs 
+-summernote broke the forms without dedicated templates, couldnt find fix so removed it.

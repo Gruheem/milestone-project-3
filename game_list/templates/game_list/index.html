@@ -40,9 +40,8 @@
   <!-- Game Catalogue Cards -->
   <div id="game-catalogue" class="row">
     <div id="game-cards" class="col-12 mt-3 left">
-      <div class="shelf">
+      <div class="card-grid">
         {% if boardgame_list %} {% for boardgame in boardgame_list %}
-
         <div
           class="card {% if not boardgame.approved and boardgame.added_by == request.user %}faded{% elif not boardgame.approved %}d-none{% endif %}"
         >

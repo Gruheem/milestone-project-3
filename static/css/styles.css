@@ -1,13 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Metamorphous&display=swap");
 
 :root {
-  --text-colour-primary: #C7C7C7;
-  --text-colour-secondary: #A8A8A8;
+  --text-colour-primary: #c7c7c7;
+  --text-colour-secondary: #a8a8a8;
   --font-primary: Inter, sans-serif;
   --font-secondary: Metamorphous, serif;
   --bg-main: #111111;
-  --bg-card: #1E1E1E;
-  --bg-stat: #2C2C2C;
+  --bg-card: #1e1e1e;
+  --bg-stat: #2c2c2c;
 }
 
 body {
@@ -50,7 +50,9 @@ body {
   position: absolute;
   bottom: 2.5rem;
   left: 2rem;
-  text-shadow: #1e1e1e 4px 4px 8px, #1e1e1e 0px 0px 2px;
+  text-shadow:
+    #1e1e1e 4px 4px 8px,
+    #1e1e1e 0px 0px 2px;
   color: var(--text-colour-primary);
 }
 
@@ -72,7 +74,7 @@ body {
 }
 
 /* ── Grid ─────────────────────────────────────────── */
-.shelf {
+.card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 16px;
@@ -86,8 +88,7 @@ body {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition:
-    transform 0.15s;
+  transition: transform 0.15s;
 }
 
 .card:hover {
@@ -143,7 +144,6 @@ body {
   font-weight: 500;
   color: var(--text-colour-secondary);
 }
-
 
 /* Genre Pill Tag */
 .genre-tag {
@@ -210,7 +210,6 @@ body {
 /* Game Detail Page Styling  */
 .game-title {
   font-size: 2.5rem;
-  
 }
 
 .approval {
@@ -219,10 +218,28 @@ body {
   font-style: italic;
 }
 
-/* Reviews Section */
+/* Reviews and Comments Section */
 .reviews-title {
   margin: 3.5rem 0 1.25rem 0.25rem;
-  
+}
+
+.left-border {
+  border-left: 2px solid #2c2c2c;
+}
+
+/* Game Session Detail Styling */
+.sessions-title {
+  margin: 3.5rem 0 1.25rem 0.25rem;
+}
+
+.session-duration {
+  background: var(--bg-stat);
+  color: var(--text-colour-secondary);
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  padding: 0.18rem 0.5rem;
+  letter-spacing: 0.05rem;
 }
 
 nav a,

@@ -36,7 +36,7 @@
               </div>
               <div class="stat">
                 <span class="stat-label">Weight</span>
-                <span class="stat-value">{{ boardgame.complexity }} / 5</span>
+                <span class="stat-value">{{ boardgame.complexity }} / 10</span>
               </div>
             </div>
             {% if avg_rating %}
@@ -56,7 +56,7 @@
         <div class="text-center">
           <a
             href="{% url 'edit_game' boardgame.id %}"
-            class="btn btn-sm btn-outline-gold"
+            class="btn btn-sm btn-outline-gold mb-3"
           >
             Edit Details
           </a>
@@ -71,6 +71,9 @@
       <div class="card">
         <div class="card-body">
           <div class="">
+            {% if not boardgame.approved and boardgame.added_by == user %}
+              <p class="approval mb-2">Game Awaiting Approval</p>
+              {% endif %}
             <h2 class="game-title secondary-font my-2">{{ boardgame.title }}</h2>
             {% if avg_rating %}
             <div class="stat d-inline-block mb-2">
@@ -79,7 +82,7 @@
             </div>
             </div>
             {% else %}
-            <div class="text-center stat mb-3">
+            <div class="text-center d-inline-block stat mb-3">
               <span class="stat-label">No ratings yet</span>
             </div>
             {% endif %}
@@ -238,7 +241,7 @@
         <div class="col-10">
           {% for comment in review.comments.all %}
           <div
-            class="card mb-2 {% if not comment.approved and comment.author == user %}faded{% elif not comment.approved %}d-none{% endif %}"
+            class="left-border card mb-2 {% if not comment.approved and comment.author == user %}faded{% elif not comment.approved %}d-none{% endif %}"
             data-comment-id="{{ comment.id }}"
             data-comment-content="{{ comment.content|escapejs }}"
           >

@@ -19,92 +19,131 @@
       <form method="get" class="search-form">
         {% csrf_token %}
         {{ filter_form|crispy }}
-        <button type="submit" class="btn btn-outline-primary mb-3">Filter</button>
+        <button type="submit" class="btn btn-outline-gold mb-3">Filter</button>
         <a href="{% url 'library_page' %}" class="btn btn-outline-secondary mb-3">Clear</a>
       </form>
     </div>
   </div>
 
-  {% if entries %}
-  <div class="row">
-    {% for entry in entries %}
-    <div class="col-md-4 mb-4">
-      <div class="card h-100">
-        <div class="card-body">
-          <!-- Status Badge -->
-          <span
-            class="badge mb-2 {% if entry.status == 'owned' %}bg-success{% else %}bg-warning text-dark{% endif %}"
-          >
-            {{ entry.get_status_display }}
-          </span>
+<!-- Card Grid -->
+  <div class="card-grid">
+        {% if entries %} {% for entry in entries %}
+        <div
+          class="card {% if not entry.boardgame.approved and entry.boardgame.added_by == request.user %}faded{% elif not entry.boardgame.approved %}d-none{% endif %}"
+        >
+          {% if entry.boardgame.approved or entry.boardgame.added_by == request.user %}
+          <a href="{% url 'play_session_page' entry.id %}">
+            {% endif %} 
+            <div class="card-body">
+              {% if entry.boardgame.image %}
+            <img
+              class="card-img"
+              src="{{ entry.boardgame.image.url }}"
+              alt="{{ entry.boardgame.title }} box art"
+            />
+            {% else %}
+            <img
+              class="card-img"
+              src="{% static 'images/default.jpg' %}"
+              alt="Default image"
+            />
+            {% endif %}
+              <!-- Status Badge -->
+              <span
+                class="badge mb-2 {% if entry.status == 'owned' %}bg-success{% else %}bg-warning text-dark{% endif %}"
+              >
+              {{ entry.get_status_display }}
+              </span>
+              <p class="card-title m-0">{{ entry.boardgame.title }}</p>
+              <div class="stats-grid">
+                <div class="stat">
+                  <span class="stat-label">Players</span>
+                  <span class="stat-value"
+                    >{{ entry.boardgame.min_players }} – {{entry.boardgame.max_players}}</span
+                  >
+                </div>
+                <div class="stat">
+                  <span class="stat-label">Playtime</span>
+                  <span class="stat-value">{{ entry.boardgame.play_time }} min</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-label">Min Age</span>
+                  <span class="stat-value">{{ entry.boardgame.min_age }}+</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-label">Weight</span>
+                  <span class="stat-value">{{ entry.boardgame.complexity }} / 5</span>
+                </div>
+              </div>
 
-          <!-- Title -->
-          <h5 class="card-title">
-            <a href="{% url 'play_session_page' entry.id %}">
-              {{ entry.boardgame.title }}
-            </a>
-          </h5>
-
-          <!-- Quick Info -->
-          <p class="card-text mb-1">
-            <strong>Players:</strong> {{ entry.boardgame.min_players }}–{{entry.boardgame.max_players }}
-          </p>
-          <p class="card-text mb-1">
-            <strong>Play Time:</strong> {{ entry.boardgame.play_time }} mins
-          </p>
-          <p class="card-text mb-2">
-            <strong>Complexity:</strong> {{ entry.boardgame.complexity }}/10
-          </p>
-
-          <!-- Genres -->
-          <p class="small text-muted">
-            {% for genre in entry.boardgame.genre_id.all %}
-            <span class="genre-tag">{{ genre.name }}</span>
-            {% endfor %}
-          </p>
-
-          <!-- Added date -->
-          <small class="text-muted"
-            >Added: {{ entry.added_at|date:"d M Y" }}</small
-          >
-
-          <!-- Remove button -->
-          <div class="">
-            <button
+              <div class="tags">
+                <span class="small muted">
+                  {% for genre in entry.boardgame.genre_id.all %}
+                  <span class="genre-tag d-inline-block">{{ genre.name }}</span>
+                  {% endfor %}
+                </span>
+              </div>
+              <small class="text-muted">Added: {{ entry.added_at|date:"d M Y" }}</small>
+              <div>
+              <button
               type="button"
-              class="btn btn-sm btn-outline-danger"
+              class="btn btn-sm btn-outline-danger d-inline"
               onclick="openDeleteLibraryModal({{ entry.id }}, '{{ entry.boardgame.title|escapejs }}')"
             >
               Remove
             </button>
           </div>
+            </div>
+            {% if entry.boardgame.approved or entry.boardgame.added_by == request.user %}
+          </a>
+          {% endif %}
         </div>
+        {% endfor %}
+        {% else %}
       </div>
+      {% if filtered %}
+        <div class="text-center mt-5">
+          <p class="lead">No games found matching your filter.</p>
+          <a href="{% url 'library_page' %}" class="btn btn-gold">Clear Filter</a>
+        </div>
+      {% elif searched %}
+        <div class="text-center mt-5">
+          <p class="lead">No games found matching your search.</p>
+          <a href="{% url 'home' %}" class="btn btn-gold">Browse Games</a>
+        </div>
+      {% else %}
+        <div class="text-center mt-5">
+          <p class="lead">Your library is empty!</p>
+          <a href="{% url 'home' %}" class="btn btn-gold">Browse Games</a>
+        </div>
+      {% endif %}
+      <div>{% endif %}</div>
     </div>
-    {% endfor %}
   </div>
-
-  <!-- Empty States True and Filtered -->
-  {% else %}
-    {% if filtered %}
-      <div class="text-center mt-5">
-        <p class="lead">No games found matching your filter.</p>
-        <a href="{% url 'library_page' %}" class="btn btn-gold">Clear Filter</a>
-      </div>
-    {% elif searched %}
-      <div class="text-center mt-5">
-        <p class="lead">No games found matching your search.</p>
-        <a href="{% url 'home' %}" class="btn btn-gold">Browse Games</a>
-      </div>
-    {% else %}
-      <div class="text-center mt-5">
-        <p class="lead">Your library is empty!</p>
-        <a href="{% url 'home' %}" class="btn btn-gold">Browse Games</a>
-      </div>
-    {% endif %}
+  {% if is_paginated %}
+  <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+      {% if page_obj.has_previous %}
+      <li>
+        <a
+          href="?page={{ page_obj.previous_page_number }}"
+          class="btn btn-gold page-link"
+          >&laquo; PREV</a
+        >
+      </li>
+      {% endif %} {% if page_obj.has_next %}
+      <li>
+        <a
+          href="?page={{ page_obj.next_page_number }}"
+          class="btn btn-gold page-link"
+        >
+          NEXT &raquo;
+        </a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
   {% endif %}
-  </div>
-</div>
 
 <!-- Remove from Library confirmation modal -->
 <div class="modal fade" id="deleteLibraryModal" tabindex="-1">

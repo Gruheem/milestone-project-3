@@ -86,7 +86,7 @@ def add_to_library(request, boardgame_id):
             messages.success(request, f'{game.title} added to your library')
         else:
             messages.info(request, f'{game.title} is already in your library')
-    return redirect('game_detail', title=game.title)
+    return redirect('game_detail', slug=game.slug)
 
 
 # Play Session Views
