@@ -3,6 +3,7 @@
 :root {
   --text-colour-primary: #c7c7c7;
   --text-colour-secondary: #a8a8a8;
+  --text-colour-gold: #d4af37;
   --font-primary: Inter, sans-serif;
   --font-secondary: Metamorphous, serif;
   --bg-main: #111111;
@@ -88,11 +89,6 @@ body {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.15s;
-}
-
-.card:hover {
-  transform: translateY(-2px);
 }
 
 /* ── Card Image ──────────────────────────────────── */
@@ -230,6 +226,15 @@ body {
 /* Game Session Detail Styling */
 .sessions-title {
   margin: 3.5rem 0 1.25rem 0.25rem;
+}
+
+/* Account Actions */
+.account-card {
+  max-width: 35rem;
+}
+
+.account-card .card .card-body a {
+  color: var(--text-colour-gold);
 }
 
 .session-duration {

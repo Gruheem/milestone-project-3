@@ -1,34 +1,30 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% load i18n %} {% load account socialaccount %} {% block head_title %} {% trans "Sign In" %} {% endblock %} {% block content %}
 
-{% load i18n %}
-{% load account socialaccount %}
+<div class="container account-card" id="log-in">
 
-{% block head_title %}{% trans "Sign In" %}{% endblock %}
+  <div class="card">
+    <div class="card-body">
+      <h1>{% trans "Log In" %}</h1>
 
-{% block content %}
+      <p>
+        Welcome back to Board Silly. To leave a comment or like
+        a post, please log in. If you have not created an account yet, then
+        <a class="link" href="{{ signup_url }}">sign up</a> first.
+      </p>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 mt-3 offset-md-2">
-            <h3>{% trans "Sign In" %}</h3>
-
-            <p>{% blocktrans %}Welcome back to Board Silly. To leave a comment or like a post, please log in. If
-                you
-                have not created an account yet, then <a class="link" href="{{ signup_url }}">sign up</a>
-                first.{% endblocktrans %}</p>
-        </div>
+      <form class="login" method="POST" action="{% url 'account_login' %}">
+        {% csrf_token %} {{ form.as_p }} {% if redirect_field_value %}
+        <input
+          type="hidden"
+          name="{{ redirect_field_name }}"
+          value="{{ redirect_field_value }}"
+        />
+        {% endif %}
+        <button class="btn btn-gold mt-2 right" type="submit">
+          {% trans "Log In" %}
+        </button>
+      </form>
     </div>
-    <div class="row">
-        <div class="col-md-8 mt-3 offset-md-2">
-            <form class="login" method="POST" action="{% url 'account_login' %}">
-                {% csrf_token %}
-                {{ form.as_p }}
-                {% if redirect_field_value %}
-                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-                {% endif %}
-                <button class="btn btn-signup right" type="submit">{% trans "Sign In" %}</button>
-            </form>
-        </div>
-    </div>
+  </div>
 </div>
 {% endblock %}
