@@ -142,7 +142,7 @@
 
       <!-- Review card with data attributes for JS pre-population -->
       <div
-        class="card mb-2 {% if not review.approved and review.author == user %}faded{% elif not review.approved %}d-none{% endif %}"
+        class="card mb-3 {% if not review.approved and review.author == user %}faded{% elif not review.approved %}d-none{% endif %}"
         data-review-id="{{ review.id }}"
         data-review-title="{{ review.title }}"
         data-review-content="{{ review.content }}"
@@ -150,7 +150,7 @@
       >
         <div class="card-body">
           {% if not review.approved and review.author == user %}
-          <p class="approval">Review Awaiting Approval</p>
+          <p class="approval mb-2">Review Awaiting Approval</p>
           {% endif %}
 
           <h3>{{ review.title }}</h3>
@@ -244,11 +244,11 @@
           >
             <div class="card-body">
               {% if not comment.approved and comment.author == user %}
-              <p class="my-2">Comment Awaiting Approval</p>
+              <p class="approval mb-2">Comment Awaiting Approval</p>
               {% endif %}
 
-              <p class="mb-2">{{ comment.content|safe }}</p>
-              <small>{{ comment.created_at }} by {{ comment.author }}</small>
+              <p class="mb-0">{{ comment.content|safe }}</p>
+              <small class="muted">Comment by {{ comment.author }} on {{ comment.created_at }}</small>
 
               <div class="mt-2 d-flex gap-2">
                 {% if user.is_authenticated and user.id == comment.author.id %}
