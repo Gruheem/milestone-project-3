@@ -20,12 +20,12 @@ class ReviewAdmin(SummernoteModelAdmin):
 @admin.register(Comment)
 class CommentAdmin(SummernoteModelAdmin):
 
-    list_display = ('review', 'author', 'created_at', 'approved')
+    list_display = ('content', 'author', 'created_at', 'approved')
     search_fields = ['content', 'author']
     list_filter = ('created_at', 'approved')
     prepopulated_fields = {}
     summernote_fields = ('content',)
-    actions = ['approve_reviews']
+    actions = ['approve_comments']
 
-    def approve_reviews(self, request, queryset):
+    def approve_comments(self, request, queryset):
         queryset.update(approved=True)
