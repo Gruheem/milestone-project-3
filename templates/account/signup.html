@@ -5,7 +5,7 @@
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
 {% block content %}
-<div class="container account-card">
+<div class="container account-card sign-up">
   <div class="card">
     <div class="card-body">
 
@@ -32,6 +32,7 @@
         {% endif %}
         <button class="btn btn-gold right" type="submit">
           {% trans "Sign Up" %} &raquo;</button>
+        <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
       </form>
     </div>
   </div>

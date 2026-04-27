@@ -14,13 +14,15 @@
         
     
 
-            <form method="post" action="{% url 'account_logout' %}">
+            <form method="post" action="{% url 'account_logout' %}" class="d-inline">
                 {% csrf_token %}
                 {% if redirect_field_value %}
                 <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                 {% endif %}
                 <button class="btn btn-gold right" type="submit">{% trans 'Log Out' %}</button>
+                <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
             </form>
+            
         </div>
     </div>
 </div>

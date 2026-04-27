@@ -259,7 +259,7 @@ body {
   max-width: 35rem;
 }
 
-.account-card .card .card-body a {
+.sign-up .card .card-body a {
   color: var(--text-colour-gold);
 }
 
