@@ -1,7 +1,4 @@
-{% load static %} {% url 'home' as home_url %} 
-{% url 'account_login' as login_url %} {% url 'account_signup' as signup_url %} 
-{% url 'account_logout' as logout_url %}
-{% url 'library_page' as library_url %}
+{% load static %} {% url 'home' as home_url %} {% url 'account_login' as login_url %} {% url 'account_signup' as signup_url %} {% url 'account_logout' as logout_url %} {% url 'library_page' as library_url %}
 
 <!doctype html>
 <html class="h-100" lang="en">
@@ -111,35 +108,34 @@
     </nav>
 
     <!-- displaying Django messages -->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 offset-md-2">
-          {% for message in messages %}
+    <div class="container text-center">
+      {% for message in messages %}
+      <div class="card d-inline-block alert py-2">
+        <div class="card-body p-0">
           <div
-            class="alert {{ message.tags }} alert-dismissible
-        fade show"
+            class="{{ message.tags }} fade show d-inline-flex align-items-center"
             id="msg"
             role="alert"
           >
             {{ message | safe }}
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="alert"
-              aria-label="Close"
-            ></button>
+            <div class="stat d-inline-block p-0 ms-5">
+              <button
+                type="button"
+                class="my-close"
+                data-bs-dismiss="alert"
+                aria-label="Close"
+              >
+                X
+              </button>
+            </div>
           </div>
-          {% endfor %}
         </div>
       </div>
+      {% endfor %}
     </div>
 
-    <main class="flex-shrink-0 main-bg">
-      {% if user.is_authenticated %}
-      <div class="container mt-3">
-        <p class="text-end">Welcome, {{ user.username }}!</p>
-      </div>
-      {% endif %} {% block content %}
+    <main class="flex-shrink-0 main-bg mt-3">
+      {% block content %}
       <!-- Content Goes here -->
       {% endblock content %}
     </main>

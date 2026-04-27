@@ -1,5 +1,12 @@
 console.log("JS file loaded");
 
+// Remove Focus on Nav Toggler After Collapsing
+document.querySelector('.navbar-toggler').addEventListener('click', function() {
+  if (this.classList.contains('collapsed')) {
+    this.blur();
+  }
+});
+
 // Form Toggles
 
 // Review Form Toggle
