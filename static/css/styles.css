@@ -73,6 +73,12 @@ body {
   font-family: var(--font-secondary);
 }
 
+@media screen and (max-width: 500px) {
+  #hero-title {
+    font-size: 2rem;
+  }
+}
+
 /* Search */
 .search-form {
   display: flex;
@@ -257,17 +263,16 @@ body {
   color: var(--text-colour-gold);
 }
 
-/* Action Messages */
-/* #msg.alert {
-  background-color: var(--bg-card);
-  border-radius: 12px;
-  margin: 1.5rem 0rem;
-} */
-
 .my-close {
   color: var(--text-colour-gold);
   background: transparent;
   border: none;
+}
+
+/* Game Forms */
+.game-form-card {
+  max-width: 47.3rem;
+  margin: auto;
 }
 
 nav a,
