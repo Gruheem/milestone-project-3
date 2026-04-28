@@ -30,6 +30,10 @@ body {
 }
 
 /* Nav Styling */
+.nav-background-colour {
+  background-color: var(--bg-main);
+}
+
 .navbar-toggler-icon {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23c7c7c7' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
@@ -51,7 +55,7 @@ nav a:hover,
 }
 
 .navbar a.active {
-  color: #e0e0e0;
+  color: var(--text-colour-gold);
 }
 
 #title-span {
@@ -143,7 +147,7 @@ nav a:hover,
 .card {
   background: var(--bg-card);
   border-radius: 12px;
-  overflow: hidden;
+  /* overflow: hidden; */
   display: flex;
   flex-direction: column;
 }
@@ -153,6 +157,7 @@ nav a:hover,
   width: 100%;
   aspect-ratio: 3 / 4;
   object-fit: cover;
+  border-radius: 9px 9px 0  0;
 }
 
 /* Card Body */
@@ -329,4 +334,15 @@ nav a:hover,
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.5rem;
+}
+
+footer a {
+  color: var(--text-colour-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: var(--text-colour-gold);
+  
 }

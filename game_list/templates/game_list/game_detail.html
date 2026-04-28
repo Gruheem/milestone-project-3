@@ -1,4 +1,10 @@
-{% extends "base.html" %} {% load static %} {% load crispy_forms_tags %} {% load game_extras %} {% block content %}
+{% extends "base.html" %} 
+{% load static %} 
+{% load crispy_forms_tags %} 
+{% load game_extras %} 
+
+{% block content %}
+
 <div id="game-detail" class="container mt-4">
   <div class="row {% if not boardgame.approved %}faded{% endif %}">
     <!-- LEFT: Sticky Stats -->
@@ -319,7 +325,7 @@
               <div
                 class="d-flex justify-content-between align-items-center mb-1"
               >
-                <h5>Delete Review</h5>
+                <h5>Delete Review: <span id="deleteReviewTitle"></span></h5>
                 <div class="stat d-inline-block p-0 ms-5">
                   <button
                     type="button"
@@ -361,7 +367,7 @@
               <div
                 class="d-flex justify-content-between align-items-center mb-1"
               >
-                <h5>Delete Comment</h5>
+                <h5>Delete Comment: <span id="deleteCommentTitle"></span></h5>
                 <div class="stat d-inline-block p-0 ms-5">
                   <button
                     type="button"

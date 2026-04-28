@@ -1,7 +1,7 @@
 {% load static %} {% url 'home' as home_url %} {% url 'account_login' as login_url %} {% url 'account_signup' as signup_url %} {% url 'account_logout' as logout_url %} {% url 'library_page' as library_url %}
 
 <!doctype html>
-<html class="h-100" lang="en">
+<html lang="en">
   <head>
     <title>Board Stiff</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -35,9 +35,9 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
   </head>
 
-  <body class="d-flex flex-column h-100">
+  <body class="d-flex flex-column">
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg sticky-top nav-background-colour">
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'home' %}"
           ><span id="title-span">Board Silly</span></a
@@ -132,7 +132,7 @@
       {% endfor %}
     </div>
 
-    <main class="flex-shrink-0 main-bg mt-3">
+    <main class="main-bg mt-3">
       {% block content %}
       <!-- Content Goes here -->
       {% endblock content %}
@@ -141,13 +141,21 @@
     <!-- Footer -->
     <footer class="footer mt-auto py-3 dark-bg">
       <p class="m-0 text-center text-white">Made by G S</p>
-      <p class="m-0 text-center text-white">
+      <div class="d-flex justify-content-center">
         Follow us:
-        <i class="fab fa-facebook-square ms-3"></i>
-        <i class="fab fa-twitter-square ms-3"></i>
-        <i class="fab fa-instagram-square ms-3"></i>
-        <i class="fab fa-youtube-square ms-3"></i>
-      </p>
+        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-facebook-square mx-2"></i>
+        </a>
+        <a href="https://www.x.com" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-twitter-square mx-2"></i>
+        </a>
+        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-instagram-square mx-2"></i>
+        </a>
+        <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-youtube-square mx-2"></i>
+        </a>
+      </div>
     </footer>
 
     <script
