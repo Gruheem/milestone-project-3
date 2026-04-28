@@ -9,7 +9,7 @@
       <p>
         Welcome back to Board Silly. To leave a comment or like
         a post, please log in. If you have not created an account yet, then
-        <a class="link" href="{{ signup_url }}">sign up</a> first.
+        <a id="signup-link" class="link" href="{{ signup_url }}">sign up</a> first.
       </p>
 
       <form class="login" method="POST" action="{% url 'account_login' %}">
@@ -20,7 +20,7 @@
           value="{{ redirect_field_value }}"
         />
         {% endif %}
-        <button class="btn btn-gold mt-2 right" type="submit">
+        <button class="btn btn-gold right" type="submit">
           {% trans "Log In" %}
         </button>
         <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>

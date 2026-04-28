@@ -21,6 +21,14 @@ body {
   font-family: var(--font-secondary);
 }
 
+#signup-link {
+  color: var(--text-colour-gold);
+}
+
+.modal .modal-content {
+  background-color: transparent;
+}
+
 /* Nav Styling */
 .navbar-toggler-icon {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23c7c7c7' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
@@ -28,6 +36,31 @@ body {
 
 .navbar-toggler:focus {
   box-shadow: 0 0 0 0.2rem var(--text-colour-primary);
+}
+
+nav a,
+.card a {
+  color: #e0e0e0;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+nav a:hover,
+.card a:hover {
+  color: #d4af37;
+}
+
+.navbar a.active {
+  color: #e0e0e0;
+}
+
+#title-span {
+  font-family: "Metamorphous", serif;
+}
+
+.nav-span {
+  font-family: "Inter", sans-serif;
+  margin: auto 0.5rem;
 }
 
 /* Hero Section */
@@ -75,7 +108,15 @@ body {
 
 @media screen and (max-width: 500px) {
   #hero-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
+  }
+
+  .hero-contents {
+    bottom: 1rem;
+  }
+
+  .hero-strapline {
+    font-size: 0.9rem;
   }
 }
 
@@ -90,7 +131,7 @@ body {
   margin-bottom: 0rem;
 }
 
-/* ── Grid ─────────────────────────────────────────── */
+/* Grid */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -98,7 +139,7 @@ body {
   padding: 1rem 0;
 }
 
-/* ── Card ───────────────────────────────────── */
+/* Card */
 .card {
   background: var(--bg-card);
   border-radius: 12px;
@@ -107,15 +148,14 @@ body {
   flex-direction: column;
 }
 
-/* ── Card Image ──────────────────────────────────── */
+/* Card Image */
 .card-img {
   width: 100%;
   aspect-ratio: 3 / 4;
   object-fit: cover;
-  /* margin-top: 0.8rem; */
 }
 
-/* ── Card Body ────────────────────────────────────── */
+/* Card Body */
 .card-body {
   display: flex;
   flex-direction: column;
@@ -123,13 +163,13 @@ body {
   flex: 1;
 }
 
-/* ── Card Title ────────────────────────────────────────── */
+/* Card Title */
 .card-title {
   color: var(--text-colour-primary);
   font-family: var(--font-secondary);
 }
 
-/* ── Stats grid ───────────────────────────────────── */
+/* Stats grid */
 .stats-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -224,12 +264,6 @@ body {
   font-size: 2.5rem;
 }
 
-.approval {
-  font-size: 10px;
-  color: #c9a84c;
-  font-style: italic;
-}
-
 /* Reviews and Comments Section */
 .reviews-title {
   margin: 3.5rem 0 1.25rem 0.25rem;
@@ -264,7 +298,7 @@ body {
 }
 
 .my-close {
-  color: var(--text-colour-gold);
+  color: var(--text-colour-gold) !important;
   background: transparent;
   border: none;
 }
@@ -275,58 +309,18 @@ body {
   margin: auto;
 }
 
-nav a,
-.card a {
-  color: #e0e0e0;
-  transition: color 0.3s ease;
-  text-decoration: none;
-}
-
-nav a:hover,
-.card a:hover {
-  color: #d4af37;
-}
-
-.navbar a.active {
-  color: #e0e0e0;
-}
-
-#title-span {
-  font-family: "Metamorphous", serif;
-}
-
-.nav-span {
-  font-family: "Inter", sans-serif;
-  margin: auto 0.5rem;
-}
-
+/* Utility Styling */
 .muted {
   color: #a0a0a0;
 }
-
-.btn-gold {
-  background-color: #d4af37;
-  border: none;
-  color: #121212;
-}
-
-.btn-gold:hover {
-  background-color: #f2c94c;
-}
-
-.btn-outline-gold {
-  background-color: transparent;
-  border: 1px solid #d4af37;
-  color: #d4af37;
-}
-
-.btn-outline-gold:hover {
-  background-color: #d4af37;
-  color: #121212;
-}
-
 .faded {
   opacity: 0.5;
+}
+
+.approval {
+  font-size: 10px;
+  color: #c9a84c;
+  font-style: italic;
 }
 
 /* Forms Styling */

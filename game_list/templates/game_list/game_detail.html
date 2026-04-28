@@ -41,9 +41,12 @@
             </div>
             {% if avg_rating %}
             <div class="text-center stat">
-            <div class="star-bar" title="{{ avg_rating|floatformat:1 }}/5">
-              <div class="star-fill" style="--fill-width: {{ avg_rating|rating_percent }}%"></div>
-            </div>
+              <div class="star-bar" title="{{ avg_rating|floatformat:1 }}/5">
+                <div
+                  class="star-fill"
+                  style="--fill-width: {{ avg_rating|rating_percent }}%"
+                ></div>
+              </div>
             </div>
             {% else %}
             <div class="text-center stat">
@@ -72,14 +75,19 @@
         <div class="card-body">
           <div class="">
             {% if not boardgame.approved and boardgame.added_by == user %}
-              <p class="approval mb-2">Game Awaiting Approval</p>
-              {% endif %}
-            <h2 class="game-title secondary-font my-2">{{ boardgame.title }}</h2>
+            <p class="approval mb-2">Game Awaiting Approval</p>
+            {% endif %}
+            <h2 class="game-title secondary-font my-2">
+              {{ boardgame.title }}
+            </h2>
             {% if avg_rating %}
             <div class="stat d-inline-block mb-2">
-            <div class="star-bar" title="{{ avg_rating|floatformat:1 }}/5">
-              <div class="star-fill" style="--fill-width: {{ avg_rating|rating_percent }}%"></div>
-            </div>
+              <div class="star-bar" title="{{ avg_rating|floatformat:1 }}/5">
+                <div
+                  class="star-fill"
+                  style="--fill-width: {{ avg_rating|rating_percent }}%"
+                ></div>
+              </div>
             </div>
             {% else %}
             <div class="text-center d-inline-block stat mb-3">
@@ -112,9 +120,11 @@
             </form>
           </div>
           {% else %}
-          <a href="{% url 'account_login' %}" class="btn btn-gold"
-            >Log in to Leave a Review</a
-          >
+          <div class="text-start">
+            <a href="{% url 'account_login' %}" class="btn btn-gold"
+              >Log in to Leave a Review</a
+            >
+          </div>
           {% endif %}
         </div>
       </div>
@@ -127,11 +137,7 @@
             <p>Posting as: {{ user.username }}</p>
             <form method="post">
               {% csrf_token %} {{ review_form|crispy }}
-              <button
-                type="submit"
-                name="review_submit"
-                class="btn btn-success"
-              >
+              <button type="submit" name="review_submit" class="btn btn-gold">
                 Submit
               </button>
             </form>
@@ -140,8 +146,9 @@
       </div>
 
       <h2 class="reviews-title">Reviews</h2>
-
-      {% for review in reviews %}
+      {% if reviews.count == 0 %}
+      <p class="ms-1">Be the first person to review this game!</p>
+      {% else %} {% for review in reviews %}
 
       <!-- Review card with data attributes for JS pre-population -->
       <div
@@ -158,7 +165,9 @@
 
           <h3>{{ review.title }}</h3>
           <p class="m-0">{{ review.content|safe }}</p>
-          <small class="muted">{{ review.created_at }} by {{ review.author }}</small>
+          <small class="muted"
+            >{{ review.created_at }} by {{ review.author }}</small
+          >
 
           <div class="mt-2 d-flex gap-2">
             {% if user.is_authenticated %}
@@ -169,9 +178,7 @@
               Leave a Comment
             </button>
             {% else %}
-            <a
-              href="{% url 'account_login' %}"
-              class="btn btn-gold"
+            <a href="{% url 'account_login' %}" class="btn btn-gold"
               >Leave a Comment</a
             >
             {% endif %} {% if user == review.author %}
@@ -225,11 +232,7 @@
         <form method="post">
           {% csrf_token %} {{ comment_form|crispy }}
           <input type="hidden" name="review_id" value="{{ review.id }}" />
-          <button
-            type="submit"
-            name="comment_submit"
-            class="btn btn-sm btn-success"
-          >
+          <button type="submit" name="comment_submit" class="btn btn-gold">
             Submit
           </button>
         </form>
@@ -251,8 +254,9 @@
               {% endif %}
 
               <p class="mb-0">{{ comment.content|safe }}</p>
-              <small class="muted">Comment by {{ comment.author }} on {{ comment.created_at }}</small>
-
+              <small class="muted"
+                >Comment by {{ comment.author }} on {{ comment.created_at }}</small
+              >
               <div class="mt-2 d-flex gap-2">
                 {% if user.is_authenticated and user.id == comment.author.id %}
                 <button
@@ -284,7 +288,7 @@
               <form method="post" action="{% url 'edit_comment' comment.id %}">
                 {% csrf_token %} {{ comment_form|crispy }}
                 <div class="d-flex gap-2 mt-2">
-                  <button type="submit" class="btn btn-success btn-sm">
+                  <button type="submit" class="btn btn-gold btn-sm">
                     Save
                   </button>
                   <button
@@ -303,40 +307,46 @@
           {% endfor %}
         </div>
       </div>
-      {% endfor %}
+      {% endfor %} {% endif %}
     </div>
 
     <!-- Delete Review confirmation modal -->
     <div class="modal fade" id="deleteReviewModal" tabindex="-1">
       <div class="modal-dialog">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Delete Review</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <p>
-              Are you sure you want to delete
-              <strong id="deleteReviewTitle"></strong>?
-            </p>
-            <p class="text-muted">This cannot be undone.</p>
-          </div>
-          <div class="modal-footer">
-            <form id="deleteReviewForm" method="post">
-              {% csrf_token %}
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
+          <div class="card">
+            <div class="card-body">
+              <div
+                class="d-flex justify-content-between align-items-center mb-1"
               >
-                Cancel
-              </button>
-              <button type="submit" class="btn btn-danger">Yes, Delete</button>
-            </form>
+                <h5>Delete Review</h5>
+                <div class="stat d-inline-block p-0 ms-5">
+                  <button
+                    type="button"
+                    class="my-close"
+                    data-bs-dismiss="modal"
+                  >
+                    X
+                  </button>
+                </div>
+              </div>
+              <p>Are you sure you want to delete this review?</p>
+              <p class="text-muted">This cannot be undone.</p>
+
+              <form id="deleteReviewForm" method="post">
+                {% csrf_token %}
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Cancel
+                </button>
+                <button type="submit" class="btn btn-danger">
+                  Yes, Delete
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
@@ -346,30 +356,39 @@
     <div class="modal fade" id="deleteCommentModal" tabindex="-1">
       <div class="modal-dialog">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Delete Comment</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <p>Are you sure you want to delete this comment?</p>
-            <p class="text-muted">This cannot be undone.</p>
-          </div>
-          <div class="modal-footer">
-            <form id="deleteCommentForm" method="post">
-              {% csrf_token %}
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
+          <div class="card">
+            <div class="card-body">
+              <div
+                class="d-flex justify-content-between align-items-center mb-1"
               >
-                Cancel
-              </button>
-              <button type="submit" class="btn btn-danger">Yes, Delete</button>
-            </form>
+                <h5>Delete Comment</h5>
+                <div class="stat d-inline-block p-0 ms-5">
+                  <button
+                    type="button"
+                    class="my-close"
+                    data-bs-dismiss="modal"
+                  >
+                    X
+                  </button>
+                </div>
+              </div>
+              <p>Are you sure you want to delete this comment?</p>
+              <p class="text-muted">This cannot be undone.</p>
+
+              <form id="deleteCommentForm" method="post">
+                {% csrf_token %}
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Cancel
+                </button>
+                <button type="submit" class="btn btn-danger">
+                  Yes, Delete
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </div>

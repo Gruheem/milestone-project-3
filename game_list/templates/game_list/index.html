@@ -23,7 +23,9 @@
   </div>
   <!-- Title -->
   <div class="row">
-    <div class="col-12 d-flex align-items-center justify-content-between mt-4 mb-2">
+    <div
+      class="col-12 d-flex align-items-center justify-content-between mt-4 mb-2"
+    >
       <h1 class="ml-1">Game Catalogue</h1>
       <a href="{% url 'add_game' %}" class="btn btn-gold">Submit a Game</a>
     </div>
@@ -48,27 +50,30 @@
         >
           {% if boardgame.approved or boardgame.added_by == request.user %}
           <a href="{% url 'game_detail' boardgame.slug %}">
-            {% endif %} 
-            <div class="card-body">
-              {% if boardgame.image %}
-            <img
-              class="card-img"
-              src="{{ boardgame.image.url }}"
-              alt="{{ boardgame.title }} box art"
-            />
-            {% else %}
-            <img
-              class="card-img"
-              src="{% static 'images/default.jpg' %}"
-              alt="Default image"
-            />
             {% endif %}
+            <div class="card-body">
+              {% if not boardgame.approved and boardgame.added_by == user %}
+              <p class="approval mb-2">Game Awaiting Approval</p>
+              {% endif %} {% if boardgame.image %}
+              <img
+                class="card-img"
+                src="{{ boardgame.image.url }}"
+                alt="{{ boardgame.title }} box art"
+              />
+              {% else %}
+              <img
+                class="card-img"
+                src="{% static 'images/default.jpg' %}"
+                alt="Default image"
+              />
+              {% endif %}
               <p class="card-title m-0">{{ boardgame.title }}</p>
               <div class="stats-grid">
                 <div class="stat">
                   <span class="stat-label">Players</span>
                   <span class="stat-value"
-                    >{{ boardgame.min_players }} – {{boardgame.max_players}}</span
+                    >{{ boardgame.min_players }} –
+                    {{boardgame.max_players}}</span
                   >
                 </div>
                 <div class="stat">
@@ -81,7 +86,9 @@
                 </div>
                 <div class="stat">
                   <span class="stat-label">Weight</span>
-                  <span class="stat-value">{{ boardgame.complexity }} / 5</span>
+                  <span class="stat-value"
+                    >{{ boardgame.complexity }} / 10</span
+                  >
                 </div>
               </div>
 

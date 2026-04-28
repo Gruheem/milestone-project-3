@@ -293,3 +293,21 @@ slight changes made during developement:
 
 ### bugs 
 -summernote broke the forms without dedicated templates, couldnt find fix so removed it.
+
+### Games Initially included
+- Catan
+- Terraforming Mars
+- Scythe
+- Wingspan
+- Splendor
+- Cosmoctopus
+- Diamant
+- Carcasonne
+- 7 Wonders
+- 7 Wonders: Architect
+- Plunder
+- No Thanks
+- Ticket to Ride
+- Munchkin
+- Apiary
+- Twilight Imperium

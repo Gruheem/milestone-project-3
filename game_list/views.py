@@ -14,7 +14,7 @@ from django.contrib import messages
 # Create your views here.
 class GameList(generic.ListView):
     template_name = "game_list/index.html"
-    paginate_by = 6
+    paginate_by = 12
 
     # Creates list of games and Handles the search filters.
     def get_queryset(self):
@@ -111,8 +111,12 @@ def game_detail(request, slug):
 
     :template:`game_list/game_detail.html`
     """ 
-    
-    queryset = BoardGame.objects.filter(Q(approved=True) | Q(added_by=request.user), slug=slug)
+    # Crashes if trying to use Q method when not logged in
+    if request.user.is_authenticated:
+        queryset = BoardGame.objects.filter(Q(approved=True) | Q(added_by=request.user), slug=slug)
+    else:
+        queryset = BoardGame.objects.filter(approved=True, slug=slug)
+
     boardgame = get_object_or_404(queryset)
 
     avg_rating = boardgame.reviews.filter(approved=True).aggregate(Avg('rating'))['rating__avg']
