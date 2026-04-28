@@ -4,6 +4,46 @@
 
 # [Current Palette](https://coolors.co/121212-1e1e1e-a0a0a0-e0e0e0-b8962e-d4af37-f2c94c-c5a75a)
 
+# Contents:
+
+- [UX](#ux)
+  - [Strategy](#strategy)
+    - [Project Goals](#project-goals)
+    - [Business Goals](#business-goals)
+    - [Player Goals](#player-goals)
+    - [User Personas](#user-personas)
+  - [Scope](#scope)
+    - [User Stories](#user-stories)
+  - [Structure](#structure)
+    - [Implemented Features](#implemented-features)
+  - [Skeleton](#skeleton)
+  - [Surface](#surface)
+    - [Design Choices](#design-choices)
+      - [Artwork](#artwork)
+      - [Colour Theme](#colour-testing)
+      - [Fonts](#fonts)
+      - [Audio](#audio)
+- [Accessibility](#accessibility)
+- [Technologies Used](#technologies-used)
+  - [Languages](#languages)
+  - [Libraries](#libraries)
+  - [Tools](#tools)
+  - [Practices](#practices)
+  - [Resources](#resources)
+- [Deployment](#deployment)
+- [Steps to Deploy](#steps-to-deploy)
+- [How to Run Locally](#how-to-run-locally)
+- [Known Bugs and Fixes](#known-bugs-and-fixes)
+- [Code Attribution](#code-attribution)
+- [Testing](#testing)
+  - [User Story Testing](#user-story-testing)
+  - [Business Goal Testing](#business-goal-testing)
+  - [Code Validation Testing](#code-validation-testing)
+  - [Lighthouse Testing](#lighthouse-testing)
+  - [Colour Testing](#colour-testing)
+  - [Responsiveness Testing](#responsiveness-testing)
+  - [Function Testing](#function-testing)
+
 ## UX
 The Site will be a place where board game enthusiasts and casual board game players can discover new board games, keep a library of games, review and comment on games. With future scope to link social features, more personalisation in the form of recommendations and log play sessions user's have played with their friends. 
 
@@ -293,6 +333,15 @@ slight changes made during developement:
 
 ### bugs 
 -summernote broke the forms without dedicated templates, couldnt find fix so removed it.
+
+- When deployed the text on the cencel register button in gold. I have addressed other links on the register card and it is this that is causing the problem. fix is to delete this style rule:  
+.sign-up .card .card-body a {  
+  color: var(--text-colour-gold);
+}  
+and instead of targeting and element I crate a class to turn the text gold and apply that class specifically to the <a> I want effected.
+
+
+
 
 ### Games Initially included
 - Catan
