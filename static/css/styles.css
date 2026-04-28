@@ -21,7 +21,7 @@ body {
   font-family: var(--font-secondary);
 }
 
-.signup-link {
+.card .signup-link {
   color: var(--text-colour-gold)
 }
 
