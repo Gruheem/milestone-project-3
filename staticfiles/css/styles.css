@@ -21,8 +21,8 @@ body {
   font-family: var(--font-secondary);
 }
 
-#signup-link {
-  color: var(--text-colour-gold);
+.signup-link {
+  color: var(--text-colour-gold)
 }
 
 .modal .modal-content {
@@ -294,12 +294,8 @@ nav a:hover,
 }
 
 /* Account Actions */
-.account-card {
+.account-card { 
   max-width: 35rem;
-}
-
-.sign-up .card .card-body a {
-  color: var(--text-colour-gold);
 }
 
 .my-close {
@@ -344,5 +340,5 @@ footer a {
 
 footer a:hover {
   color: var(--text-colour-gold);
-  
+
 }
