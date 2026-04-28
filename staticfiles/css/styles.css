@@ -1,69 +1,348 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Metamorphous&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Metamorphous&display=swap");
+
+:root {
+  --text-colour-primary: #c7c7c7;
+  --text-colour-secondary: #a8a8a8;
+  --text-colour-gold: #d4af37;
+  --font-primary: Inter, sans-serif;
+  --font-secondary: Metamorphous, serif;
+  --bg-main: #111111;
+  --bg-card: #1e1e1e;
+  --bg-stat: #2c2c2c;
+}
+
 body {
-    background-color: #121212;
-    color: #E0E0E0;
-    font-family: 'Inter', sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-colour-primary);
+  font-family: var(--font-primary);
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Metamorphous', serif;
+.secondary-font {
+  font-family: var(--font-secondary);
 }
 
-a {
+#signup-link {
+  color: var(--text-colour-gold);
+}
+
+.modal .modal-content {
+  background-color: transparent;
+}
+
+/* Nav Styling */
+.nav-background-colour {
+  background-color: var(--bg-main);
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23c7c7c7' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 0.2rem var(--text-colour-primary);
+}
+
+nav a,
+.card a {
+  color: #e0e0e0;
+  transition: color 0.3s ease;
   text-decoration: none;
-  color: #E0E0E0;
 }
 
-nav a:hover {
-    color: #D4AF37;
+nav a:hover,
+.card a:hover {
+  color: #d4af37;
 }
 
 .navbar a.active {
-  color: #E0E0E0;
-  border-bottom: 2px solid #D4AF37;
+  color: var(--text-colour-gold);
 }
 
 #title-span {
-    font-family: 'Metamorphous', serif;
+  font-family: "Metamorphous", serif;
 }
 
 .nav-span {
-    font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
+  margin: auto 0.5rem;
 }
 
-.card-body {
-    background-color: transparent;
-    /* border: none; */
+/* Hero Section */
+#hero {
+  position: relative;
 }
 
+#hero-image {
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  max-height: 25rem;
+  z-index: 0;
+}
+
+.hero-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10, 6, 2, 0.92) 0%,
+    rgba(10, 6, 2, 0.55) 45%,
+    rgba(10, 6, 2, 0.15) 100%
+  );
+  z-index: 1;
+}
+
+.hero-contents {
+  z-index: 2;
+  position: absolute;
+  bottom: 2.5rem;
+  left: 2rem;
+  text-shadow:
+    #1e1e1e 4px 4px 8px,
+    #1e1e1e 0px 0px 2px;
+  color: var(--text-colour-primary);
+}
+
+#hero-title {
+  font-size: 4.25rem;
+  margin-bottom: 1rem;
+  font-weight: 800;
+  font-family: var(--font-secondary);
+}
+
+@media screen and (max-width: 500px) {
+  #hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-contents {
+    bottom: 1rem;
+  }
+
+  .hero-strapline {
+    font-size: 0.9rem;
+  }
+}
+
+/* Search */
+.search-form {
+  display: flex;
+  gap: 1.5rem;
+  align-items: end;
+}
+
+#div_id_status {
+  margin-bottom: 0rem;
+}
+
+/* Grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  padding: 1rem 0;
+}
+
+/* Card */
 .card {
-    background-color: #1E1E1E;
-    border: 1px solid #B8962E;
+  background: var(--bg-card);
+  border-radius: 12px;
+  /* overflow: hidden; */
+  display: flex;
+  flex-direction: column;
 }
 
-.card:hover {
-  border: 1px solid #D4AF37;
-  box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+/* Card Image */
+.card-img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 9px 9px 0  0;
 }
 
-.muted {
-    color: #A0A0A0;
+/* Card Body */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
 }
 
+/* Card Title */
+.card-title {
+  color: var(--text-colour-primary);
+  font-family: var(--font-secondary);
+}
+
+/* Stats grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem;
+}
+
+.stat {
+  background: var(--bg-stat);
+  border-radius: 8px;
+  padding: 7px 8px;
+}
+
+.stat-label {
+  font-size: 10px;
+  color: var(--text-muted, #8a7560);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.stat-value {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-colour-secondary);
+}
+
+/* Genre Pill Tag */
 .genre-tag {
   background-color: rgba(212, 175, 55, 0.1);
-  color: #D4AF37;
+  color: #d4af37;
   padding: 2px 8px;
   border-radius: 9999px;
   font-size: 0.8rem;
 }
 
+/* Star Bar */
+.star-bar {
+  position: relative;
+  display: inline-block;
+  font-size: 1.2rem;
+  color: #ddd;
+  letter-spacing: 2px;
+}
+
+.star-bar::before {
+  content: "★★★★★";
+  color: #ddd; /* empty stars */
+}
+
+.star-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #f5a623;
+}
+
+.star-fill::before {
+  content: "★★★★★";
+  display: block;
+  width: var(--fill-width);
+  overflow: hidden;
+}
+
+/* Button Styling  */
 .btn-gold {
-  background-color: #D4AF37;
+  background-color: #d4af37;
   border: none;
   color: #121212;
 }
 
 .btn-gold:hover {
-  background-color: #F2C94C;
+  background-color: #f2c94c;
+}
+
+.btn-outline-gold {
+  background-color: transparent;
+  border: 1px solid #d4af37;
+  color: #d4af37;
+}
+
+.btn-outline-gold:hover {
+  background-color: #d4af37;
+  color: #121212;
+}
+
+/* Game Detail Page Styling  */
+.game-title {
+  font-size: 2.5rem;
+}
+
+/* Reviews and Comments Section */
+.reviews-title {
+  margin: 3.5rem 0 1.25rem 0.25rem;
+}
+
+.left-border {
+  border-left: 2px solid #2c2c2c;
+}
+
+/* Game Session Detail Styling */
+.sessions-title {
+  margin: 3.5rem 0 1.25rem 0.25rem;
+}
+
+.session-duration {
+  background: var(--bg-stat);
+  color: var(--text-colour-secondary);
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  padding: 0.18rem 0.5rem;
+  letter-spacing: 0.05rem;
+}
+
+/* Account Actions */
+.account-card {
+  max-width: 35rem;
+}
+
+.sign-up .card .card-body a {
+  color: var(--text-colour-gold);
+}
+
+.my-close {
+  color: var(--text-colour-gold) !important;
+  background: transparent;
+  border: none;
+}
+
+/* Game Forms */
+.game-form-card {
+  max-width: 47.3rem;
+  margin: auto;
+}
+
+/* Utility Styling */
+.muted {
+  color: #a0a0a0;
+}
+.faded {
+  opacity: 0.5;
+}
+
+.approval {
+  font-size: 10px;
+  color: #c9a84c;
+  font-style: italic;
+}
+
+/* Forms Styling */
+
+#div_id_genre_id > fieldset > div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+footer a {
+  color: var(--text-colour-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: var(--text-colour-gold);
+  
 }
