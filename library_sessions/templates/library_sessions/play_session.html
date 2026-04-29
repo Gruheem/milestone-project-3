@@ -1,9 +1,13 @@
-{% extends "base.html" %} {% load static %} {% load game_extras %} {% load crispy_forms_tags %} {% block content %}
+{% extends "base.html" %} 
+{% load static %} 
+{% load game_extras %} 
+{% load crispy_forms_tags %} 
+{% block content %}
 
 <div class="container mt-4">
   <div class="row {% if not boardgame.approved %}faded{% endif %}">
     <!-- LEFT: Sticky Stats -->
-    <div class="col-md-3">
+    <div class="col-md-3"> 
       <div class="position-sticky" style="top: 20px">
         <div class="card mb-3">
           <div class="card-body">
@@ -64,6 +68,13 @@
           >
             Edit Details
           </a>
+          <button
+            type="button"
+            class="btn btn-sm btn-outline-danger d-inline mb-3"
+            onclick="openDeleteLibraryModal({{ entry.id }}, '{{ entry.boardgame.title|escapejs }}')"
+          >
+            Remove
+          </button>
         </div>
         {% endif %}
       </div>
@@ -78,9 +89,9 @@
             {% if not boardgame.approved and boardgame.added_by == user %}
             <p class="approval mb-2">Game Awaiting Approval</p>
             {% endif %}
-            <h2 class="game-title secondary-font my-2">
+            <h1 class="game-title secondary-font my-2">
               {{ boardgame.title }}
-            </h2>
+            </h1>
             {% if avg_rating %}
             <div class="stat d-inline-block mb-2">
               <div class="star-bar" title="{{ avg_rating|floatformat:1 }}/5">
@@ -110,7 +121,7 @@
       <div id="sessionFormContainer" style="display: none">
         <div class="card mb-3">
           <div class="card-body">
-            <h5>Log a Play Session</h5>
+            <h2>Log a Play Session</h2>
             <p>Logged by: {{ user.username }}</p>
             <form method="post">
               {% csrf_token %} {{ form|crispy }}
@@ -142,49 +153,42 @@
         data-session-second-place="{{ session.second_place.id|default:'' }}"
         data-session-third-place="{{ session.third_place.id|default:'' }}"
       >
-        
         <div class="card-body">
           <div class="d-flex justify-content-between align-items-center mb-1">
             <span class="session-date"
-            >{{ session.date_played|date:"d M Y" }}</span
-          >
-          <span class="session-duration ms-auto">{{ session.duration }} mins</span>
+              >{{ session.date_played|date:"d M Y" }}</span
+            >
+            <span class="session-duration ms-auto"
+              >{{ session.duration }} mins</span
+            >
           </div>
           <div class="stats-grid" style="grid-template-columns: 1fr 1fr 1fr">
             <div class="stat" style="border-top: 2px solid #d4af37">
               <span class="stat-label">🥇 1st</span>
-              <span class="stat-value"
-                >{% if session.first_place %}{{ session.first_place.username }}{% else %}N/A{% endif %}</span
-              >
+              <span class="stat-value">{% if session.first_place %}{{ session.first_place.username }}{% else %}N/A{% endif %}</span>
             </div>
             <div class="stat" style="border-top: 2px solid #a8a8a8">
               <span class="stat-label">🥈 2nd</span>
               <span class="stat-value"
-                >{% if session.second_place %}{{ session.second_place.username }}{% else %}N/A{% endif %}</span
-              >
+                >{% if session.second_place %}{{ session.second_place.username }}{% else %}N/A{% endif %}</span>
             </div>
             <div class="stat" style="border-top: 2px solid #cd7f32">
               <span class="stat-label">🥉 3rd</span>
               <span class="stat-value"
-                >{% if session.third_place %}{{ session.third_place.username}}{% else %}N/A{% endif %}</span
-              >
+                >{% if session.third_place %}{{ session.third_place.username}}{% else %}N/A{% endif %}</span>
             </div>
           </div>
-
           <div class="stat">
             <span class="stat-label">Players</span>
             <span class="stat-value"
-              >{{ session.host.username }} (host){% for player in session.players.all %}, {{ player.username }}{% endfor %}</span
-            >
+              >{{ session.host.username }} (host){% for player in session.players.all %}, {{ player.username }}{% endfor %}</span>
           </div>
-
           {% if session.notes %}
           <div class="stat">
             <span class="stat-label">Notes</span>
             <span class="stat-value">{{ session.notes }}</span>
           </div>
           {% endif %}
-        
           <small class="muted">Logged by {{ session.host.username }}</small>
           {% if user == session.host %}
           <div class="d-flex gap-2">
@@ -243,7 +247,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Delete Session</h5>
+        <h3 class="modal-title">Delete Session</h3>
         <button
           type="button"
           class="btn-close"

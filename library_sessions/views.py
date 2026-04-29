@@ -59,8 +59,6 @@ def library_page(request):
         }
     )
 
-@login_required
-
 
 @login_required
 def remove_from_library(request, entry_id):

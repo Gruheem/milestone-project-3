@@ -1,17 +1,18 @@
-{% extends "base.html" %} {% load i18n %} {% load account socialaccount %} {% block head_title %} {% trans "Sign In" %} {% endblock %} {% block content %}
+{% extends "base.html" %} 
+{% load i18n %} 
+{% load account socialaccount %} 
+{% trans "Sign In" %} 
+{% block content %}
 
 <div class="container account-card" id="log-in">
-
   <div class="card">
     <div class="card-body">
       <h1>{% trans "Log In" %}</h1>
-
       <p>
-        Welcome back to Board Silly. To leave a comment or like
-        a post, please log in. If you have not created an account yet, then
+        Welcome back to Board Silly. To leave a comment or like a post, please
+        log in. If you have not created an account yet, then
         <a class="link signup-link" href="{{ signup_url }}">sign up</a> first.
       </p>
-
       <form class="login" method="POST" action="{% url 'account_login' %}">
         {% csrf_token %} {{ form.as_p }} {% if redirect_field_value %}
         <input
@@ -28,4 +29,5 @@
     </div>
   </div>
 </div>
+
 {% endblock %}

@@ -1,29 +1,28 @@
-{% extends "base.html" %}
-
+{% extends "base.html" %} 
 {% load i18n %}
-
-{% block head_title %}{% trans "Sign Out" %}{% endblock %}
-
+{% trans "Sign Out" %}
 {% block content %}
+
 <div class="container account-card">
-<div class="card">
-        <div class="card-body">
-            <h1>{% trans "Log Out" %}</h1>
-
-            <p>{% trans 'Are you sure you want to Log out?' %}</p>
-        
-    
-
-            <form method="post" action="{% url 'account_logout' %}" class="d-inline">
-                {% csrf_token %}
-                {% if redirect_field_value %}
-                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-                {% endif %}
-                <button class="btn btn-gold right" type="submit">{% trans 'Log Out' %}</button>
-                <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
-            </form>
-            
-        </div>
+  <div class="card">
+    <div class="card-body">
+      <h1>{% trans "Log Out" %}</h1>
+      <p>{% trans 'Are you sure you want to Log out?' %}</p>
+      <form method="post" action="{% url 'account_logout' %}" class="d-inline">
+        {% csrf_token %} {% if redirect_field_value %}
+        <input
+          type="hidden"
+          name="{{ redirect_field_name }}"
+          value="{{ redirect_field_value }}"
+        />
+        {% endif %}
+        <button class="btn btn-gold right" type="submit">
+          {% trans 'Log Out' %}
+        </button>
+        <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
+      </form>
     </div>
+  </div>
 </div>
+
 {% endblock %}
