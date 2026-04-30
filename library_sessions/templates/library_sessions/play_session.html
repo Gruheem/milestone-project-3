@@ -251,35 +251,44 @@
 
 <!-- Delete Session Modal -->
 <div class="modal fade" id="deleteSessionModal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title">Delete Session</h3>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <p>Are you sure you want to delete this session?</p>
-        <p class="text-muted">This cannot be undone.</p>
-      </div>
-      <div class="modal-footer">
-        <form id="deleteSessionForm" method="post">
-          {% csrf_token %}
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
-            Cancel
-          </button>
-          <button type="submit" class="btn btn-danger">Yes, Delete</button>
-        </form>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="card">
+            <div class="card-body">
+              <div
+                class="d-flex justify-content-between align-items-center mb-1"
+              >
+                <h3>Delete Session: <span id="deleteSessionTitle"></span></h3>
+                <div class="stat d-inline-block p-0 ms-5">
+                  <button
+                    type="button"
+                    class="my-close"
+                    data-bs-dismiss="modal"
+                  >
+                    X
+                  </button>
+                </div>
+              </div>
+              <p>Are you sure you want to delete this session?</p>
+              <p class="text-muted">This cannot be undone.</p>
+
+              <form id="deleteSessionForm" method="post">
+                {% csrf_token %}
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Cancel
+                </button>
+                <button type="submit" class="btn btn-danger">
+                  Yes, Delete
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
 {% endblock %}
