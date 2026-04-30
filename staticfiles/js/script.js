@@ -8,24 +8,31 @@ document.querySelector('.navbar-toggler').addEventListener('click', function() {
 });
 
 // Form Toggles
-
 // Review Form Toggle
 function toggleReviewForm() {
   const form = document.getElementById("reviewFormContainer");
-  form.style.display = form.style.display === "none" ? "block" : "none";
+  if (form.style.display === "none" || form.style.display === "") {
+    form.style.display = "block";
+  } else {
+    form.style.display = "none";
+  }
 }
 
 // Comment Form Toggle
 function toggleCommentForm(reviewId) {
   const form = document.getElementById(`commentForm-${reviewId}`);
-  form.style.display = form.style.display === "none" ? "block" : "none";
+  if (form.style.display === "none" || form.style.display === "") {
+    form.style.display = "block";
+  } else {
+    form.style.display = "none";
+  }
 }
 
 // Edit Review Form Toggle
 function toggleEditReviewForm(reviewId) {
   const form = document.getElementById(`editReviewForm-${reviewId}`);
 
-  if (form.style.display === "none") {
+  if (form.style.display === "none" || form.style.display === "") {
     // Pre-populate fields from data attributes on the card
     const card = document.querySelector(`[data-review-id="${reviewId}"]`);
     form.querySelector('[name="title"]').value = card.dataset.reviewTitle;
@@ -41,7 +48,7 @@ function toggleEditReviewForm(reviewId) {
 function toggleEditCommentForm(commentId) {
   const form = document.getElementById(`editCommentForm-${commentId}`);
 
-  if (form.style.display === "none") {
+  if (form.style.display === "none" || form.style.display === "") {
     const card = document.querySelector(`[data-comment-id="${commentId}"]`);
     form.querySelector('[name="content"]').value = card.dataset.commentContent;
     form.style.display = "block";
@@ -83,7 +90,11 @@ function openDeleteLibraryModal(entryId, gameTitle) {
 // Log Session Form Toggle
 function toggleSessionForm() {
   const form = document.getElementById("sessionFormContainer");
-  form.style.display = form.style.display === "none" ? "block" : "none";
+  if (form.style.display === "none" || form.style.display === "") {
+    form.style.display = "block";
+  } else {
+    form.style.display = "none";
+  }
 }
 
 // Delete Session Modal

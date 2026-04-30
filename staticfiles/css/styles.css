@@ -4,11 +4,15 @@
   --text-colour-primary: #c7c7c7;
   --text-colour-secondary: #a8a8a8;
   --text-colour-gold: #d4af37;
+  --text-stat-label: #8a7560;
+  --text-muted: #a0a0a0;
   --font-primary: Inter, sans-serif;
   --font-secondary: Metamorphous, serif;
   --bg-main: #111111;
   --bg-card: #1e1e1e;
   --bg-stat: #2c2c2c;
+  --badge-bg: #5E548E;
+  --genre-tag-bg: #E3E8EF;
 }
 
 body {
@@ -44,14 +48,14 @@ body {
 
 nav a,
 .card a {
-  color: #e0e0e0;
+  color: var(--text-colour-primary);
   transition: color 0.3s ease;
   text-decoration: none;
 }
 
 nav a:hover,
 .card a:hover {
-  color: #d4af37;
+  color: var(--text-colour-gold);
 }
 
 .navbar a.active {
@@ -98,8 +102,8 @@ nav a:hover,
   bottom: 2.5rem;
   left: 2rem;
   text-shadow:
-    #1e1e1e 4px 4px 8px,
-    #1e1e1e 0px 0px 2px;
+    #000000 4px 4px 8px,
+    #000000 0px 0px 2px;
   color: var(--text-colour-primary);
 }
 
@@ -147,21 +151,9 @@ nav a:hover,
 .card {
   background: var(--bg-card);
   border-radius: 12px;
-  overflow: hidden;
+  /* overflow: hidden; */
   display: flex;
   flex-direction: column;
-}
-
-.clickable {
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-  border: 1px solid transparent;
-}
-
-.clickable:hover {
-  transform: translateY(-4px);
-  border-color: #c9a84c;
-  box-shadow: 0 4px 12px rgba(201, 165, 76, 0.35);
 }
 
 /* Card Image */
@@ -201,7 +193,7 @@ nav a:hover,
 
 .stat-label {
   font-size: 10px;
-  color: var(--text-muted, #8a7560);
+  color: var(--text-stat-label);
   text-transform: uppercase;
   letter-spacing: 0.04em;
   display: block;
@@ -217,7 +209,7 @@ nav a:hover,
 /* Genre Pill Tag */
 .genre-tag {
   background-color: rgba(212, 175, 55, 0.1);
-  color: #d4af37;
+  color: var(--genre-tag-bg);
   padding: 2px 8px;
   border-radius: 9999px;
   font-size: 0.8rem;
@@ -228,13 +220,13 @@ nav a:hover,
   position: relative;
   display: inline-block;
   font-size: 1.2rem;
-  color: #ddd;
+  color: var(--text-colour-primary);
   letter-spacing: 2px;
 }
 
 .star-bar::before {
   content: "★★★★★";
-  color: #ddd; /* empty stars */
+  color: var(--text-colour-primary); /* empty stars */
 }
 
 .star-fill {
@@ -244,36 +236,46 @@ nav a:hover,
   height: 100%;
   overflow: hidden;
   white-space: nowrap;
-  color: #f5a623;
+  color: var(--text-colour-gold);
 }
 
 .star-fill::before {
   content: "★★★★★";
   display: block;
-  width: var(--fill-width);
   overflow: hidden;
 }
 
 /* Button Styling  */
 .btn-gold {
-  background-color: #d4af37;
+  background-color: var(--text-colour-gold);
   border: none;
-  color: #121212;
+  color: var(--bg-main);
 }
 
 .btn-gold:hover {
-  background-color: #f2c94c;
+  background-color: var(--text-colour-gold);
 }
 
 .btn-outline-gold {
   background-color: transparent;
-  border: 1px solid #d4af37;
-  color: #d4af37;
+  border: 1px solid var(--text-colour-gold);
+  color: var(--text-colour-gold);
 }
 
 .btn-outline-gold:hover {
-  background-color: #d4af37;
-  color: #121212;
+  background: var(--text-colour-gold);
+  color: var(--bg-main);
+}
+
+/* Badge styling  */
+.badge-owned-bg {
+  background-color: var(--badge-bg);
+}
+
+.badge-wishlist-bg {
+  background-color: transparent;
+  border: 1px solid var(--badge-bg);
+  color: var(--badge-bg);
 }
 
 /* Game Detail Page Styling  */
@@ -287,7 +289,7 @@ nav a:hover,
 }
 
 .left-border {
-  border-left: 2px solid #2c2c2c;
+  border-left: 2px solid var(--bg-stat);
 }
 
 /* Game Session Detail Styling */
@@ -324,7 +326,7 @@ nav a:hover,
 
 /* Utility Styling */
 .muted {
-  color: #a0a0a0;
+  color: var(--text-muted);
 }
 .faded {
   opacity: 0.5;

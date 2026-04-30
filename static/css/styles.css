@@ -4,11 +4,15 @@
   --text-colour-primary: #c7c7c7;
   --text-colour-secondary: #a8a8a8;
   --text-colour-gold: #d4af37;
+  --text-stat-label: #8a7560;
+  --text-muted: #a0a0a0;
   --font-primary: Inter, sans-serif;
   --font-secondary: Metamorphous, serif;
   --bg-main: #111111;
   --bg-card: #1e1e1e;
   --bg-stat: #2c2c2c;
+  --badge-bg: #5E548E;
+  --genre-tag-bg: #E3E8EF;
 }
 
 body {
@@ -44,14 +48,14 @@ body {
 
 nav a,
 .card a {
-  color: #e0e0e0;
+  color: var(--text-colour-primary);
   transition: color 0.3s ease;
   text-decoration: none;
 }
 
 nav a:hover,
 .card a:hover {
-  color: #d4af37;
+  color: var(--text-colour-gold);
 }
 
 .navbar a.active {
@@ -98,8 +102,8 @@ nav a:hover,
   bottom: 2.5rem;
   left: 2rem;
   text-shadow:
-    #1e1e1e 4px 4px 8px,
-    #1e1e1e 0px 0px 2px;
+    #000000 0.25rem 0.25rem 0.5rem,
+    #000000 0rem 0rem 0.125rem;
   color: var(--text-colour-primary);
 }
 
@@ -138,15 +142,15 @@ nav a:hover,
 /* Grid */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr));
+  gap: 1rem;
   padding: 1rem 0;
 }
 
 /* Card */
 .card {
   background: var(--bg-card);
-  border-radius: 12px;
+  border-radius: 0.75rem;
   /* overflow: hidden; */
   display: flex;
   flex-direction: column;
@@ -157,14 +161,14 @@ nav a:hover,
   width: 100%;
   aspect-ratio: 3 / 4;
   object-fit: cover;
-  border-radius: 9px 9px 0  0;
+  border-radius: 0.55rem 0.55rem 0  0;
 }
 
 /* Card Body */
 .card-body {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem;
   flex: 1;
 }
 
@@ -183,21 +187,21 @@ nav a:hover,
 
 .stat {
   background: var(--bg-stat);
-  border-radius: 8px;
-  padding: 7px 8px;
+  border-radius: 0.5rem;
+  padding: 0.4375rem 0.5rem;
 }
 
 .stat-label {
-  font-size: 10px;
-  color: var(--text-muted, #8a7560);
+  font-size: 0.625rem;
+  color: var(--text-stat-label);
   text-transform: uppercase;
   letter-spacing: 0.04em;
   display: block;
-  margin-bottom: 2px;
+  margin-bottom: 0.125rem;
 }
 
 .stat-value {
-  font-size: 13px;
+  font-size: 0.8125rem;
   font-weight: 500;
   color: var(--text-colour-secondary);
 }
@@ -205,8 +209,8 @@ nav a:hover,
 /* Genre Pill Tag */
 .genre-tag {
   background-color: rgba(212, 175, 55, 0.1);
-  color: #d4af37;
-  padding: 2px 8px;
+  color: var(--genre-tag-bg);
+  padding: 0.125rem 0.5rem;
   border-radius: 9999px;
   font-size: 0.8rem;
 }
@@ -216,13 +220,13 @@ nav a:hover,
   position: relative;
   display: inline-block;
   font-size: 1.2rem;
-  color: #ddd;
-  letter-spacing: 2px;
+  color: var(--text-colour-primary);
+  letter-spacing: 0.125rem;
 }
 
 .star-bar::before {
   content: "★★★★★";
-  color: #ddd; /* empty stars */
+  color: var(--text-colour-primary); /* empty stars */
 }
 
 .star-fill {
@@ -232,36 +236,46 @@ nav a:hover,
   height: 100%;
   overflow: hidden;
   white-space: nowrap;
-  color: #f5a623;
+  color: var(--text-colour-gold);
 }
 
 .star-fill::before {
   content: "★★★★★";
   display: block;
-  width: var(--fill-width);
   overflow: hidden;
 }
 
 /* Button Styling  */
 .btn-gold {
-  background-color: #d4af37;
+  background-color: var(--text-colour-gold);
   border: none;
-  color: #121212;
+  color: var(--bg-main);
 }
 
 .btn-gold:hover {
-  background-color: #f2c94c;
+  background-color: var(--text-colour-gold);
 }
 
 .btn-outline-gold {
   background-color: transparent;
-  border: 1px solid #d4af37;
-  color: #d4af37;
+  border: 1px solid var(--text-colour-gold);
+  color: var(--text-colour-gold);
 }
 
 .btn-outline-gold:hover {
-  background-color: #d4af37;
-  color: #121212;
+  background: var(--text-colour-gold);
+  color: var(--bg-main);
+}
+
+/* Badge styling  */
+.badge-owned-bg {
+  background-color: var(--badge-bg);
+}
+
+.badge-wishlist-bg {
+  background-color: transparent;
+  border: 1px solid var(--badge-bg);
+  color: var(--badge-bg);
 }
 
 /* Game Detail Page Styling  */
@@ -275,7 +289,7 @@ nav a:hover,
 }
 
 .left-border {
-  border-left: 2px solid #2c2c2c;
+  border-left: 2px solid var(--bg-stat);
 }
 
 /* Game Session Detail Styling */
@@ -312,14 +326,14 @@ nav a:hover,
 
 /* Utility Styling */
 .muted {
-  color: #a0a0a0;
+  color: var(--text-muted);
 }
 .faded {
   opacity: 0.5;
 }
 
 .approval {
-  font-size: 10px;
+  font-size: 0.625rem;
   color: #c9a84c;
   font-style: italic;
 }

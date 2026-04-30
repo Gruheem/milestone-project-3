@@ -35,7 +35,7 @@
     {% if entries %} {% for entry in entries %}
     <div class="card-wrapper">
       <div
-        class="card {% if not entry.boardgame.approved and entry.boardgame.added_by == request.user %}faded{% elif not entry.boardgame.approved %}d-none{% endif %}"
+        class="card clickable {% if not entry.boardgame.approved and entry.boardgame.added_by == request.user %}faded{% elif not entry.boardgame.approved %}d-none{% endif %}"
       >
         <div class="card-body">
           {% if entry.boardgame.approved or entry.boardgame.added_by == request.user %}
@@ -58,7 +58,7 @@
           {% endif %}
           <!-- Status Badge -->
           <span
-            class="badge mb-2 {% if entry.status == 'owned' %}bg-success{% else %}bg-warning text-dark{% endif %}"
+            class="badge mb-2 {% if entry.status == 'owned' %}badge-owned-bg {% else %}badge-wishlist-bg{% endif %}"
           >
             {{ entry.get_status_display }}
           </span>
