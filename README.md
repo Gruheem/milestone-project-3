@@ -618,7 +618,7 @@ Acceptance criteria:
 - A user can edit or delete their own comments but not other users' comments
 - Visitors can read comments but are prompted to log in to post one
 - Successful comment actions show a confirmation message  
-Status: ***PASS***
+Status: **PASS**
 
 User Story 8 - Feedback & Security:
 Acceptance criteria: 
