@@ -208,8 +208,8 @@ nav a:hover,
 
 /* Genre Pill Tag */
 .genre-tag {
-  background-color: rgba(212, 175, 55, 0.1);
-  color: var(--genre-tag-bg);
+  background-color: rgba(var(--genre-tag-bg), 0.1);
+  color: var(--text-colour-primary);
   padding: 0.125rem 0.5rem;
   border-radius: 9999px;
   font-size: 0.8rem;
