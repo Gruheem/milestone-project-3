@@ -10,7 +10,9 @@
   <div>
     <div id="hero">
       <img
-        src="{% static 'images/hero-image.jpg' %}"
+        fetchpriority="high"
+        rel="preload"
+        src="{% static 'images/hero-image.webp' %}"
         alt="Board games on a table"
         class=""
         id="hero-image"
@@ -67,7 +69,7 @@
               {% else %}
               <img
                 class="card-img"
-                src="{% static 'images/default.jpg' %}"
+                src="{% static 'images/default.webp' %}"
                 alt="Default image"
               />
               {% endif %}

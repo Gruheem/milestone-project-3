@@ -285,6 +285,7 @@ Personal Library
 ![Empty Library Message](/static/images/empty-library.png)
 
 Log Play Session
+- User Can log play session on a game they have just added without having to wait for the admin to approve it
 - Log How long the game took
 - Log who played the game
 - Log 1st, 2nd and third place
@@ -344,6 +345,7 @@ Deployment
 - Live Search (AJAX)
 - Log in with social media
 - Stat Trackers with personal dashboard with play stats and graphs
+- Add a picture of your play session board once the game is completed
 
 ## Skeleton
 ### Database Schema
