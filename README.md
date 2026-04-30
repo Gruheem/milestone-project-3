@@ -237,7 +237,12 @@ User Authentication
 - User registration with username and password
 - Login and logout functionality
 - Navigation updates dynamically based on authentication state
-- All protected pages redirect unauthenticated users to login
+- All protected pages redirect unauthenticated users to login  
+![Log In](/static/images/log-in.png)
+![Log Out](/static/images/log-out.png)
+![Sign up](/static/images/sign-up.png)
+![Logged In Nav](/static/images/nav-two.png)
+![Logged Out Nav](/static/images/nav-one.png)
 
 Game Catalogue
 - Home page displaying all games as cards showing key information
@@ -245,19 +250,27 @@ Game Catalogue
 - Category dropdown filter
 - Combined search and filter working simultaneously
 - No-results state with message
+![Game Library](/static/images/game-library.png)
+![NoSearch Results](/static/images/nothing-matching-search.png)
+![No Filter Results](/static/images/no-filter-match.png)
 
 Game Detail Page
 - Full game information display 
 - Reviews section visible to all visitors
 - Comments section visible to all visitors
 - Empty state messages when no reviews or comments exist yet
+![Game Detail Page](/static/images/game-detail.png)
+![Review and Comment](/static/images/review-and-comment.png)
 
 Game Management
 - Add game form with all relevant fields including cover image upload
 - Edit game form pre-populated with existing data
-- Delete game with confirmation step
 - Ownership checks ensuring only the adding user can edit or delete
+- Message stating Pending Wait for Added Game to be Approved
 - Success and error messages for all actions
+![Add Game Form](/static/images/add-game.png)
+![Edit Game Form](/static/images/edit-game.png)
+![]
 
 Personal Library
 - Add any game to personal library from the game detail page
@@ -266,12 +279,19 @@ Personal Library
 - Library page showing all entries with status clearly displayed
 - Remove game from library with confirmation step
 - Empty state for library with prompt to browse
+![Duplicate Library Entry Message](/static/images/game-library-duplicate-warning.png)
+![Delete Library Entry Modal](/static/images/delete-library-entry.png)
+![Library Entry](/static/images/library-entry.png)
+![Empty Library Message](/static/images/empty-library.png)
 
 Log Play Session
 - Log How long the game took
 - Log who played the game
 - Log 1st, 2nd and third place
 - Log any notes about how the session went 
+- delete session modal
+![Play Session](/static/images/session.png)
+![Delete Session Modal](/static/images/delete-session.png)
 
 Reviews and Ratings
 - Star rating submission (1–5) with written review body
@@ -279,6 +299,13 @@ Reviews and Ratings
 - Edit and delete own review
 - Average rating calculated and displayed on game cards and detail page
 - Login prompt shown to visitors in place of the review form
+- reviews awaiting approval have message and faded appearance
+![Average Rating](/static/images/average-rating.png)
+![Review Awaiting Approval](/static/images/review-and-comment-approval.png)
+![delete Comment](/static/images/delete-comment.png)
+![Delete Review](/static/images/delete-review.png)
+![First to leave a comment](/static/images/comment-first.png)
+![First to leave a review](/static/images/first-review-message.png)
 
 Comments and Review Replies
 - Reply directly to an individual review
@@ -286,6 +313,8 @@ Comments and Review Replies
 - Edit and delete own comments and replies
 - Login prompt shown to visitors in place of comment form
 - Success messages for all comment and reply actions
+![Comment Submit Message](/static/images/comment-submitted-message.png)
+![Review Submit Message](/static/images/review-submitted-message.png)
 
 Library Filtering
 - Filter library entries by All, Owned or Wishlist status
@@ -297,11 +326,24 @@ User Feedback and Access Control
 Custom 404 Page
 - Branded 404 error page matching site design
 - Clear link back to the home page
+![User 404 Page](/static/images/custom-404-user.png)
+![Guest 404 Page](/static/images/custom-404-user.png)
 
 Deployment
 - Application deployed to a cloud platform
 - Environment variables used for all secret keys
 - No secrets or commented out code in the repository
+
+### Future Features
+- Social and Community Features
+  - Follow and unfollow other users
+  - Activity feed showing content from followed users
+  - Public user profile pages
+  - User display name and bio editing
+  - Personalised game recommendations based on library contents
+- Live Search (AJAX)
+- Log in with social media
+- Stat Trackers with personal dashboard with play stats and graphs
 
 ## Skeleton
 ### Database Schema
@@ -327,38 +369,133 @@ The final design deviated slightly as the developement evolved and I learnt more
 
 ## Surface
 ### Design Choices
-For the project I want a clean design, dark greys with brighter accent colours(gold/amber). The look was insired by programs like Steam, Dark Mode LLMs and VS Code itself.  
+For the project I want a clean design, dark greys with brighter accent colours(gold/amber). The look was insired by programs like Steam and Dark Mode profiles of other popular apps. This gold colour was made my CTA colour so whenever you will find reactivity or links in the project they will have this colour associated with them for cleear consistent UX.
 
 The Hero Image used was taken by [Madeline Liu](https://unsplash.com/@madeline_sd) and provided by [Unsplash](https://unsplash.com/)
 The box art images I uploaded to cloudinary myself were from [Board Game Geek](https://boardgame.geek.com/)   
 
 ### Colour Theme
+These were the colours chosen for the colour pallette. I wanted to keep it quite simple 
+![Colour pallette](/static/images/coloue-pallette.png)
 
 ### Fonts
+I chose two fonts for the app. Firstly 'Metamorphus', I chose this as the title font as it has a medievil inspired, RPG feel to it, this was used for the app title and game titles. Secondly, Inter, this was chosen for its clarity and simplicity to compliment the more stylised font.
+
+[Metamorphus](https://fonts.google.com/specimen/Metamorphous?preview.script=Latn)
+[Inter](https://fonts.google.com/specimen/Inter)
+
+### Design changes
+slight changes made during developement:
+- changed genre relatioinship from 1:N to N:N to allow games to have multiple genres
+- made comment only on reviews not on games. Felt more natural flow. This removed the need for having a nullable field on the comment model.
 
 ## Technologies Used
 ### Dependencies
+Core Framework:  
+Django==6.0.3 - Main web framework
+asgiref==3.11.1ASGI - support layer required by Django
+sqlparse==0.5.5SQL - query formatting, required by Django  
+
+Database:  
+psycopg==3.3.3 - PostgreSQL database adapter
+dj-database-url==3.1.2 - Parses database URLs from environment variables (e.g. for Heroku)  
+
+Authentication:  
+django-allauth==65.15.1 - User registration, login, and social authentication  
+
+Forms & UI:
+django-crispy-forms==2.6 - Renders Django forms with Bootstrap styling  
+crispy-bootstrap5==2026.3 - Bootstrap 5 template pack for crispy-forms  
+django-summernote==0.8.20.0 - Rich text / WYSIWYG editor for form fields   
+bleach==6.3.0 - Sanitises HTML output from the rich text editor  
+webencodings==0.5.1 - Character encoding support used by bleach  
+
+Media & Static Files:  
+cloudinary==1.44.2 - Cloudinary SDK for image upload and management
+dj3-cloudinary-storage==0.0.6 - Django storage backend for Cloudinary
+whitenoise==6.12.0 - Serves static files directly from Django in production  
+
+Deployment:  
+gunicorn==25.3.0 - WSGI HTTP server for running Django in production
+python-dotenv==1.2.2 - Loads environment variables from a .env file  
+
+HTTP & Networking:  
+requests==2.33.1 - HTTP client library (used by Cloudinary SDK)
+urllib3==2.6.3 - HTTP connection pooling, used by requests
+certifi==2026.2.25 - Mozilla CA certificate bundle for HTTPS verification
+charset-normalizer==3.4.7 - Character encoding detection, used by requests
+idna==3.12 - Internationalised domain name support, used by requests  
+
+Utilities:  
+packaging==26.0 - Version parsing and comparison utilities
+six==1.17.0 - Python 2/3 compatibility layer (legacy dependency)
+typing_extensions==4.15.0 - Backported type hint support for older Python versions
 
 ### Languages
-
-### Libraries
+- HTML(Hyper Text Markup Language)
+  - DTL(Django Template Language)
+- CSS(Cascading Style Sheets)
+- JavaScript
+- Python 3.12
+ 
+### Libraries and  Frameworks
+- Bootstrap
+- Django
 
 ### Tools
+Colours - [coolers](https://coolors.co)
+Wireframes - [draw.io](https://app.diagrams.net/)
+Debugging & Specific Question Help - [Claude](https://claude.ai), [ChatGPT](https://chatgpt.com/)
 
 ### Practices
 #### Defensive Programming/Error Handling 
-Raise ValueError() for cloudinary url and secret key if not set.(settings.py)
+Raise ValueError() for cloudinary url and secret key if not set.(settings.py)  
+
+#### Pythonic Programming
+Creating Docstrings for all the functions and classes
 
 ### Resources
+Bootstrap Documentaion
+CSS Documentation
+HTML Documentation
+Django Documentation
 
 ## Deployment
 ### Steps to Deploy
+This web app was deployed through Heroku linked with GitHub.  
+Steps taken to deploy:  
+- Prepare sttings.py for production deployment
+  - DEBUG > False
+  - Removing Secret Keys
+- Create Pocfile
+- Add gunicorn
+- Collect Static Files through terminal(`python3 manage.py collectstatic`)
+- Push Deployment ready Commit to Github
+- Create a Heroku app
+- Set Environment Variables in Heroku Settings
+- Link ot GitHub
+- Deploy app from main branch
 
 ### How to Run Locally
+To run this project localy make sure you have your virtual environment activated and the correct version of python runing. Then install dependencies using requirements.txt(pip3 install requirements.txt). After this has successfully completed, in the terminal, bash `python3 manage.py runserver`. Hold control/command and click on the link created to auto launch the app in your default browser.  
 
-## Kown Bugs and Fixes
+## Known Bugs and Fixes
+- summernote broke the forms without dedicated templates, couldnt find fix so removed it.
+
+- When deployed the text on the cencel register button in gold. I have addressed other links on the register card and it is this that is causing the problem. fix is to delete this style rule:  
+``` CSS
+.sign-up .card .card-body a {  
+  color: var(--text-colour-gold);
+}  
+```
+and instead of targeting and element I crate a class with some added specificity to turn the text gold and apply that class to the `<a>` I want effected.
+
+- The Shadow on my Game Cards does not move with the translation on hover while the card and the border do. I assume this is something to do with what element the CSS class 'clickable' has been applied to in the card structure and pre existing classes that may be applied to the card structure already.
+
+- Star Bar isn't working On Game Session Page. My guess would be this is because the Average rating context lives in the game detail view and not the play session view.
 
 ## Code Attribution
+Claude wrote the Average Rating Star Bar lines of CSS as this was something I wasn't able to build myself running from lines 218 to 247 in static/css/styles.css.
 
 ## Testing
 ### User story testing
@@ -551,11 +688,9 @@ I used the statis analysis in VS Code to check for syntax errors and these were 
 
 
 ### Resposivenesss Testing
+Responsiveness was handled mainly By a CSS Grid for the game cards. The resposiveness of the content of the cards was achieved using CSS Flex Properties.  
 
-### Function testing
-
-
-
+I have manualy tested the app down to a resolution of 320px and I am happy with it's performnce through the range of screen sizes
 
 (W) Social and Community Features
 - Follow and unfollow other users
@@ -564,72 +699,11 @@ I used the statis analysis in VS Code to check for syntax errors and these were 
 - User display name and bio editing
 - Personalised game recommendations based on library contents
 
-
-
-
-
-
-
-### Dependencies
-default Dango dependencies:
-asgiref==3.11.1
-Django==6.0.3
-sqlparse==0.5.5
-
-For deploying on heroku:
-gunicorn==25.3.0
-packaging==26.0
-
-Allows us to interact with the DB in Python:
-psycopg==3.3.3
-
-Allows Django to connect to our DB using a URL:
-dj-database-url==3.1.2
-
-Summernote Admin panels:
-django-summernote==0.8.20.0
-bleach==6.3.0
-webencodings==0.5.1
-
-User Authentication and Registration:
-django-allauth==65.15.1
-
-Forms:
-crispy-bootstrap5==2026.3
-django-crispy-forms==2.6
-
-
-
-### Deployment
-I took steps to deploy at the earliest opportunity by just outputting a simple message as a string as our first basic html response.
-
-### Design changes
-slight changes made during developement:
-- changed genre relatioinship from 1:N to N:N to allow games to have multiple genres
-- made comment only on reviews not reviews and games. Felt more natural flow. This removed the need for having a nullable field on the model.
-
 ### Future Features
 - Live Search (AJAX)
 
-## To Do:
-### readme
-- Add User Story for ability to upload images.
-### styling
-- style buttons
-
-### bugs 
--summernote broke the forms without dedicated templates, couldnt find fix so removed it.
-
-- When deployed the text on the cencel register button in gold. I have addressed other links on the register card and it is this that is causing the problem. fix is to delete this style rule:  
-.sign-up .card .card-body a {  
-  color: var(--text-colour-gold);
-}  
-and instead of targeting and element I crate a class with some added specificity to turn the text gold and apply that class to the <a> I want effected.
-
-
-
-
-### Games Initially included
+#### Games Initially included
+This list of initialyy included games is designed to be a good start, but also to be expanded by Regular User's and the Super User:
 - Catan
 - Terraforming Mars
 - Scythe
@@ -645,4 +719,9 @@ and instead of targeting and element I crate a class with some added specificity
 - Ticket to Ride
 - Munchkin
 - Apiary
-- Twilight Imperium
+- Twilight Imperium  
+  
+### Thanks
+Thank you for taking the time to read through my project, this has been my favourite thing to make to date and is something I am going to introduce to my friends to see if they actualy want to use it.
+
+Special thanks to Manu my assessor for his support during the course of this project.
