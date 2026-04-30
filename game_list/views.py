@@ -24,7 +24,11 @@ class GameList(generic.ListView):
         else:
             pending = BoardGame.objects.none()
 
-        queryset = (approved | pending).distinct().order_by('-created_at')
+        queryset = (approved | pending)\
+            .distinct()\
+            .prefetch_related('genre_id')\
+            .annotate(avg_rating=Avg('reviews__rating'))\
+            .order_by('-created_at')
 
         self.form = GameFilterForm(self.request.GET)
 
@@ -38,7 +42,7 @@ class GameList(generic.ListView):
                 queryset = queryset.filter(genre_id=genre)
 
         # returns set of BoardGame objects with extra 'field' avg_rating.
-        return queryset.annotate(avg_rating=Avg('reviews__rating'))
+        return queryset
     
     # Gets and Extends the context data of our Generic ListView to include the form in the template.
     def get_context_data(self, **kwargs):
