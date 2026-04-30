@@ -1,10 +1,10 @@
-# milestone-project-3: Board Silly
+# **milestone-project-3: Board Silly**
+
+The site will be a place where board game enthusiasts and casual board game players can discover new board games, keep a library of games, review and comment on games and log play sessions with their friends.
 
 # [Deployed Site](https://board-silly-87262ba320b5.herokuapp.com/)
 
-# [Current Palette](https://coolors.co/121212-1e1e1e-a0a0a0-e0e0e0-b8962e-d4af37-f2c94c-c5a75a)
-
-# Contents:
+# **Contents:**
 
 - [UX](#ux)
   - [Strategy](#strategy)
@@ -55,7 +55,7 @@
   - [Responsiveness Testing](#responsiveness-testing)
 
 ## UX
-The Site will be a place where board game enthusiasts and casual board game players can discover new board games, keep a library of games, review and comment on games and log play sessions wit their friends. 
+Working through the UX planes was the main strategy used for planning this project. The Following 5 Headings give goals, structure, scope and methodology to the process. 
 
 ## Strategy
 ### Project Goals
@@ -74,41 +74,41 @@ To design and implement a well structured database, embedded in a fully function
 - Trust that their account and content are protected, receive clear feedback after every action, and know that only they can edit or delete what they have created.
 
 ### User Personas
-Name: Sam C.  
-Age: 28  
-Occupation: Student  
-Role: Casual Collector  
-Motivation: Wants a simple way to keep track of his shelf and find games his friend group will enjoy.  
-Frustrations: Relies on memory or a scrappy notes app. Can't easily filter by player count or complexity.  
-Usage pattern: Visits occasionally, mainly to add a new game or browse before a game night.  
+**Name:** Sam C.  
+**Age:** 28  
+**Occupation:** Student  
+**Role:** Casual Collector  
+**Motivation:** Wants a simple way to keep track of his shelf and find games his friend group will enjoy.  
+**Frustrations:** Relies on memory or a scrappy notes app. Can't easily filter by player count or complexity.  
+**Usage pattern:** Visits occasionally, mainly to add a new game or browse before a game night.  
 
-Name: Rhiannon B.  
-Age: 35  
-Occupation: Software developer  
-Role: Enthusiast  
-Motivation: Reads reviews before every purchase and wants to contribute her own opinions to the community.  
-Frustrations: Existing sites feel cluttered. Hard to leave focused feedback on a specific game or reply to another user's take.  
-Usage pattern: Regular visitor — browses new additions, writes reviews after playing, checks comments.
+**Name:** Rhiannon B.  
+**Age:** 35  
+**Occupation:** Software developer  
+**Role:** Enthusiast  
+**Motivation:** Reads reviews before every purchase and wants to contribute her own opinions to the community.  
+**Frustrations:** Existing sites feel cluttered. Hard to leave focused feedback on a specific game or reply to another user's take.  
+**Usage pattern:** Regular visitor — browses new additions, writes reviews after playing, checks comments.  
 
-Name: Marcus O.  
-Age: 42  
-Occupation: Teacher  
-Role: Casual Browser  
-Motivation: Looking for a family-friendly game. Wants honest, readable reviews without needing to sign up.  
-Frustrations: Overwhelmed by choice. Struggles to find games filtered by age range or complexity without trawling forums.  
-Usage pattern: Infrequent, task-focused visits. Unlikely to register unless the site gives him clear value first.  
+**Name:** Marcus O.  
+**Age:** 42  
+**Occupation:** Teacher  
+**Role:** Casual Browser  
+**Motivation:** Looking for a family-friendly game. Wants honest, readable reviews without needing to sign up.  
+**Frustrations:** Overwhelmed by choice. Struggles to find games filtered by age range or complexity without trawling forums.  
+**Usage pattern:** Infrequent, task-focused visits. Unlikely to register unless the site gives him clear value first.  
 
-Name: Priya K.  
-Age: 31  
-Occupation: Librarian  
-Role: Contributor   
-Motivation: Wants the catalogue to be complete and accurate — adds missing games and corrects her own entries.  
-Frustrations: Annoyed when data is missing or wrong with no way to fix it. Wants a straightforward add/edit flow.  
-Usage pattern: Moderate frequency — adds a game after buying it, edits entries when she spots errors.
+**Name:** Priya K.  
+**Age:** 31  
+**Occupation:** Librarian  
+**Role:** Contributor   
+**Motivation:** Wants the catalogue to be complete and accurate — adds missing games and corrects her own entries.  
+**Frustrations:** Annoyed when data is missing or wrong with no way to fix it. Wants a straightforward add/edit flow.  
+**Usage pattern:** Moderate frequency — adds a game after buying it, edits entries when she spots errors.  
 
 ## Scope
 ### User stories
-User Story 1:  
+**User Story 1:**  
 As a visitor, I want to be able to register for an account and log in and out so that my library and content are personal to me.
 
 Acceptance Criteria:
@@ -120,7 +120,7 @@ Acceptance Criteria:
 - The navigation updates to reflect whether the user is logged in or out
 
 
-User Story 2:  
+**User Story 2:**  
 As a visitor, I want to browse all games and search or filter by title and category so that I can find what I am looking for quickly.
 
 Acceptance Criteria:
@@ -130,7 +130,7 @@ Acceptance Criteria:
 - Both search and filter can be used at the same time
 - If nothing matches, a message is shown rather than an empty page
 
-User Story 3:  
+**User Story 3:**  
 As a visitor, I want to view the full details of a game including its stats, reviews and comments so that I can learn as much as possible about it before adding it to my library.
 
 Acceptance Criteria:
@@ -139,7 +139,7 @@ Acceptance Criteria:
 - Reviews and comments are visible on the detail page to all visitors
 - If there are no reviews or comments yet, a message is shown encouraging users to be the first
 
-User Story 4:  
+**User Story 4:**  
 As a logged-in user, I want to be able to add new games to the catalogue and manage ones I have added so that the catalogue stays accurate and up to date.
 
 Acceptance Criteria:
@@ -150,7 +150,7 @@ Acceptance Criteria:
 - Successful add, edit and delete actions each show a confirmation message
 
 
-User Story 5:  
+**User Story 5:**  
 As a logged-in user, I want to add games to my personal library with a status of Owned or Wishlist, view my collection and remove games I no longer want tracked.
 
 Acceptance Criteria:
@@ -161,7 +161,7 @@ Acceptance Criteria:
 - Games can be removed from the library with a confirmation step
 - If the library is empty a message is shown with a prompt to start browsing
 
-User Story 6:  
+**User Story 6:**  
 As a logged-in user, I want to write a star rating and review for games I have played so that I can share my opinion with other users.
 
 Acceptance Criteria:
@@ -171,7 +171,7 @@ Acceptance Criteria:
 - Deleting a review updates the average rating shown on the game
 - The average rating is displayed on both the game card and the detail page
 
-User Story 7:  
+**User Story 7:**  
 As a logged-in user, I want to leave a comment on a game's detail page or on a specific review so that I can share thoughts, ask questions or respond directly to what another user has said.
 
 Acceptance Criteria:
@@ -181,7 +181,7 @@ Acceptance Criteria:
 - Visitors can read comments but are prompted to log in to post one
 - Successful comment actions show a confirmation message
 
-User Story 8:  
+**User Story 8:**  
 As a user, I want to receive clear feedback after every action I take and feel confident that my content is protected from other users.
 
 Acceptance Criteria:
@@ -190,7 +190,7 @@ Acceptance Criteria:
 - Protected pages redirect unauthenticated users to the login page
 - Users cannot edit or delete content belonging to others, even by manipulating the URL
 
-User Story 9:  
+**User Story 9:**  
 As a logged-in user, I want to filter my library by Owned or Wishlist so that I can focus on one part of my collection at a time.
 
 Acceptance Criteria:
@@ -198,7 +198,7 @@ Acceptance Criteria:
 - Selecting a filter shows only the matching entries
 - If a filter returns no results a helpful message is shown
 
-User Story 10:  
+**User Story 10:**  
 Log a Play Session:
 As a logged-in user, I want to log a play session for a board game so that I can keep track of how often I play and who I played with.  
 
@@ -209,7 +209,7 @@ Acceptance Criteria:
 - A session can be deleted by the user who created it with a confirmation step
 - If a game has no sessions logged a message is shown 
 
-User Story 11:  
+**User Story 11:**  
 As a user, I want to see a helpful branded page if I navigate somewhere that does not exist rather than a confusing generic error.
 
 Acceptance Criteria:
@@ -217,7 +217,7 @@ Acceptance Criteria:
 - The 404 page includes a clear link back to the home page
 - The custom page is shown in production with Django DEBUG set to False
 
-User Story 12:  
+**User Story 12:**  
 As a registered user, I want to follow other users and view public profiles so that I can discover games through people with similar tastes.
 
 Acceptance Criteria: 
@@ -227,7 +227,7 @@ Acceptance Criteria:
 - Users can edit their own display name and bio
 
 
-User Story 13:  
+**User Story 13:**  
 As a logged-in user, I want to receive game recommendations based on my library so that the experience feels richer and more personalised.
 
 Acceptance Criteria: 
@@ -235,7 +235,7 @@ Acceptance Criteria:
 - Recommendations can be dismissed and do not reappear
 
 
-User Story 14:  
+**User Story 14:**  
 As a developer, I want the finished application deployed to a cloud platform so that it is accessible to anyone with the link.
 
 Acceptance Criteria:
@@ -246,7 +246,7 @@ Acceptance Criteria:
 
 ## Structure
 ### Implemented Features
-User Authentication
+**User Authentication**
 - User registration with username and password
 - Login and logout functionality
 - Navigation updates dynamically based on authentication state
@@ -258,7 +258,7 @@ User Authentication
 <img src="README_images/nav-two.png" alt="Logged In Nav" style="max-width: 40rem;">  
 <img src="README_images/nav-one.png" alt="Logged Out Nav" style="max-width: 40rem;">  
 
-Game Catalogue
+**Game Catalogue**
 - Home page displaying all games as cards showing key information
 - Search bar filtering games by title
 - Category dropdown filter
@@ -268,7 +268,7 @@ Game Catalogue
 <img src="README_images/nothing-matching-search.png" alt="NoSearch Results" style="max-width: 40rem;">  
 <img src="README_images/no-filter-match.png" alt="No Filter Results" style="max-width: 40rem;">  
 
-Game Detail Page
+**Game Detail Page**
 - Full game information display 
 - Reviews section visible to all visitors
 - Comments section visible to all visitors
@@ -276,7 +276,7 @@ Game Detail Page
 <img src="README_images/game-detail.png" alt="Game Detail Page" style="max-width: 40rem;">  
 <img src="README_images/review-and-comment.png" alt="Review and Comment" style="max-width: 40rem;">  
 
-Game Management
+**Game Management**
 - Add game form with all relevant fields including cover image upload
 - Edit game form pre-populated with existing data
 - Ownership checks ensuring only the adding user can edit or delete
@@ -285,7 +285,7 @@ Game Management
 <img src="README_images/add-game.png" alt="Add Game Form" style="max-width: 40rem;">  
 <img src="README_images/edit-game.png" alt="Edit Game Form" style="max-width: 40rem;">  
 
-Personal Library
+**Personal Library**
 - Add any game to personal library from the game detail page
 - Choose Owned or Wishlist status when adding
 - Duplicate prevention with helpful messaging
@@ -297,7 +297,7 @@ Personal Library
 <img src="README_images/library-entry.png" alt="Library Entry" style="max-width: 40rem;">  
 <img src="README_images/empty-library.png" alt="Empty Library Message" style="max-width: 40rem;">  
 
-Log Play Session
+**Log Play Session**
 - Users can log a play session on a game they have just added without having to wait for the admin to approve it
 - Record how long the game took
 - Record who played the game
@@ -307,7 +307,7 @@ Log Play Session
 <img src="README_images/session.png" alt="Play Session" style="max-width: 40rem;">  
 <img src="README_images/delete-session.png" alt="Delete Session Modal" style="max-width: 40rem;">  
 
-Reviews and Ratings
+**Reviews and Ratings**
 - Star rating submission (1–5) with written review body
 - One review per user per game enforced
 - Edit and delete own review
@@ -320,8 +320,9 @@ Reviews and Ratings
 <img src="README_images/delete-review.png" alt="Delete Review" style="max-width: 40rem;">  
 <img src="README_images/comment-first.png" alt="First to leave a comment" style="max-width: 40rem;">  
 <img src="README_images/first-review-message.png" alt="First to leave a review" style="max-width: 40rem;">  
+<img src="README_images/log-in-leave-review.png" alt="Log in to leave a review" style="max-width: 40rem;">
 
-Comments and Review Replies
+**Comments and Review Replies**
 - Reply directly to an individual review
 - Comments and replies displayed in chronological order with username and date
 - Edit and delete own comments and replies
@@ -330,20 +331,20 @@ Comments and Review Replies
 <img src="README_images/comment-submitted-message.png" alt="Comment Submit Message" style="max-width: 40rem;">  
 <img src="README_images/review-submitted-message.png" alt="Review Submit Message" style="max-width: 40rem;">  
 
-Library Filtering
+**Library Filtering**
 - Filter library entries by All, Owned or Wishlist status
 
-User Feedback and Access Control
+**User Feedback and Access Control**
 - Flash messages confirming every create, update and delete action
 - Clear validation error messages on all forms
 
-Custom 404 Page
+**Custom 404 Page**
 - Branded 404 error page matching site design
 - Clear link back to the home page  
 <img src="README_images/custom-404-user.png" alt="User 404 Page" style="max-width: 40rem;">  
 <img src="README_images/vustom-404-guest.png" alt="Guest 404 Page" style="max-width: 40rem;">  
 
-Deployment
+**Deployment**
 - Application deployed to a cloud platform
 - Environment variables used for all secret keys
 - No secrets or commented out code in the repository
@@ -394,9 +395,8 @@ These were the colours chosen for the colour palette. I wanted to keep it quite 
 <img src="README_images/coloue-pallette.png" alt="Colour palette" style="max-width: 40rem;">
 
 ### Fonts
-I chose two fonts for the app. Firstly, 'Metamorphus' was used as the title font because it has a medieval-inspired RPG feel. It was used for the app title and game titles. Secondly, Inter was chosen for its clarity and simplicity to complement the more stylised font.
-
-[Metamorphus](https://fonts.google.com/specimen/Metamorphous?preview.script=Latn)  
+[Metamorphous](https://fonts.google.com/specimen/Metamorphous?preview.script=Latn)
+I chose two fonts for the app. Firstly, 'Metamorphous' was used as the title font because it has a medieval-inspired RPG feel. It was used for the app title and game titles. Secondly, Inter was chosen for its clarity and simplicity to complement the more stylised font.
 [Inter](https://fonts.google.com/specimen/Inter)
 
 ### Audio
@@ -408,46 +408,46 @@ Slight changes made during development:
 - Made comments only on reviews, not on games, because it felt like a more natural flow. This removed the need for a nullable field on the comment model.
 
 ## Accessibility 
-Accessibility was considered throughout the build by using semantic HTML, visible form labels, clear button text, descriptive alternative text for images and consistent feedback messages. The dark palette was chosen to keep contrast strong against the background, all text on the sight meets the [WCAG standards](https://www.w3.org/WAI/standards-guidelines/wcag/) for text and background colour contrast.
+Accessibility was considered throughout the build by using semantic HTML, visible form labels, clear button text, descriptive alternative text for images and consistent feedback messages. The dark palette was chosen to keep contrast strong against the background; all text on the site meets the [WCAG standards](https://www.w3.org/WAI/standards-guidelines/wcag/) for text and background colour contrast.
 
 ## Technologies Used
 ### Dependencies
-Core Framework:  
+**Core Framework:**   
 Django==6.0.3 - Main web framework
 asgiref==3.11.1ASGI - support layer required by Django
 sqlparse==0.5.5SQL - query formatting, required by Django  
 
-Database:  
+**Database:**  
 psycopg==3.3.3 - PostgreSQL database adapter
 dj-database-url==3.1.2 - Parses database URLs from environment variables (e.g. for Heroku)  
 
-Authentication:  
+**Authentication:**  
 django-allauth==65.15.1 - User registration, login, and social authentication  
 
-Forms & UI:
+**Forms & UI:**
 django-crispy-forms==2.6 - Renders Django forms with Bootstrap styling  
 crispy-bootstrap5==2026.3 - Bootstrap 5 template pack for crispy-forms  
 django-summernote==0.8.20.0 - Rich text / WYSIWYG editor for form fields   
 bleach==6.3.0 - Sanitises HTML output from the rich text editor  
 webencodings==0.5.1 - Character encoding support used by bleach  
 
-Media & Static Files:  
+**Media & Static Files:**  
 cloudinary==1.44.2 - Cloudinary SDK for image upload and management
 dj3-cloudinary-storage==0.0.6 - Django storage backend for Cloudinary
 whitenoise==6.12.0 - Serves static files directly from Django in production  
 
-Deployment:  
+**Deployment:**  
 gunicorn==25.3.0 - WSGI HTTP server for running Django in production
 python-dotenv==1.2.2 - Loads environment variables from a .env file  
 
-HTTP & Networking:  
+**HTTP & Networking:**  
 requests==2.33.1 - HTTP client library (used by Cloudinary SDK)
 urllib3==2.6.3 - HTTP connection pooling, used by requests
 certifi==2026.2.25 - Mozilla CA certificate bundle for HTTPS verification
 charset-normalizer==3.4.7 - Character encoding detection, used by requests
 idna==3.12 - Internationalised domain name support, used by requests  
 
-Utilities:  
+**Utilities:**  
 packaging==26.0 - Version parsing and comparison utilities
 six==1.17.0 - Python 2/3 compatibility layer (legacy dependency)
 typing_extensions==4.15.0 - Backported type hint support for older Python versions
@@ -472,7 +472,7 @@ Debugging & Specific Question Help - [Claude](https://claude.ai), [ChatGPT](http
 
 ### Practices
 #### Defensive Programming/Error Handling 
-Defensive programming was used throughout the build to try to make the app more robust and user freindly. Steps were taken to handle errors gracefully rather than allowing the app to fail. For example,  
+Defensive programming was used throughout the build to try to make the app more robust and user friendly. Steps were taken to handle errors gracefully rather than allowing the app to fail. For example,  
 Error Handlers:
 ```Python
 CLOUDINARY_URL = os.getenv("CLOUDINARY_URL")
@@ -498,7 +498,7 @@ class Meta:
 ```  
 
 #### Pythonic Programming
-Creating Docstrings for all the functions and classes and adhearing to naming conventions.
+Creating docstrings for all the functions and classes and adhering to naming conventions.
 
 ### Resources
 Bootstrap Documentation
@@ -562,7 +562,7 @@ Acceptance criteria:
 - Logging in with incorrect credentials shows an error and does not grant access
 - Logging out ends the session and redirects to the home page
 - The navigation updates to reflect whether the user is logged in or out  
-Status: PASS
+Status: **PASS**
 
 User Story 2 - Browse/Search Games:
 Acceptance criteria: 
@@ -571,7 +571,7 @@ Acceptance criteria:
 - Filtering by category shows only games in that category
 - Both search and filter can be used at the same time
 - If nothing matches, a message is shown rather than an empty page  
-Status: PASS
+Status: **PASS**
 
 User Story 3 - View Game Details:
 Acceptance criteria: 
@@ -579,7 +579,7 @@ Acceptance criteria:
 - The detail page shows all game information including player count, play time, complexity and category
 - Reviews and comments are visible on the detail page to all visitors
 - If there are no reviews or comments yet, a message is shown encouraging users to be the first  
-Status: PASS
+Status: **PASS**
 
 User Story 4 - Manage Games:
 Acceptance criteria: 
@@ -588,7 +588,7 @@ Acceptance criteria:
 - A game can only be edited or deleted by the user who added it
 - Trying to edit or delete someone else's game via the URL redirects with an error
 - Successful add, edit and delete actions each show a confirmation message  
-Status: PASS
+Status: **PASS**
 
 User Story 5 - Personal Library:
 Acceptance criteria: 
@@ -597,7 +597,7 @@ Acceptance criteria:
 - Adding a game that is already in the library shows a message rather than creating a duplicate
 - The library page shows all the user's games with their status clearly displayed
 - Games can be removed from the library with a confirmation step; If the library is empty a message is shown with a prompt to start browsing  
-Status: PASS
+Status: **PASS**
  
 User Story 6 - Reviews & Ratings:
 Acceptance criteria: 
@@ -606,7 +606,7 @@ Acceptance criteria:
 - A user can only have one review per game, with the option to edit or delete it afterwards
 - Deleting a review updates the average rating shown on the game
 - The average rating is displayed on both the game card and the detail page  
-Status: PASS 
+Status: **PASS** 
 
 User Story 7 - Comments:
 Acceptance criteria: 
@@ -615,7 +615,7 @@ Acceptance criteria:
 - A user can edit or delete their own comments but not other users' comments
 - Visitors can read comments but are prompted to log in to post one
 - Successful comment actions show a confirmation message  
-Status: PASS
+Status: ***PASS***
 
 User Story 8 - Feedback & Security:
 Acceptance criteria: 
@@ -623,21 +623,21 @@ Acceptance criteria:
 - Form validation errors are clearly explained so the user knows what to fix
 - Protected pages redirect unauthenticated users to the login page
 - Users cannot edit or delete content belonging to others, even by manipulating the URL   
-Status: PASS
+Status: **PASS**
 
 User Story 9 - Filter Library:
 Acceptance criteria: 
 - The library page has filter options for All, Owned and Wishlist
 - Selecting a filter shows only the matching entries
 - If a filter returns no results a helpful message is shown  
-Status: PASS
+Status: **PASS**
 
 User Story 10 - Custom 404 Page:
 Acceptance criteria: 
 - Any unknown URL shows a custom 404 page that matches the site's design
 - The 404 page includes a clear link back to the home page
 - The custom page is shown in production with DEBUG set to False  
-Status: PASS 
+Status: **PASS** 
 
 User Story 11 - Social Features:
 Acceptance criteria: 
@@ -659,7 +659,7 @@ Acceptance criteria:
 - DEBUG is set to False in production
 - No secret keys or passwords appear anywhere in the codebase or version history
 - The live URL loads correctly with no broken links or missing static files  
-Status: PASS
+Status: **PASS**
 
 User Story 14 - Log Play Session:
 Acceptance criteria: 
@@ -668,7 +668,7 @@ Acceptance criteria:
 - Logged sessions appear on the user's library page under the relevant game
 - A session can be deleted by the user who created it with a confirmation step
 - If a game has no sessions logged a message is shown  
-Status: PASS
+Status: **PASS**
 
 ### Business Goal Testing
 The finished app supports the main goals set out for the project by letting users browse games, add and manage entries, maintain a personal library, write reviews, leave comments and log play sessions. The social and recommendation features were intentionally left as future scope.
@@ -752,7 +752,7 @@ Initial Score:
 
 ### Colour Testing
 The colour palette was tested visually across the main templates to make sure the gold accent colour stayed readable and consistent against the dark background. Links, buttons and feedback messages all use the same accent so the interface feels coherent.  
-The colour scheme also meets WCAG contrast requirements as demstrated in this contrast grid:  
+The colour scheme also meets WCAG contrast requirements as demonstrated in this contrast grid:  
 <img src="README_images/contrast-grid.png" alt="Contrast Grid" style="max-width: 40rem;">
 
 ### Responsiveness Testing
@@ -772,7 +772,7 @@ This list of initially included games is designed to be a good start, but can be
 - Splendor
 - Cosmoctopus
 - Diamant
-- Carcasonne
+- Carcassonne
 - 7 Wonders
 - 7 Wonders: Architect
 - Plunder
