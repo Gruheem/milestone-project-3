@@ -10,7 +10,7 @@
   - [Strategy](#strategy)
     - [Project Goals](#project-goals)
     - [Business Goals](#business-goals)
-    - [Player Goals](#player-goals)
+    - [User Goals](#user-goals)
     - [User Personas](#user-personas)
   - [Scope](#scope)
     - [User Stories](#user-stories)
@@ -55,6 +55,12 @@ To design and implement a well structured database, embedded in a fully function
 - Enable users to organise their physical collection and wishlist in one place, reducing the need for spreadsheets or paper lists.
 - Build a trusted catalogue of user reviews and ratings that helps others make informed purchasing and playing decisions.
 - Lay the groundwork for future social features such as user profiles, followers and personalised recommendations.
+
+### User Goals
+- Browse, search and filter the catalogue to find board games that suit their group, budget or taste, supported by community reviews and ratings.
+- Keep a personal library of owned games and a wishlist of future purchases, with the ability to filter and organise at a glance.
+- Add missing games, write reviews with star ratings, and leave comments on game pages or individual reviews to share knowledge with others.
+- Trust that their account and content are protected, receive clear feedback after every action, and know that only they can edit or delete what they have created.
 
 ### User Personas
 Name: Sam C.
@@ -262,6 +268,10 @@ Personal Library
 - Empty state for library with prompt to browse
 
 Log Play Session
+- Log How long the game took
+- Log who played the game
+- Log 1st, 2nd and third place
+- Log any notes about how the session went 
 
 Reviews and Ratings
 - Star rating submission (1–5) with written review body
@@ -301,16 +311,26 @@ I have created 5 database tables for the features that I want to implement. I am
 ![Database Schema](/README_images/db_schema.jpg)
 
 ### Wireframes
+Desktop Wireframe Templates:  
+![Add Game Desktop](/static/images/desktop__add_game_template_wireframe.webp)
+![Base and Home Desktop](/static/images/desktop_base_and_home_template_wireframes.webp)  
+![Game Detail Desktop](/static/images/desktop_game_detail_template_wireframe.webp)
+![User Library Desktop](/static/images/desktop_userlibrary_template_wireframe.webp)  
 
+Mobile Wireframe Templates:  
+![Add Game Mobile](/static/images/mobile-user-library-template-wireframe.webp)
+![Base and Home Mobile](/static/images/mobile_add_game_template_wireframe.webp)
+![Game Detail Mobile](/static/images/mobile_base_and%20_home_template_wireframe.webp)
+![User Library Mobile](/static/images/mobile_game_detail_template_wireframe.webp)  
+  
+The final design deviated slightly as the developement evolved and I learnt more to try and better improve UX throughout the project. The card redesign was a change made to help prioritse information and present it in a more digestable way. Changing the Genre clickable tags into a simple dropdown was a decision made to stick with convention for familiarity and ease of use for the user. 
 
 ## Surface
-
 ### Design Choices
-For the project I want a clean design, dark greys with brighter accent colours(gold/amber) and warm rich colours(green/red) for tags and feedback messages. Final colours to be picked later on.
+For the project I want a clean design, dark greys with brighter accent colours(gold/amber). The look was insired by programs like Steam, Dark Mode LLMs and VS Code itself.  
 
-### Artwork
-The Hero Image used was provided by [Unsplash](https://unsplash.com/)
-The bos art images I uploaded myself were from [Board Game Geek](https://boardgamegeek.com/)   
+The Hero Image used was taken by [Madeline Liu](https://unsplash.com/@madeline_sd) and provided by [Unsplash](https://unsplash.com/)
+The box art images I uploaded to cloudinary myself were from [Board Game Geek](https://boardgame.geek.com/)   
 
 ### Colour Theme
 
@@ -332,10 +352,9 @@ Raise ValueError() for cloudinary url and secret key if not set.(settings.py)
 ### Resources
 
 ## Deployment
+### Steps to Deploy
 
-## Steps to Deploy
-
-## How to Run Locally
+### How to Run Locally
 
 ## Kown Bugs and Fixes
 
@@ -347,61 +366,118 @@ User stories were used t make sure all our targets have been met. The two User S
 
 User Story 1 - Register/Login:
 Acceptance criteria: 
-A new user can register with a username and password and is logged in automatically afterwards; If a username or email is already taken, a helpful error message is shown; Logging in with correct credentials redirects the user to the home page; Logging in with incorrect credentials shows an error and does not grant access; Logging out ends the session and redirects to the home page; The navigation updates to reflect whether the user is logged in or out
+- A new user can register with a username and password and is logged in automatically afterwards
+- If a username or email is already taken, a helpful error message is shown
+- Logging in with correct credentials redirects the user to the home page
+- Logging in with incorrect credentials shows an error and does not grant access
+- Logging out ends the session and redirects to the home page
+- The navigation updates to reflect whether the user is logged in or out  
 Status: PASS
 
 User Story 2 - Browse/Search Games:
-Acceptance criteria: All games are visible on the home page as cards showing the key details; Searching by title filters the results to matching games; Filtering by category shows only games in that category; Both search and filter can be used at the same time; If nothing matches, a message is shown rather than an empty page
+Acceptance criteria: 
+- All games are visible on the home page as cards showing the key details
+- Searching by title filters the results to matching games
+- Filtering by category shows only games in that category
+- Both search and filter can be used at the same time
+- If nothing matches, a message is shown rather than an empty page  
 Status: PASS
 
 User Story 3 - View Game Details:
-Acceptance criteria: Clicking a game card takes the user to the detail page; The detail page shows all game information including player count, play time, complexity and category; Reviews and comments are visible on the detail page to all visitors; If there are no reviews or comments yet, a message is shown encouraging users to be the first
+Acceptance criteria: 
+- Clicking a game card takes the user to the detail page
+- The detail page shows all game information including player count, play time, complexity and category
+- Reviews and comments are visible on the detail page to all visitors
+- If there are no reviews or comments yet, a message is shown encouraging users to be the first  
 Status: PASS
 
 User Story 4 - Manage Games:
-Acceptance criteria: Attempting to access the add game page without being logged in redirects to login; Logged-in users can access an add game form with all the relevant fields; A game can only be edited or deleted by the user who added it; Trying to edit or delete someone else's game via the URL redirects with an error; Successful add, edit and delete actions each show a confirmation message
+Acceptance criteria: 
+- Attempting to access the add game page without being logged in redirects to login
+- Logged-in users can access an add game form with all the relevant fields
+- A game can only be edited or deleted by the user who added it
+- Trying to edit or delete someone else's game via the URL redirects with an error
+- Successful add, edit and delete actions each show a confirmation message  
 Status: PASS
 
 User Story 5 - Personal Library:
-Acceptance criteria: Logged-in users can add any game to their library from the game detail page; When adding, the user can choose between Owned and Wishlist; Adding a game that is already in the library shows a message rather than creating a duplicate; The library page shows all the user's games with their status clearly displayed; Games can be removed from the library with a confirmation step; If the library is empty a message is shown with a prompt to start browsing
+Acceptance criteria: 
+- Logged-in users can add any game to their library from the game detail page
+- When adding, the user can choose between Owned and Wishlist
+- Adding a game that is already in the library shows a message rather than creating a duplicate
+- The library page shows all the user's games with their status clearly displayed
+- Games can be removed from the library with a confirmation step; If the library is empty a message is shown with a prompt to start browsing  
 Status: PASS
  
 User Story 6 - Reviews & Ratings:
-Acceptance criteria: Logged-in users can submit a review with a rating between 1 and 5 and a written body; Visitors who are not logged in see a prompt to log in rather than the review form; A user can only have one review per game, with the option to edit or delete it afterwards; Deleting a review updates the average rating shown on the game; The average rating is displayed on both the game card and the detail page
-Status: PASS
+Acceptance criteria: 
+- Logged-in users can submit a review with a rating between 1 and 5 and a written body
+- Visitors who are not logged in see a prompt to log in rather than the review form
+- A user can only have one review per game, with the option to edit or delete it afterwards
+- Deleting a review updates the average rating shown on the game
+- The average rating is displayed on both the game card and the detail page  
+Status: PASS 
 
 User Story 7 - Comments:
-Acceptance criteria: Logged-in users can post a comment on any game's detail page; Comments appear in chronological order showing the username and date posted; A user can edit or delete their own comments but not other users' comments; Visitors can read comments but are prompted to log in to post one; Successful comment actions show a confirmation message
+Acceptance criteria: 
+- Logged-in users can post a comment on any game's detail page
+- Comments appear in chronological order showing the username and date posted
+- A user can edit or delete their own comments but not other users' comments
+- Visitors can read comments but are prompted to log in to post one
+- Successful comment actions show a confirmation message  
 Status: PASS
 
 User Story 8 - Feedback & Security:
-Acceptance criteria: Every create, update and delete action produces a relevant success message; Form validation errors are clearly explained so the user knows what to fix; Protected pages redirect unauthenticated users to the login page; Users cannot edit or delete content belonging to others, even by manipulating the URL
+Acceptance criteria: 
+- Every create, update and delete action produces a relevant success message
+- Form validation errors are clearly explained so the user knows what to fix
+- Protected pages redirect unauthenticated users to the login page
+- Users cannot edit or delete content belonging to others, even by manipulating the URL   
+Status: PASS
 
 User Story 9 - Filter Library:
-Acceptance criteria: The library page has filter options for All, Owned and Wishlist; Selecting a filter shows only the matching entries; If a filter returns no results a helpful message is shown
+Acceptance criteria: 
+- The library page has filter options for All, Owned and Wishlist
+- Selecting a filter shows only the matching entries
+- If a filter returns no results a helpful message is shown  
 Status: PASS
 
 User Story 10 - Custom 404 Page:
-Acceptance criteria: Any unknown URL shows a custom 404 page that matches the site's design; The 404 page includes a clear link back to the home page; The custom page is shown in production with DEBUG set to False
-Status: PASS
+Acceptance criteria: 
+- Any unknown URL shows a custom 404 page that matches the site's design
+- The 404 page includes a clear link back to the home page
+- The custom page is shown in production with DEBUG set to False  
+Status: PASS 
 
 User Story 11 - Social Features:
-Acceptance criteria: Users can follow and unfollow each other; A feed shows recent activity from followed users; Public profile pages display a user's library, reviews and stats; Users can edit their own display name and bio
+Acceptance criteria: 
+- Users can follow and unfollow each other
+- A feed shows recent activity from followed users
+- Public profile pages display a user's library, reviews and stats
+- Users can edit their own display name and bio  
 Status:
 
 User Story 12 - Recommendations:
 Acceptance criteria: 
-Recommendations are generated based on genres already in the user's library; Recommendations can be dismissed and do not reappear
+- Recommendations are generated based on genres already in the user's library
+- Recommendations can be dismissed and do not reappear  
 Status: TBC
 
 User Story 13 - Deployment:
 Acceptance criteria: 
-The deployed app works identically to the development version; DEBUG is set to False in production; No secret keys or passwords appear anywhere in the codebase or version history; The live URL loads correctly with no broken links or missing static files
+- The deployed app works identically to the development version
+- DEBUG is set to False in production
+- No secret keys or passwords appear anywhere in the codebase or version history
+- The live URL loads correctly with no broken links or missing static files  
 Status: TBC
 
 User Story 14 - Log Play Session:
 Acceptance criteria: 
-A logged-in user can log a play session from the game detail page; The user can record the date played, number of players, duration in minutes, and an optional note; Logged sessions appear on the user's library page under the relevant game; A session can be deleted by the user who created it with a confirmation step; If a game has no sessions logged a message is shown
+- A logged-in user can log a play session from the game detail page
+- The user can record the date played, number of players, duration in minutes, and an optional note 
+- Logged sessions appear on the user's library page under the relevant game
+- A session can be deleted by the user who created it with a confirmation step
+- If a game has no sessions logged a message is shown  
 Status: PASS
 
 ### Code Validation testing
@@ -452,7 +528,7 @@ function toggleReviewForm() {
 }
 ```
 #### Python Validation
-I could not find a good Python Syntax Validator online so I used the statis analysis in VS Code to check for syntax errors and these were my findings:
+I used the statis analysis in VS Code to check for syntax errors and these were my findings:
 - board_silly
   - settings.py - PASS
   - urls.py - PASS
@@ -460,6 +536,7 @@ I could not find a good Python Syntax Validator online so I used the statis anal
   - admin - PASS
   - forms - PASS
   - models - PASS
+    - Action Required and Taken: The 'Models' import was deleted as it was not being used
   - views - PASS
 - library_session
   - admin - PASS
@@ -471,7 +548,7 @@ I could not find a good Python Syntax Validator online so I used the statis anal
   - forms - PASS
   - models - PASS
   - views - PASS  
-No syntax erros found across all the Pyhton I have written.
+
 
 ### Resposivenesss Testing
 

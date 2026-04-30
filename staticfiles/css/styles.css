@@ -147,9 +147,21 @@ nav a:hover,
 .card {
   background: var(--bg-card);
   border-radius: 12px;
-  /* overflow: hidden; */
+  overflow: hidden;
   display: flex;
   flex-direction: column;
+}
+
+.clickable {
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.clickable:hover {
+  transform: translateY(-4px);
+  border-color: #c9a84c;
+  box-shadow: 0 4px 12px rgba(201, 165, 76, 0.35);
 }
 
 /* Card Image */

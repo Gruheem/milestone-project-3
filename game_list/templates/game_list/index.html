@@ -50,7 +50,7 @@
       <div class="card-grid">
         {% if boardgame_list %} {% for boardgame in boardgame_list %}
         <div
-          class="card {% if not boardgame.approved and boardgame.added_by == request.user %}faded{% elif not boardgame.approved %}d-none{% endif %}"
+          class="card clickable {% if not boardgame.approved and boardgame.added_by == request.user %}faded{% elif not boardgame.approved %}d-none{% endif %}"
         >
           {% if boardgame.approved or boardgame.added_by == request.user %}
           <a href="{% url 'game_detail' boardgame.slug %}">
