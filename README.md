@@ -1,8 +1,11 @@
 # **milestone-project-3: Board Silly**
 
-The site will be a place where board game enthusiasts and casual board game players can discover new board games, keep a library of games, review and comment on games and log play sessions with their friends.
+The site will be a place where board game enthusiasts and casual board game players can discover new board games, keep a library of games, review and comment on games and log play sessions with their friends.  
 
-# [Deployed Site](https://board-silly-87262ba320b5.herokuapp.com/)
+[Home Page](/README_images/intro-pic.png)
+
+## [Board Silly](https://board-silly-87262ba320b5.herokuapp.com/)
+## [GitHub Repository](https://github.com/Gruheem/milestone-project-3)
 
 # **Contents:**
 
@@ -783,6 +786,6 @@ This list of initially included games is designed to be a good start, but can be
 - Twilight Imperium  
   
 ### Thanks
-Thank you for taking the time to read through my project. This has been my favourite thing to make to date, and I am going to introduce it to my friends to see if they actually want to use it.
+Thank you for taking the time to read through my project. This has been my favourite thing to make to date.
 
 Special thanks to Manu my assessor for his support during the course of this project.
