@@ -6,6 +6,7 @@ from game_list.forms import GameFilterForm
 from game_list.models import BoardGame
 from .models import LibraryEntry, PlaySession
 from .forms import PlaySessionForm, LibraryFilterForm
+from django.db.models import Avg
 
 # Create your views here.
 def library_page(request):
@@ -93,6 +94,8 @@ def play_session_page(request, entry_id):
     entry = get_object_or_404(LibraryEntry, id=entry_id, user=request.user)
     boardgame = entry.boardgame
 
+    avg_rating = boardgame.reviews.filter(approved=True).aggregate(Avg('rating'))['rating__avg']
+
     # Get sessions where the user is host or tagged as a player
     sessions = PlaySession.objects.filter(boardgame=boardgame).filter(models.Q(host=request.user) | models.Q(players=request.user)).distinct().order_by('-date_played')
 
@@ -118,6 +121,7 @@ def play_session_page(request, entry_id):
             'boardgame': boardgame,
             'sessions': sessions,
             'form': form,
+            'avg_rating': avg_rating,
         }
     )
 
