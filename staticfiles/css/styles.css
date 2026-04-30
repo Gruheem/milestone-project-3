@@ -12,7 +12,7 @@
   --bg-card: #1e1e1e;
   --bg-stat: #2c2c2c;
   --badge-bg: #5E548E;
-  --genre-tag-bg: #E3E8EF;
+  --genre-tag-bg: #CFE3F6;
 }
 
 body {
@@ -102,8 +102,8 @@ nav a:hover,
   bottom: 2.5rem;
   left: 2rem;
   text-shadow:
-    #000000 4px 4px 8px,
-    #000000 0px 0px 2px;
+    #000000 0.25rem 0.25rem 0.5rem,
+    #000000 0rem 0rem 0.125rem;
   color: var(--text-colour-primary);
 }
 
@@ -142,15 +142,15 @@ nav a:hover,
 /* Grid */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr));
+  gap: 1rem;
   padding: 1rem 0;
 }
 
 /* Card */
 .card {
   background: var(--bg-card);
-  border-radius: 12px;
+  border-radius: 0.75rem;
   /* overflow: hidden; */
   display: flex;
   flex-direction: column;
@@ -161,14 +161,14 @@ nav a:hover,
   width: 100%;
   aspect-ratio: 3 / 4;
   object-fit: cover;
-  border-radius: 9px 9px 0  0;
+  border-radius: 0.55rem 0.55rem 0  0;
 }
 
 /* Card Body */
 .card-body {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem;
   flex: 1;
 }
 
@@ -187,21 +187,21 @@ nav a:hover,
 
 .stat {
   background: var(--bg-stat);
-  border-radius: 8px;
-  padding: 7px 8px;
+  border-radius: 0.5rem;
+  padding: 0.4375rem 0.5rem;
 }
 
 .stat-label {
-  font-size: 10px;
+  font-size: 0.625rem;
   color: var(--text-stat-label);
   text-transform: uppercase;
   letter-spacing: 0.04em;
   display: block;
-  margin-bottom: 2px;
+  margin-bottom: 0.125rem;
 }
 
 .stat-value {
-  font-size: 13px;
+  font-size: 0.8125rem;
   font-weight: 500;
   color: var(--text-colour-secondary);
 }
@@ -210,7 +210,7 @@ nav a:hover,
 .genre-tag {
   background-color: rgba(212, 175, 55, 0.1);
   color: var(--genre-tag-bg);
-  padding: 2px 8px;
+  padding: 0.125rem 0.5rem;
   border-radius: 9999px;
   font-size: 0.8rem;
 }
@@ -221,7 +221,7 @@ nav a:hover,
   display: inline-block;
   font-size: 1.2rem;
   color: var(--text-colour-primary);
-  letter-spacing: 2px;
+  letter-spacing: 0.125rem;
 }
 
 .star-bar::before {
@@ -333,7 +333,7 @@ nav a:hover,
 }
 
 .approval {
-  font-size: 10px;
+  font-size: 0.625rem;
   color: #c9a84c;
   font-style: italic;
 }

@@ -85,13 +85,20 @@
     <div class="col-md-9">
       <div class="card">
         <div class="card-body">
-          <div class="">
+          <div>
             {% if not boardgame.approved and boardgame.added_by == user %}
             <p class="approval mb-2">Game Awaiting Approval</p>
             {% endif %}
-            <h1 class="game-title secondary-font my-2">
-              {{ boardgame.title }}
-            </h1>
+            <div class="d-flex justify-content-between">
+              <h1 class="game-title secondary-font my-2">
+                {{ boardgame.title }}
+              </h1>
+              <div class="test-center">
+                <span class="badge mb-2 d-inline-block {% if entry.status == 'owned' %}badge-owned-bg {% else %}badge-wishlist-bg{% endif %}">
+                  {{ entry.get_status_display }}
+                </span>
+              </div>
+            </div>
             {% if avg_rating %}
             <div class="stat d-inline-block mb-2">
               <div class="star-bar" title="{{ avg_rating|floatformat:1 }}/5">
