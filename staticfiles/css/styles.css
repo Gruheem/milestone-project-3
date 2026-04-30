@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Metamorphous&display=swap");
 
 :root {
-  --text-colour-primary: #c7c7c7;
-  --text-colour-secondary: #a8a8a8;
+  --text-colour-primary: #E6E6E6;
+  --text-colour-secondary: #BEBEBE;
   --text-colour-gold: #d4af37;
   --text-stat-label: #8a7560;
   --text-muted: #a0a0a0;
@@ -151,7 +151,6 @@ nav a:hover,
 .card {
   background: var(--bg-card);
   border-radius: 0.75rem;
-  /* overflow: hidden; */
   display: flex;
   flex-direction: column;
 }
@@ -165,6 +164,11 @@ nav a:hover,
   transform: translateY(-1px);
   border: 1px solid var(--text-colour-gold);
   box-shadow: 0 2px 4px var(--text-colour-gold);
+}
+
+.sticky-stats {
+  position: sticky;
+  top: 3.65rem;
 }
 
 /* Card Image */
@@ -346,7 +350,7 @@ nav a:hover,
 
 .approval {
   font-size: 0.625rem;
-  color: #c9a84c;
+  color: #DCBD5A;
   font-style: italic;
 }
 
