@@ -2,6 +2,7 @@ from django import forms
 from .models import PlaySession
 
 class PlaySessionForm(forms.ModelForm):
+    """Form for logging and editing play sessions."""
     class Meta:
         model = PlaySession
         fields = ['date_played', 'duration', 'first_place', 'second_place', 'third_place', 'notes', 'players']
@@ -19,6 +20,7 @@ class PlaySessionForm(forms.ModelForm):
         }
 
 class LibraryFilterForm(forms.Form):
+    """Form for filtering library entries by status."""
     STATUS_CHOICES = [
         ('', 'All'),
         ('owned', 'Owned'),

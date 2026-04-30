@@ -4,6 +4,7 @@ from game_list.models import BoardGame
 
 # Create your models here.
 class LibraryEntry(models.Model):
+    """User's library entry for a board game (owned or wishlist)."""
 
     STATUS_CHOICES=[
         ('owned', 'Owned'), 
@@ -20,9 +21,11 @@ class LibraryEntry(models.Model):
         unique_together = ('user', 'boardgame')
 
     def __str__(self):
+        """Return user, game title, and status."""
         return f'{self.user.username} - {self.boardgame.title} ({self.status})'
 
 class PlaySession(models.Model):
+    """Record of a play session for a board game with results."""
     host = models.ForeignKey(User, on_delete=models.CASCADE, related_name='hosted_sessions')
     boardgame = models.ForeignKey(BoardGame, on_delete=models.CASCADE, related_name='play_sessions')
     date_played = models.DateField()
@@ -36,6 +39,7 @@ class PlaySession(models.Model):
     approved = models.BooleanField(default=False)
 
     def __str__(self):
+        """Return game, host, and date played."""
         return f'{self.boardgame.title} logged by {self.host.username} on {self.date_played}'
     
 

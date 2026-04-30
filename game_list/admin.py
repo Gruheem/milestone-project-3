@@ -6,6 +6,7 @@ from django_summernote.admin import SummernoteModelAdmin
 # Register your models here.
 @admin.register(BoardGame)
 class PostAdmin(SummernoteModelAdmin):
+    """Admin interface for managing board games."""
 
     list_display = ('title', 'slug', 'approved', 'created_at')
     search_fields = ['title', 'description']
@@ -15,6 +16,7 @@ class PostAdmin(SummernoteModelAdmin):
     actions = ['approve_games']
 
     def approve_games(self, request, queryset):
+        """Approve selected games."""
         queryset.update(approved=True)
         
     approve_games.short_description = 'Approve selected games'

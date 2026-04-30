@@ -63,6 +63,7 @@ def library_page(request):
 
 @login_required
 def remove_from_library(request, entry_id):
+    """Remove a game from the user's library."""
     entry = get_object_or_404(LibraryEntry, id=entry_id, user=request.user)
     if request.method == "POST":
         game_title = entry.boardgame.title
@@ -73,6 +74,7 @@ def remove_from_library(request, entry_id):
 
 @login_required
 def add_to_library(request, boardgame_id):
+    """Add a game to the user's library (owned or wishlist)."""
     game = get_object_or_404(BoardGame, id=boardgame_id)
     if request.method == "POST":
         status = request.POST.get('status')
@@ -91,6 +93,7 @@ def add_to_library(request, boardgame_id):
 # Play Session Views
 @login_required
 def play_session_page(request, entry_id):
+    """Display and log play sessions for a board game."""
     entry = get_object_or_404(LibraryEntry, id=entry_id, user=request.user)
     boardgame = entry.boardgame
 
@@ -127,6 +130,7 @@ def play_session_page(request, entry_id):
 
 @login_required
 def edit_session(request, entry_id, pk):
+    """Edit an existing play session."""
     entry = get_object_or_404(LibraryEntry, id=entry_id, user=request.user)
     session = get_object_or_404(PlaySession, id=pk, boardgame=entry.boardgame)
 
@@ -147,6 +151,7 @@ def edit_session(request, entry_id, pk):
 
 @login_required
 def delete_session(request, entry_id, pk):
+    """Delete a play session."""
     session = get_object_or_404(PlaySession, id=pk, host=request.user)
 
     if request.method == "POST":

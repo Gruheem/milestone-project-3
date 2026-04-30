@@ -9,15 +9,18 @@ STATUS = ((0, "Draft"), (1, "Published"))
 
 # Create your models here.
 class Genre(models.Model):
+    """Board game genre category."""
     name = models.CharField(max_length=100)
 
     # class Meta:
     #     ordering = ['title']
 
     def __str__(self):
+        """Return the genre name."""
         return f'{self.name}'
 
 class BoardGame(models.Model):
+    """Board game entry with details and metadata."""
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True,)
     publisher = models.CharField(max_length=200)
@@ -34,8 +37,8 @@ class BoardGame(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
 
-    # Populates slug field based on title
     def save(self, *args, **kwargs):
+        """Generate slug from title if not provided, then save."""
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
@@ -44,5 +47,6 @@ class BoardGame(models.Model):
         ordering = ['-created_at']
 
     def __str__(self):
+        """Return title and contributor username."""
         return f'{self.title} | added by {self.added_by.username}'
 

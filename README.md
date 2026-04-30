@@ -195,7 +195,7 @@ Acceptance Criteria:
 - The 404 page includes a clear link back to the home page
 - The custom page is shown in production with Django DEBUG set to False
 
-(**W**)User Story 11:
+(**W**) User Story 11:
 As a registered user, I want to follow other users and view public profiles so that I can discover games through people with similar tastes.
 
 Acceptance Criteria:
@@ -204,12 +204,16 @@ Acceptance Criteria:
 - Public profile pages display a user's library, reviews and stats
 - Users can edit their own display name and bio
 
-(**W**)User Story 12:
+Status: WON'T HAVE
+
+(**W**) User Story 12:
 As a logged-in user, I want to receive game recommendations based on my library so that the experience feels richer and more personalised.
 
 Acceptance Criteria:
 - Recommendations are generated based on genres already in the user's library
 - Recommendations can be dismissed and do not reappear
+
+Status: WON'T HAVE
 
 User Story 13:
 As a developer, I want the finished application deployed to a cloud platform so that it is accessible to anyone with the link.
@@ -219,6 +223,8 @@ Acceptance Criteria:
 - DEBUG is set to False in production
 - No secret keys or passwords appear anywhere in the codebase or version history
 - The live URL loads correctly with no broken links or missing static files  
+
+Status: PASS
 
 User Story 14:
 Log a Play Session:
@@ -238,11 +244,11 @@ User Authentication
 - Login and logout functionality
 - Navigation updates dynamically based on authentication state
 - All protected pages redirect unauthenticated users to login  
-![Log In](/static/images/log-in.png)
-![Log Out](/static/images/log-out.png)
-![Sign up](/static/images/sign-up.png)
-![Logged In Nav](/static/images/nav-two.png)
-![Logged Out Nav](/static/images/nav-one.png)
+![Log In](/README_images/log-in.png)
+![Log Out](/README_images/log-out.png)
+![Sign up](/README_images/sign-up.png)
+![Logged In Nav](/README_images/nav-two.png)
+![Logged Out Nav](/README_images/nav-one.png)
 
 Game Catalogue
 - Home page displaying all games as cards showing key information
@@ -250,17 +256,17 @@ Game Catalogue
 - Category dropdown filter
 - Combined search and filter working simultaneously
 - No-results state with message
-![Game Library](/static/images/game-library.png)
-![NoSearch Results](/static/images/nothing-matching-search.png)
-![No Filter Results](/static/images/no-filter-match.png)
+![Game Library](/README_images/game-library.png)
+![NoSearch Results](/README_images/nothing-matching-search.png)
+![No Filter Results](/README_images/no-filter-match.png)
 
 Game Detail Page
 - Full game information display 
 - Reviews section visible to all visitors
 - Comments section visible to all visitors
 - Empty state messages when no reviews or comments exist yet
-![Game Detail Page](/static/images/game-detail.png)
-![Review and Comment](/static/images/review-and-comment.png)
+![Game Detail Page](/README_images/game-detail.png)
+![Review and Comment](/README_images/review-and-comment.png)
 
 Game Management
 - Add game form with all relevant fields including cover image upload
@@ -268,9 +274,8 @@ Game Management
 - Ownership checks ensuring only the adding user can edit or delete
 - Message stating Pending Wait for Added Game to be Approved
 - Success and error messages for all actions
-![Add Game Form](/static/images/add-game.png)
-![Edit Game Form](/static/images/edit-game.png)
-![]
+![Add Game Form](/README_images/add-game.png)
+![Edit Game Form](/README_images/edit-game.png)
 
 Personal Library
 - Add any game to personal library from the game detail page
@@ -279,20 +284,20 @@ Personal Library
 - Library page showing all entries with status clearly displayed
 - Remove game from library with confirmation step
 - Empty state for library with prompt to browse
-![Duplicate Library Entry Message](/static/images/game-library-duplicate-warning.png)
-![Delete Library Entry Modal](/static/images/delete-library-entry.png)
-![Library Entry](/static/images/library-entry.png)
-![Empty Library Message](/static/images/empty-library.png)
+![Duplicate Library Entry Message](/README_images/game-library-duplicate-warning.png)
+![Delete Library Entry Modal](/README_images/delete-library-entry.png)
+![Library Entry](/README_images/library-entry.png)
+![Empty Library Message](/README_images/empty-library.png)
 
 Log Play Session
-- User Can log play session on a game they have just added without having to wait for the admin to approve it
-- Log How long the game took
-- Log who played the game
-- Log 1st, 2nd and third place
-- Log any notes about how the session went 
-- delete session modal
-![Play Session](/static/images/session.png)
-![Delete Session Modal](/static/images/delete-session.png)
+- Users can log a play session on a game they have just added without having to wait for the admin to approve it
+- Record how long the game took
+- Record who played the game
+- Record first, second and third place
+- Add any notes about how the session went
+- Delete session modal
+![Play Session](/README_images/session.png)
+![Delete Session Modal](/README_images/delete-session.png)
 
 Reviews and Ratings
 - Star rating submission (1–5) with written review body
@@ -301,12 +306,12 @@ Reviews and Ratings
 - Average rating calculated and displayed on game cards and detail page
 - Login prompt shown to visitors in place of the review form
 - reviews awaiting approval have message and faded appearance
-![Average Rating](/static/images/average-rating.png)
-![Review Awaiting Approval](/static/images/review-and-comment-approval.png)
-![delete Comment](/static/images/delete-comment.png)
-![Delete Review](/static/images/delete-review.png)
-![First to leave a comment](/static/images/comment-first.png)
-![First to leave a review](/static/images/first-review-message.png)
+![Average Rating](/README_images/average-rating.png)
+![Review Awaiting Approval](/README_images/review-and-comment-approval.png)
+![delete Comment](/README_images/delete-comment.png)
+![Delete Review](/README_images/delete-review.png)
+![First to leave a comment](/README_images/comment-first.png)
+![First to leave a review](/README_images/first-review-message.png)
 
 Comments and Review Replies
 - Reply directly to an individual review
@@ -314,8 +319,8 @@ Comments and Review Replies
 - Edit and delete own comments and replies
 - Login prompt shown to visitors in place of comment form
 - Success messages for all comment and reply actions
-![Comment Submit Message](/static/images/comment-submitted-message.png)
-![Review Submit Message](/static/images/review-submitted-message.png)
+![Comment Submit Message](/README_images/comment-submitted-message.png)
+![Review Submit Message](/README_images/review-submitted-message.png)
 
 Library Filtering
 - Filter library entries by All, Owned or Wishlist status
@@ -327,8 +332,8 @@ User Feedback and Access Control
 Custom 404 Page
 - Branded 404 error page matching site design
 - Clear link back to the home page
-![User 404 Page](/static/images/custom-404-user.png)
-![Guest 404 Page](/static/images/custom-404-user.png)
+![User 404 Page](/README_images/custom-404-user.png)
+![Guest 404 Page](/README_images/vustom-404-guest.png)
 
 Deployment
 - Application deployed to a cloud platform
@@ -356,40 +361,43 @@ I have created 5 database tables for the features that I want to implement. I am
 
 ### Wireframes
 Desktop Wireframe Templates:  
-![Add Game Desktop](/static/images/desktop__add_game_template_wireframe.webp)
-![Base and Home Desktop](/static/images/desktop_base_and_home_template_wireframes.webp)  
-![Game Detail Desktop](/static/images/desktop_game_detail_template_wireframe.webp)
-![User Library Desktop](/static/images/desktop_userlibrary_template_wireframe.webp)  
+![Add Game Desktop](/README_images/desktop__add_game_template_wireframe.webp)
+![Base and Home Desktop](/README_images/desktop_base_and_home_template_wireframes.webp)
+![Game Detail Desktop](/README_images/desktop_game_detail_template_wireframe.webp)
+![User Library Desktop](/README_images/desktop_userlibrary_template_wireframe.webp)
 
-Mobile Wireframe Templates:  
-![Add Game Mobile](/static/images/mobile-user-library-template-wireframe.webp)
-![Base and Home Mobile](/static/images/mobile_add_game_template_wireframe.webp)
-![Game Detail Mobile](/static/images/mobile_base_and%20_home_template_wireframe.webp)
-![User Library Mobile](/static/images/mobile_game_detail_template_wireframe.webp)  
+Mobile Wireframe Templates:
+![Add Game Mobile](/README_images/mobile-user-library-template-wireframe.webp)
+![Base and Home Mobile](/README_images/mobile_add_game_template_wireframe.webp)
+![Game Detail Mobile](/README_images/mobile_base_and%20_home_template_wireframe.webp)
+![User Library Mobile](/README_images/mobile_game_detail_template_wireframe.webp)
   
-The final design deviated slightly as the developement evolved and I learnt more to try and better improve UX throughout the project. The card redesign was a change made to help prioritse information and present it in a more digestable way. Changing the Genre clickable tags into a simple dropdown was a decision made to stick with convention for familiarity and ease of use for the user. 
+The final design deviated slightly as the development evolved and I learnt more about how to improve UX throughout the project. The card redesign was a change made to help prioritise information and present it in a more digestible way. Changing the genre clickable tags into a simple dropdown was a decision made to stick with convention for familiarity and ease of use for the user.
 
 ## Surface
 ### Design Choices
-For the project I want a clean design, dark greys with brighter accent colours(gold/amber). The look was insired by programs like Steam and Dark Mode profiles of other popular apps. This gold colour was made my CTA colour so whenever you will find reactivity or links in the project they will have this colour associated with them for cleear consistent UX.
+For the project I wanted a clean design with dark greys and brighter accent colours such as gold and amber. The look was inspired by programs like Steam and dark-mode profiles of other popular apps. Gold was used as my CTA colour so interactive elements and links consistently carried that colour for clearer UX.
 
-The Hero Image used was taken by [Madeline Liu](https://unsplash.com/@madeline_sd) and provided by [Unsplash](https://unsplash.com/)
-The box art images I uploaded to cloudinary myself were from [Board Game Geek](https://boardgame.geek.com/)   
+The hero image used was taken by [Madeline Liu](https://unsplash.com/@madeline_sd) and provided by [Unsplash](https://unsplash.com/)
+The box art images I uploaded to Cloudinary myself were from [BoardGameGeek](https://boardgamegeek.com/)
+
+### Audio
+No audio was added to the project. The site was kept intentionally focused on browsing, managing and reviewing board games without background music or sound effects.
 
 ### Colour Theme
-These were the colours chosen for the colour pallette. I wanted to keep it quite simple 
-![Colour pallette](/static/images/coloue-pallette.png)
+These were the colours chosen for the colour palette. I wanted to keep it quite simple.
+![Colour palette](/README_images/coloue-pallette.png)
 
 ### Fonts
-I chose two fonts for the app. Firstly 'Metamorphus', I chose this as the title font as it has a medievil inspired, RPG feel to it, this was used for the app title and game titles. Secondly, Inter, this was chosen for its clarity and simplicity to compliment the more stylised font.
+I chose two fonts for the app. Firstly, 'Metamorphus' was used as the title font because it has a medieval-inspired RPG feel. It was used for the app title and game titles. Secondly, Inter was chosen for its clarity and simplicity to complement the more stylised font.
 
 [Metamorphus](https://fonts.google.com/specimen/Metamorphous?preview.script=Latn)
 [Inter](https://fonts.google.com/specimen/Inter)
 
 ### Design changes
-slight changes made during developement:
-- changed genre relatioinship from 1:N to N:N to allow games to have multiple genres
-- made comment only on reviews not on games. Felt more natural flow. This removed the need for having a nullable field on the comment model.
+Slight changes made during development:
+- Changed the genre relationship from 1:N to N:N to allow games to have multiple genres
+- Made comments only on reviews, not on games, because it felt like a more natural flow. This removed the need for a nullable field on the comment model.
 
 ## Technologies Used
 ### Dependencies
@@ -445,8 +453,10 @@ typing_extensions==4.15.0 - Backported type hint support for older Python versio
 - Django
 
 ### Tools
-Colours - [coolers](https://coolors.co)
+Colours - [Coolors](https://coolors.co)
 Wireframes - [draw.io](https://app.diagrams.net/)
+Dev Tools - [GoogleDevTools](https://developer.chrome.com/docs/devtools)
+Django DEBUG = True Setting
 Debugging & Specific Question Help - [Claude](https://claude.ai), [ChatGPT](https://chatgpt.com/)
 
 ### Practices
@@ -457,7 +467,7 @@ Raise ValueError() for cloudinary url and secret key if not set.(settings.py)
 Creating Docstrings for all the functions and classes
 
 ### Resources
-Bootstrap Documentaion
+Bootstrap Documentation
 CSS Documentation
 HTML Documentation
 Django Documentation
@@ -466,42 +476,45 @@ Django Documentation
 ### Steps to Deploy
 This web app was deployed through Heroku linked with GitHub.  
 Steps taken to deploy:  
-- Prepare sttings.py for production deployment
+- Prepare settings.py for production deployment
   - DEBUG > False
   - Removing Secret Keys
-- Create Pocfile
+- Create Procfile
 - Add gunicorn
 - Collect Static Files through terminal(`python3 manage.py collectstatic`)
-- Push Deployment ready Commit to Github
+- Push deployment-ready commit to GitHub
 - Create a Heroku app
 - Set Environment Variables in Heroku Settings
-- Link ot GitHub
+- Link to GitHub
 - Deploy app from main branch
 
 ### How to Run Locally
-To run this project localy make sure you have your virtual environment activated and the correct version of python runing. Then install dependencies using requirements.txt(pip3 install requirements.txt). After this has successfully completed, in the terminal, bash `python3 manage.py runserver`. Hold control/command and click on the link created to auto launch the app in your default browser.  
+To run this project locally, make sure you have your virtual environment activated and the correct version of Python running. Then install dependencies using requirements.txt (`pip3 install -r requirements.txt`). After this has successfully completed, run `python3 manage.py runserver` in the terminal. Hold Control/Command and click on the link created to launch the app in your default browser.
 
 ## Known Bugs and Fixes
 - summernote broke the forms without dedicated templates, couldnt find fix so removed it.
 
-- When deployed the text on the cencel register button in gold. I have addressed other links on the register card and it is this that is causing the problem. fix is to delete this style rule:  
+- When deployed, the text on the cancel register button appeared in gold. I had styled the other links on the register card, and that was causing the problem. The fix is to delete this style rule:
 ``` CSS
 .sign-up .card .card-body a {  
   color: var(--text-colour-gold);
 }  
 ```
-and instead of targeting and element I crate a class with some added specificity to turn the text gold and apply that class to the `<a>` I want effected.
+and instead of targeting an element I can create a class with some added specificity to turn the text gold and apply that class to the `<a>` I want affected.
 
-- The Shadow on my Game Cards does not move with the translation on hover while the card and the border do. I assume this is something to do with what element the CSS class 'clickable' has been applied to in the card structure and pre existing classes that may be applied to the card structure already.
+- The shadow on my game cards does not move with the translation on hover while the card and the border do. I assume this is because of the element the CSS class 'clickable' was applied to in the card structure and pre-existing classes that may already be affecting it.
 
-- Star Bar isn't working On Game Session Page. My guess would be this is because the Average rating context lives in the game detail view and not the play session view.
+- The star bar wasn't working on the game session page. My guess was that the average rating context lived in the game detail view and not the play session view. To fix it, I copied two lines across from the game detail view to create and export the correct context.
 
 ## Code Attribution
-Claude wrote the Average Rating Star Bar lines of CSS as this was something I wasn't able to build myself running from lines 218 to 247 in static/css/styles.css.
+Claude wrote the Average Rating Star Bar lines of CSS as this was something I wasn't able to build myself, running from lines 218 to 247 in static/css/styles.css, and this line of Python used to collect and average the ratings and assign it to a variable:
+```Python
+avg_rating = boardgame.reviews.filter(approved=True).aggregate(Avg('rating'))['rating__avg']
+```
 
 ## Testing
 ### User story testing
-User stories were used t make sure all our targets have been met. The two User Story Acceptance Criteria that were not given a PASS status were part of the 'Won't Have' MoSCoW system. This was expected.  
+User stories were used to make sure all of the targets had been met. The two User Story Acceptance Criteria that were not given a PASS status were part of the Won't Have MoSCoW system. This was expected.
 
 User Story 1 - Register/Login:
 Acceptance criteria: 
@@ -594,13 +607,13 @@ Acceptance criteria:
 - A feed shows recent activity from followed users
 - Public profile pages display a user's library, reviews and stats
 - Users can edit their own display name and bio  
-Status:
+Status: WON'T HAVE
 
 User Story 12 - Recommendations:
 Acceptance criteria: 
 - Recommendations are generated based on genres already in the user's library
 - Recommendations can be dismissed and do not reappear  
-Status: TBC
+Status: WON'T HAVE
 
 User Story 13 - Deployment:
 Acceptance criteria: 
@@ -608,7 +621,7 @@ Acceptance criteria:
 - DEBUG is set to False in production
 - No secret keys or passwords appear anywhere in the codebase or version history
 - The live URL loads correctly with no broken links or missing static files  
-Status: TBC
+Status: PASS
 
 User Story 14 - Log Play Session:
 Acceptance criteria: 
@@ -637,17 +650,23 @@ HTML validated using https://validator.x3.org
 - Log Out.html - PASS
 - 404_user.html - PASS
 - 404_guest.html - PASS
-'Bad Value' erros were raised as the validator didn't like the use of DTL(Django Template Language) however after manually reviewing these points I can discount them and look at the validation of the vanilla HTML surronding the DTL.  
-Errors relating to the lack of DOCTYPE and `<head>` were raised on templates that expanded on base.html after reviewing these individually i can discount them and the templates where the errors where raised do in fact all extand the base.html where the DOCTYPE and <head> are located.  
+'Bad Value' errors were raised as the validator didn't like the use of DTL (Django Template Language). After manually reviewing these points I can discount them and focus on the validation of the vanilla HTML surrounding the DTL.
+Errors relating to the lack of DOCTYPE and `<head>` were raised on templates that expanded on base.html. After reviewing these individually I can discount them, because the templates where the errors were raised do in fact all extend base.html where the DOCTYPE and <head> are located.
 
 #### CSS Validation
 CSS validated using https://jigsaw.w3.org/css-validator/validator.
 CSS document validates as CSS Level 3 + SVG.  
 image 1 + 2
 
+#### Accessibility Testing
+Accessibility was considered throughout the build by using semantic HTML, visible form labels, clear button text, descriptive alternative text for images and consistent feedback messages. Keyboard navigation was also checked on the main flows, and the dark palette was chosen to keep contrast strong against the background.
+
+#### Business Goal Testing
+The finished app supports the main goals set out for the project by letting users browse games, add and manage entries, maintain a personal library, write reviews, leave comments and log play sessions. The social and recommendation features were intentionally left as future scope.
+
 #### JS Validation 
 JS Validated using Claude(Anthropic Ai).
-Initially I used a different JS Validator however it brought back too many issues that weren't relevant to the project. e.g. wanting me to define things like 'console' and 'document'. I then switched to Claude and it was assessed to pass syntax validation with one note, make the toggle form approach consistent as I had used two seperte ways of acheiving this. One approach was more robust and eliminates an edge case where the first click on the toggle button woul dhave no affect. I have have gone for making everything in that light. e.g.  
+Initially I used a different JS validator, however it brought back too many issues that weren't relevant to the project, e.g. wanting me to define things like 'console' and 'document'. I then switched to Claude and it was assessed to pass syntax validation with one note: make the toggle form approach consistent, as I had used two separate ways of achieving this. One approach was more robust and eliminates an edge case where the first click on the toggle button would have no effect. I used that approach throughout. e.g.
 Changing:  
 ```JavaScript
 function toggleReviewForm() {
@@ -667,7 +686,7 @@ function toggleReviewForm() {
 }
 ```
 #### Python Validation
-I used the statis analysis in VS Code to check for syntax errors and these were my findings:
+I used the static analysis in VS Code to check for syntax errors and these were my findings:
 - board_silly
   - settings.py - PASS
   - urls.py - PASS
@@ -689,23 +708,22 @@ I used the statis analysis in VS Code to check for syntax errors and these were 
   - views - PASS  
 
 
-### Resposivenesss Testing
-Responsiveness was handled mainly By a CSS Grid for the game cards. The resposiveness of the content of the cards was achieved using CSS Flex Properties.  
+### Responsiveness Testing
+Responsiveness was handled mainly by a CSS Grid for the game cards. The responsiveness of the content of the cards was achieved using CSS flex properties.
 
-I have manualy tested the app down to a resolution of 320px and I am happy with it's performnce through the range of screen sizes
+I manually tested the app across a range of screen sizes down to 320px with Google Dev Tools and I am happy with its performance throughout the range.
 
-(W) Social and Community Features
-- Follow and unfollow other users
-- Activity feed showing content from followed users
-- Public user profile pages
-- User display name and bio editing
-- Personalised game recommendations based on library contents
+#### Colour Testing
+The colour palette was tested visually across the main templates to make sure the gold accent colour stayed readable and consistent against the dark background. Links, buttons and feedback messages all use the same accent so the interface feels coherent.
 
-### Future Features
-- Live Search (AJAX)
+#### Lighthouse Testing
+Lighthouse was used to spot obvious issues with accessibility, performance and best practices. I was able to improve the final score somewhat however more work could be done in the future to improve this.
+Initial Score:  
+![Initial Lighthouse Score](/README_images/lighthouse-start.png)
+![Final Lighthouse Score](/README_images/lighthouse-final.png)
 
 #### Games Initially included
-This list of initialyy included games is designed to be a good start, but also to be expanded by Regular User's and the Super User:
+This list of initially included games is designed to be a good start, but can be expanded by regular users and the superuser:
 - Catan
 - Terraforming Mars
 - Scythe
@@ -724,6 +742,6 @@ This list of initialyy included games is designed to be a good start, but also t
 - Twilight Imperium  
   
 ### Thanks
-Thank you for taking the time to read through my project, this has been my favourite thing to make to date and is something I am going to introduce to my friends to see if they actualy want to use it.
+Thank you for taking the time to read through my project. This has been my favourite thing to make to date, and I am going to introduce it to my friends to see if they actually want to use it.
 
 Special thanks to Manu my assessor for his support during the course of this project.

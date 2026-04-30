@@ -4,6 +4,7 @@ from .models import LibraryEntry, PlaySession
 # Register your models here.
 @admin.register(LibraryEntry)
 class LibraryEntryAdmin(admin.ModelAdmin):
+    """Admin interface for managing library entries."""
 
     list_display = ('user', 'boardgame', 'status', 'added_at')
     search_fields = ['user__username', 'boardgame__name'] # Double underscore to search related fields
@@ -11,6 +12,7 @@ class LibraryEntryAdmin(admin.ModelAdmin):
 
 @admin.register(PlaySession)
 class PlaySessionAdmin(admin.ModelAdmin):
+    """Admin interface for managing play sessions."""
     list_display = ('boardgame', 'host', 'date_played', 'duration')
     search_fields = ['boardgame__title', 'host__username']
     list_filter = ('date_played', 'duration')

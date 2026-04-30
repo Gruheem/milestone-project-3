@@ -2,6 +2,7 @@ from django import forms
 from .models import Genre, BoardGame
 
 class GameFilterForm(forms.Form):
+    """Form for filtering games by title and genre."""
     query = forms.CharField(required=False, label='Search Title:')
     genre = forms.ModelChoiceField(
         queryset=Genre.objects.all(),
@@ -12,6 +13,7 @@ class GameFilterForm(forms.Form):
 
 
 class BoardGameForm(forms.ModelForm):
+    """Form for creating and editing board game entries."""
     # Allow multiple genres to be selected using checkboxes
     genre_id = forms.ModelMultipleChoiceField(
         queryset=Genre.objects.all(),

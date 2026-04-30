@@ -13,11 +13,12 @@ from django.contrib import messages
 
 # Create your views here.
 class GameList(generic.ListView):
+    """Display list of board games with filtering and pagination."""
     template_name = "game_list/index.html"
     paginate_by = 12
 
-    # Creates list of games and Handles the search filters.
     def get_queryset(self):
+        """Return approved games plus user's pending games, filtered by search form."""
         approved = BoardGame.objects.filter(approved=True)
         if self.request.user.is_authenticated:
             pending = BoardGame.objects.filter(approved=False, added_by=self.request.user)
@@ -41,19 +42,18 @@ class GameList(generic.ListView):
             if genre:
                 queryset = queryset.filter(genre_id=genre)
 
-        # returns set of BoardGame objects with extra 'field' avg_rating.
         return queryset
     
-    # Gets and Extends the context data of our Generic ListView to include the form in the template.
     def get_context_data(self, **kwargs):
+        """Add filter form to template context."""
         context = super().get_context_data(**kwargs)
         context['form'] = self.form
 
         return context
 
-# Add a Game Page
 @login_required
 def add_game(request):
+    """Create and add a new board game to the list."""
     if request.method == 'POST':
         form = BoardGameForm(request.POST)
         if form.is_valid():
@@ -74,9 +74,9 @@ def add_game(request):
         {'form': form},
         )
 
-# Edit a Game Page
 @login_required
 def edit_game(request, game_id):
+    """Edit an existing board game entry."""
     boardgame = get_object_or_404(BoardGame, id=game_id, added_by=request.user)
 
     if request.method == "POST":
@@ -178,9 +178,9 @@ def game_detail(request, slug):
         }
     )
 
-# Edit Review
 @login_required
 def edit_review(request, review_id):
+    """Edit an existing review."""
     review = get_object_or_404(Review, id=review_id, author=request.user)
 
     if request.method == "POST":
@@ -195,9 +195,9 @@ def edit_review(request, review_id):
 
     return redirect('game_detail', slug=review.boardgame.slug)
 
-# Delete Review
 @login_required
 def delete_review(request, review_id):
+    """Delete a review."""
     review = get_object_or_404(Review, id=review_id, author=request.user)
 
     if request.method == "POST":
@@ -208,9 +208,9 @@ def delete_review(request, review_id):
 
     return redirect('game_detail', slug=review.boardgame.slug)
 
-# Edit Comment
 @login_required
 def edit_comment(request, pk):
+    """Edit an existing comment."""
     comment = get_object_or_404(Comment, id=pk, author=request.user)
 
     if request.method == "POST":
@@ -225,9 +225,9 @@ def edit_comment(request, pk):
 
     return redirect('game_detail', slug=comment.review.boardgame.slug)
 
-# Delete Comment
 @login_required
 def delete_comment(request, pk):
+    """Delete a comment."""
     comment = get_object_or_404(Comment, id=pk, author=request.user)
 
     if request.method == "POST":
@@ -238,8 +238,8 @@ def delete_comment(request, pk):
 
     return redirect('game_detail', slug=comment.review.boardgame.slug)
 
-# Custom 404 Pages
 def custom_404(request, exception):
+    """Render custom 404 page based on user authentication status."""
     if request.user.is_authenticated:
         return render(request, '404_user.html', status=404)
     else:
