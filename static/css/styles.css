@@ -151,7 +151,6 @@ nav a:hover,
 .card {
   background: var(--bg-card);
   border-radius: 0.75rem;
-  /* overflow: hidden; */
   display: flex;
   flex-direction: column;
 }
@@ -165,6 +164,11 @@ nav a:hover,
   transform: translateY(-1px);
   border: 1px solid var(--text-colour-gold);
   box-shadow: 0 2px 4px var(--text-colour-gold);
+}
+
+.sticky-stats {
+  position: sticky;
+  top: 3.65rem;
 }
 
 /* Card Image */
