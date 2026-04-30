@@ -12,7 +12,7 @@
   --bg-card: #1e1e1e;
   --bg-stat: #2c2c2c;
   --badge-bg: #5E548E;
-  --genre-tag-bg: 232, 220, 203;
+  --genre-tag-bg: #2A241D;
 }
 
 body {
@@ -156,6 +156,17 @@ nav a:hover,
   flex-direction: column;
 }
 
+.clickable {
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.clickable:hover {
+  transform: translateY(-1px);
+  border: 1px solid var(--text-colour-gold);
+  box-shadow: 0 2px 4px var(--text-colour-gold);
+}
+
 /* Card Image */
 .card-img {
   width: 100%;
@@ -208,7 +219,7 @@ nav a:hover,
 
 /* Genre Pill Tag */
 .genre-tag {
-  background-color: rgba(var(--genre-tag-bg), 0.1);
+  background-color: var(--genre-tag-bg);
   color: var(--text-colour-primary);
   padding: 0.125rem 0.5rem;
   border-radius: 9999px;
@@ -242,6 +253,7 @@ nav a:hover,
 .star-fill::before {
   content: "★★★★★";
   display: block;
+  width: var(--fill-width);
   overflow: hidden;
 }
 

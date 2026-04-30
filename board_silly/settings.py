@@ -40,7 +40,7 @@ if not SECRET_KEY:
     raise ValueError("SECRET_KEY has not been set!")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     '.herokuapp.com',
