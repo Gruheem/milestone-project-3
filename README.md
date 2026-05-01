@@ -2,7 +2,7 @@
 
 The site will be a place where board game enthusiasts and casual board game players can discover new board games, keep a library of games, review and comment on games and log play sessions with their friends.  
 
-[Home Page](/README_images/intro-pic.png)
+![Home Page](/README_images/intro-pic.png)
 
 ## [Board Silly](https://board-silly-87262ba320b5.herokuapp.com/)
 ## [GitHub Repository](https://github.com/Gruheem/milestone-project-3)
@@ -266,7 +266,8 @@ Acceptance Criteria:
 - Search bar filtering games by title
 - Category dropdown filter
 - Combined search and filter working simultaneously
-- No-results state with message
+- No-results state with message  
+
 <img src="README_images/game-library.png" alt="Game Library" style="max-width: 40rem;">  
 <img src="README_images/nothing-matching-search.png" alt="NoSearch Results" style="max-width: 40rem;">  
 <img src="README_images/no-filter-match.png" alt="No Filter Results" style="max-width: 40rem;">  
@@ -275,7 +276,8 @@ Acceptance Criteria:
 - Full game information display 
 - Reviews section visible to all visitors
 - Comments section visible to all visitors
-- Empty state messages when no reviews or comments exist yet
+- Empty state messages when no reviews or comments exist yet  
+
 <img src="README_images/game-detail.png" alt="Game Detail Page" style="max-width: 40rem;">  
 <img src="README_images/review-and-comment.png" alt="Review and Comment" style="max-width: 40rem;">  
 
@@ -284,7 +286,8 @@ Acceptance Criteria:
 - Edit game form pre-populated with existing data
 - Ownership checks ensuring only the adding user can edit or delete
 - Message stating Pending Wait for Added Game to be Approved
-- Success and error messages for all actions
+- Success and error messages for all actions  
+
 <img src="README_images/add-game.png" alt="Add Game Form" style="max-width: 40rem;">  
 <img src="README_images/edit-game.png" alt="Edit Game Form" style="max-width: 40rem;">  
 
@@ -294,7 +297,8 @@ Acceptance Criteria:
 - Duplicate prevention with helpful messaging
 - Library page showing all entries with status clearly displayed
 - Remove game from library with confirmation step
-- Empty state for library with prompt to browse
+- Empty state for library with prompt to browse  
+
 <img src="README_images/game-library-duplicate-warning.png" alt="Duplicate Library Entry Message" style="max-width: 40rem;">  
 <img src="README_images/delete-library-entry.png" alt="Delete Library Entry Modal" style="max-width: 40rem;">  
 <img src="README_images/library-entry.png" alt="Library Entry" style="max-width: 40rem;">  
@@ -307,6 +311,7 @@ Acceptance Criteria:
 - Record first, second and third place
 - Add any notes about how the session went
 - Delete session modal  
+
 <img src="README_images/session.png" alt="Play Session" style="max-width: 40rem;">  
 <img src="README_images/delete-session.png" alt="Delete Session Modal" style="max-width: 40rem;">  
 
@@ -317,6 +322,7 @@ Acceptance Criteria:
 - Average rating calculated and displayed on game cards and detail page
 - Login prompt shown to visitors in place of the review form
 - reviews awaiting approval have message and faded appearance  
+
 <img src="README_images/average-rating.png" alt="Average Rating" style="max-width: 40rem;">  
 <img src="README_images/review-and-comment-approval.png" alt="Review Awaiting Approval" style="max-width: 40rem;">  
 <img src="README_images/delete-comment.png" alt="delete Comment" style="max-width: 40rem;">  
@@ -331,6 +337,7 @@ Acceptance Criteria:
 - Edit and delete own comments and replies
 - Login prompt shown to visitors in place of comment form
 - Success messages for all comment and reply actions  
+
 <img src="README_images/comment-submitted-message.png" alt="Comment Submit Message" style="max-width: 40rem;">  
 <img src="README_images/review-submitted-message.png" alt="Review Submit Message" style="max-width: 40rem;">  
 
@@ -343,7 +350,8 @@ Acceptance Criteria:
 
 **Custom 404 Page**
 - Branded 404 error page matching site design
-- Clear link back to the home page  
+- Clear link back to the home page   
+
 <img src="README_images/custom-404-user.png" alt="User 404 Page" style="max-width: 40rem;">  
 <img src="README_images/vustom-404-guest.png" alt="Guest 404 Page" style="max-width: 40rem;">  
 
@@ -373,12 +381,14 @@ I have created 5 database tables for the features that I want to implement. I am
 
 ### Wireframes
 Desktop Wireframe Templates:  
+
 <img src="README_images/desktop__add_game_template_wireframe.webp" alt="Add Game Desktop" style="max-width: 40rem;">  
 <img src="README_images/desktop_base_and_home_template_wireframes.webp" alt="Base and Home Desktop" style="max-width: 40rem;">  
 <img src="README_images/desktop_game_detail_template_wireframe.webp" alt="Game Detail Desktop" style="max-width: 40rem;">  
 <img src="README_images/desktop_userlibrary_template_wireframe.webp" alt="User Library Desktop" style="max-width: 40rem;">   
 
 Mobile Wireframe Templates:  
+
 <img src="README_images/mobile-user-library-template-wireframe.webp" alt="Add Game Mobile" style="max-width: 40rem;">
 <img src="README_images/mobile_add_game_template_wireframe.webp" alt="Base and Home Mobile" style="max-width: 40rem;">
 <img src="README_images/mobile_base_and%20_home_template_wireframe.webp" alt="Game Detail Mobile" style="max-width: 40rem;">
